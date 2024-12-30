@@ -1,0 +1,287 @@
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.content {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), 
+                url('images/pet adoptionn.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    color: white;
+    padding: 80px; 
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); 
+    border-radius: 15px;
+    position: relative;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    height:auto; 
+}
+
+.content h1, .content p {
+    position: relative;
+    z-index: 1;
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 0;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+button.category {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #ff6600;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 160px;
+    text-align: center;
+}
+
+button.category:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #ff6600, #ff8500);
+    color: white;
+}
+
+button.category img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff8500;
+    transition: border 0.3s ease;
+}
+
+button.category:hover img {
+    border-color: #ffffff;
+}
+.banner {
+    background: linear-gradient(45deg, #ff8500, #ff6600);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin: 30px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.pets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 40px;
+}
+.pet-card, .pet-card1 {
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.pet-card:hover, .pet-card1:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.pet-card img, .pet-card1 img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.adoption-info {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    margin: 30px 20px;
+    border: 2px solid #ffe6cc;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.adoption-info h2 {
+    font-size: 2.2rem;
+    color: #ff6600;
+    margin-bottom: 30px;
+}
+.info-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.card {
+    background: #fff;
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.card img {
+    max-width: 70px;
+    margin-bottom: 15px;
+}
+.card h3 {
+    font-size: 1.5rem;
+    color: #e65500;
+    margin-bottom: 15px;
+}
+.card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+.card button {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.card button:hover {
+    background-color: #f0a93f;
+}
+.footer {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    padding: 60px 20px;
+    font-size: 14px;
+}
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+.footer-section {
+    flex: 1 1 250px;
+    min-width: 200px;
+}
+.footer-logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff6600;
+}
+.footer-description {
+    font-size: 15px;
+    line-height: 1.8;
+}
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f3f3f3;
+    border-bottom: 2px solid #ff6600;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+.footer-section ul li a {
+    color: #ffe6cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 15px;
+}
+.footer-section ul li a:hover {
+    color: #ffffff;
+}
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    border: 1px solid #ff6600;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.subscribe-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+.subscribe-form button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: background-color 0.3s ease;
+}
+.subscribe-form button:hover {
+    background-color: #cc7a00;
+}
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #ffe6cc;
+}
+.footer-bottom a {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+.footer-section iframe {
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}   
