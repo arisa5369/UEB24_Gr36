@@ -205,12 +205,8 @@ html, body {
 }
 .hero {
     background-attachment: fixed;
-}
-
-
-
-  
-  .adopt-btn:hover {
+}  
+.adopt-btn:hover {
     background-color: #e76f51;
   }
   
@@ -317,8 +313,8 @@ html, body {
   }
   
   .image-container img {
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 180px;
     border-radius: 15px;
   }
   
@@ -495,3 +491,5 @@ html, body {
     background-color: #cc7a00; 
     transform: scale(1.05); 
   }
+
+  
