@@ -19,9 +19,7 @@ body {
 }
 
 .content {
-    max-width: 600px;
       text-align: left;
-      margin: 0  ;
 }
 
 .content h1 {
@@ -34,30 +32,6 @@ body {
     line-height: 1.6;
     color: #555;
   }
-
-.foster-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 50px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    }
-
-.foster-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #333;
-    font-weight: bold;
-}
-
-.foster-section p {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 600px;
-    margin: 0 auto;
-}
 
 .images {
     display: flex;
@@ -83,10 +57,8 @@ body {
 .why-foster-section {
     background-color: #2a838c;
     padding: 40px 20px;
-    margin: 0px;
     color: white;
     text-align: center;
-    width: 100%;
 }
 
 .why-foster-container {
@@ -126,11 +98,9 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
 }
 
 .foster-button:hover {
