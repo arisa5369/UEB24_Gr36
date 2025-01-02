@@ -8,59 +8,57 @@ body {
    color: #333;
    
 }
-    .main-content {
-        position: relative;
-        background: url('imageourteam/rb_2148913034.png') no-repeat center center/cover;
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: left;
-        color: white;
-        padding: 40px;
-        overflow: hidden;
-         background-attachment: fixed;
-         bottom: 0;
-        }
-    
-    
-    .main-content h1 {
-        font-size: 3.5em;
-        margin-bottom: 10px;
-        letter-spacing: 1.5px;
-    }
-    
-    .main-content span {
-        display: block;
-        font-size: 1.5em;
-        margin-bottom: 20px;
-        font-style: italic;
-        color: #f0e68c;
-    }
-    
-    .main-content p {
-        font-size: 1.3em;
-        line-height: 1.9;
-        margin-bottom: 25px;
-    }
-    
-    .learn-more-button {
-        display: inline-block;
-        padding: 14px 28px;
-        font-size: 1.1em;
-        color: white;
-        background-color: #008c99;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-    }
-    
-    .learn-more-button:hover {
-        background-color: #008c99;
-        transform: scale(1.08); 
-    }
-    
+ 
+.main-content {
+    position: relative;
+    background: url('imageourteam/rb_2148913034.png') no-repeat center bottom/cover;
+    height: 600px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    color: white;
+    padding: 50px;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+.main-content h1 {
+    font-size: 4em; 
+    margin-bottom: 15px;
+    letter-spacing: 1.8px;
+}
+
+.main-content span {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 25px;
+    font-style: italic;
+    color: #f0e68c;
+}
+
+.main-content p {
+    font-size: 1.5em; 
+    line-height: 2; 
+    margin-bottom: 30px;
+}
+
+.learn-more-button {
+    display: inline-block;
+    padding: 16px 32px; 
+    font-size: 1.3em; 
+    color: white;
+    background-color: #008c99;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.learn-more-button:hover {
+    background-color: #007b8a;
+    transform: scale(1.1);
+} 
 
 .team-section {
     background-color: #e8e8e8;
@@ -98,21 +96,7 @@ body {
     font-size: 1.1em;
     color:#666;
 }
-.email {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 0.9px;
-    color:#008c99;
-    text-decoration: none;
-    border:1px solid #008c99;
-    padding: 8px 12px;
-    border-radius:5px;
-    transition:all 0.3s ease-in-out;
-}
-.email:hover {
-    background-color: #008c99;
-    color: #fff;
-}
+
 .board-section {
     padding:40px 20px;
 }
