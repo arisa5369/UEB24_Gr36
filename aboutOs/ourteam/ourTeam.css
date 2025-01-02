@@ -110,4 +110,16 @@ body {
     background-color: #008c99;
     color: #fff;
 }
-
+.board-section {
+    padding:40px 20px;
+}
+.board-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+.board-list li {
+    font-size: 1.1em;
+    margin:10px 0;
+    color:#333;
+}
