@@ -20,9 +20,8 @@ body {
         color: white;
         padding: 40px;
         overflow: hidden;
-       
-            overflow: hidden;
-            background-attachment: fixed;
+         background-attachment: fixed;
+         bottom: 0;
         }
     
     
@@ -147,5 +146,24 @@ body {
  
 .contact-image img:hover {
     transform: scale(1.05); 
+}
+
+.contact-text {
+    max-width: 500px;
+    text-align: left;
+    padding: 10px;
+}
+
+.contact-text h2 {
+    font-size: 2em;
+    color: #008c99;
+    margin-bottom: 15px;
+}
+
+.contact-text p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+    margin: 20px 0;
 }
 
