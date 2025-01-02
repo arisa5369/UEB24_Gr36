@@ -25,3 +25,47 @@
     line-height: 1.6;
     color: #555;
   }
+  .foster-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+.foster-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.foster-section p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;;
+    gap: 20px;
+    position: relative;
+}
+.images img:first-child {
+    width: 60%; 
+    border-radius: 15px;
+    object-fit: cover;
+    transform: translateY(-20px);
+  }
+  
+  .images img:last-child {
+    width: 50%; 
+    border-radius: 15px;
+    object-fit: cover;
+    transform: translateY(20px);
+  }
