@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Bruno",
+        "species": "Cockatoo",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "White",
+        "personality": "Playful and affectionate",
+        "health": "Excellent",
+        "wingspan": "50 cm",
+        "image": "../images/bird1.jpg"
+    },
+    {
+        "name": "Dale",
+        "species": "Macaw",
+        "age": "5 years",
+        "gender": "Female",
+        "color": "Blue and Gold",
+        "personality": "Loyal and intelligent",
+        "health": "Healthy",
+        "wingspan": "100 cm",
+        "image": "../images/bird2.jpg"
+    },
+    {
+        "name": "Stella",
+        "species": "Budgerigar",
+        "age": "2 years",
+        "gender": "Female",
+        "color": "Green and Yellow",
+        "personality": "Chirpy and curious",
+        "health": "Excellent",
+        "wingspan": "20 cm",
+        "image": "../images/bird3.jpeg"
+    },
+    {
+        "name": "Tori",
+        "species": "Sulphur-Crested Cockatoo",
+        "age": "6 years",
+        "gender": "Male",
+        "color": "White with Yellow Crest",
+        "personality": "Social and talkative",
+        "health": "Healthy",
+        "wingspan": "55 cm",
+        "image": "../images/bird4.jpg"
+    },
+    {
+        "name": "Feathers",
+        "species": "Zebra Finch",
+        "age": "1 year",
+        "gender": "Female",
+        "color": "Grey and Orange",
+        "personality": "Energetic and friendly",
+        "health": "Excellent",
+        "wingspan": "12 cm",
+        "image": "../images/bird5.webp"
+    },
+    {
+        "name": "Mango",
+        "species": "Canary",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Yellow",
+        "personality": "Melodious and active",
+        "health": "Healthy",
+        "wingspan": "15 cm",
+        "image": "../images/bird6.jpg"
+    },
+    {
+        "name": "Whisles",
+        "species": "Bluebird",
+        "age": "3 years",
+        "gender": "Female",
+        "color": "Blue",
+        "personality": "Calm and observant",
+        "health": "Excellent",
+        "wingspan": "25 cm",
+        "image": "../images/bird7.jpg"
+    },
+    {
+        "name": "Pico",
+        "species": "Sun Conure",
+        "age": "4 years",
+        "gender": "Male",
+        "color": "Yellow, Orange, and Green",
+        "personality": "Cheerful and friendly",
+        "health": "Healthy",
+        "wingspan": "30 cm",
+        "image": "../images/bird8.jpg"
+    },
+    {
+        "name": "Hula",
+        "species": "Sparrow",
+        "age": "1 year",
+        "gender": "Female",
+        "color": "Brown",
+        "personality": "Quick and curious",
+        "health": "Excellent",
+        "wingspan": "15 cm",
+        "image": "../images/bird9.jpg"
+    },
+    {
+        "name": "Tinker",
+        "species": "House Finch",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Red and Brown",
+        "personality": "Friendly and vocal",
+        "health": "Healthy",
+        "wingspan": "20 cm",
+        "image": "../images/bird10.jpg"
+    }
+]
