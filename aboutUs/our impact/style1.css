@@ -18,6 +18,7 @@ body {
     padding: 50px;
     overflow: hidden;
     background-attachment: fixed;
+    padding-left: 250px;
 }
 
 .main-content h1 {
@@ -106,7 +107,7 @@ body {
 
 .stats-items {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 5px; 
@@ -149,6 +150,7 @@ body {
     display: flex;
     justify-content: flex-start;
     color: white;
+    padding-left: 250px;
   
 }
 
