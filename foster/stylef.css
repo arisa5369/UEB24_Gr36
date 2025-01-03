@@ -157,6 +157,33 @@ body {
     font-weight: bold; 
     color: #555;
 }
+.pets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 40px;
+}
+.pet-card, .pet-card1 {
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.pet-card:hover, .pet-card1:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.pet-card img, .pet-card1 img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 .foster-table h2 {
     text-align: center; 
     font-size: 2rem; 
@@ -250,30 +277,63 @@ table tbody tr:last-child td:last-child {
     border-color: #aaa;
 }
 
-.pets {
+.overlay2 {
+    position: relative;
+    background: url('images2/Adopt_Me_Dog.webp') no-repeat center top/cover;
+    width: 100%;
+    height: 400px;
+    padding: 5rem 2rem;
+    background-attachment: fixed;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.325);
+    overflow: hidden;
+    margin: 0; 
+    padding: 0; 
+}
+
+.overlay2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+.overlay2 h1 {
+    position: relative;
+    z-index: 2; 
+    color: white; 
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center; 
+    margin: 0;
+    padding-top: 120px;
+}
+
+.overlay2 .donation-grid {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 20px 40px;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2; 
+    margin-top: 20px;
 }
-.pet-card, .pet-card1 {
-    border: 2px solid #ff6600;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 220px;
-    text-align: center;
-    background: #fff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+
+.overlay2 .donation-grid button {
+    background-color: #ff7f00; 
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-.pet-card:hover, .pet-card1:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-}
-.pet-card img, .pet-card1 img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
+
+.overlay2 .donation-grid button:hover {
+    background-color: #e56e00; 
+    transform: scale(1.1); 
 }
