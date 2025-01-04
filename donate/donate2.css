@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.fancy-title {
+    font-family: 'Georgia', serif;
+    font-size: 2em;
+    color: #000000; 
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background: linear-gradient(90deg, #ff9900, #ff84006d);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    margin: 50px auto;
+    width: 80%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.container img {
+    width: 15%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    transition: all ease-in-out 0.5s;
+}
+
+.container img:hover {
+    width: 25%;
+    z-index: 2;
+}
+
