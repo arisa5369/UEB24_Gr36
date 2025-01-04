@@ -217,7 +217,79 @@ html, body {
   .donate-btn:hover {
     background-color: #e65500;
   }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+  }
   
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content p {
+    margin: 10px 0;
+  }
+  
+  button {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-account-btn, .login-btn {
+    width: 100%;
+    background: #6a1b9a;
+    color: #fff;
+  }
+  
+  .social-login {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .social-btn {
+    background: #ddd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .google {
+    background: #db4437;
+    color: #fff;
+  }
+  
+  .apple {
+    background: #000;
+    color: #fff;
+  }
+  
+  .facebook {
+    background: #4267B2;
+    color: #fff;
+  }
+
+
   .about {
     display: flex;
     align-items: center;
@@ -492,4 +564,68 @@ html, body {
     transform: scale(1.05); 
   }
 
-  
+  .learn-more-section {
+    background-image: url(''); /* Vendos rrugën e fotos */
+    background-size: cover; /* Figura mbulon të gjithë seksionin */
+    background-position: center; /* Figura qendrohet */
+    background-repeat: no-repeat; /* Mos e përsërit figurën */
+    padding: 20px; /* Hapësira brenda seksionit */
+    border-radius: 10px; /* Këndet e buta (opsionale) */
+    color: #333; /* Ngjyra e tekstit që duket mirë mbi sfondin */
+    }
+
+.learn-more-section h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+    position: relative;
+}
+
+.learn-more-section h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #FFC31F;
+    margin-top: 0.5rem;
+}
+
+.learn-more-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.learn-more-section ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.learn-more-section ul li img {
+    width: 24px;
+    height: 24px;
+}
+
+.learn-more-section ul li a {
+    text-decoration: none;
+    color: #0056B3;
+    font-weight: bold;
+    border-bottom: 1px dotted #0056B3;
+}
+
+.learn-more-section ul li a:hover {
+    color: #002F6C;
+    border-bottom: 1px solid #002F6C;
+}
+
+.paw-background {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    opacity: 0.2;
+}

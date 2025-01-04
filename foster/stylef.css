@@ -157,42 +157,157 @@ body {
     font-weight: bold; 
     color: #555;
 }
-
-table {
-    width: 90%;
-    margin: 2rem auto;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden; 
+.pets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 40px;
 }
-
-table thead {
-    background-color: #2a838c;
-    color: white;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 1.5rem;
+.pet-card, .pet-card1 {
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
     text-align: center;
-    font-size: 1rem;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.pet-card:hover, .pet-card1:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.pet-card img, .pet-card1 img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-th {
-    text-transform: uppercase;
-    font-weight: bold;
-}
 
-tr:hover {
-    background-color: #f1f1f1; 
-}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
 
-td {
+  .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
     color: #333;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+  th, td {
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    text-align: left;
+  }
+
+  th {
+    font-size: 18px;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  td {
+    background-color: #fff;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f9f9f9; 
+  }
+
+  tr:hover td {
+    background-color: #f1f1f1; 
+  }
+
+  details summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+
+
+
+.overlay2 {
+    position: relative;
+    background: url('images2/Adopt_Me_Dog.webp') no-repeat center top/cover;
+    width: 100%;
+    height: 400px;
+    padding: 5rem 2rem;
+    background-attachment: fixed;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.325);
+    overflow: hidden;
+    margin: 0; 
+    padding: 0; 
 }
 
+.overlay2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+.overlay2 h1 {
+    position: relative;
+    z-index: 2; 
+    color: white; 
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center; 
+    margin: 0;
+    padding-top: 120px;
+}
+
+.overlay2 .donation-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2; 
+    margin-top: 20px;
+}
+
+.overlay2 .donation-grid button {
+    background-color: #ff7f00; 
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.overlay2 .donation-grid button:hover {
+    background-color: #e56e00; 
+    transform: scale(1.1); 
+}
