@@ -4,7 +4,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.8;
     color: #333;
-    box-sizing: border-box;
+    box-sizing: border-box;   
 }
 
 
@@ -207,7 +207,7 @@ body {
 }
 
 
-.content-item h1{
+.content-item h2{
     color: #eaeef2;
     font-size: 2.5em;
     margin: 10px 0;
