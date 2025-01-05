@@ -1,3 +1,4 @@
+
 html, body {
     margin: 0;
     padding: 0;
@@ -18,9 +19,98 @@ html, body {
     padding: 0 20px; 
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.logo img {
-    height: 50px;
-    margin-right: auto;
+
+.logo {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.purple-text {
+  color: #c7c7c7;
+}
+
+.heart {
+  color: #0a0909;
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #ff6600;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #ff8000;
+}
+
+
+.signup-btn {
+  margin-top: 20px;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #ff8000;
+}
+
+.modal-content button {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.modal-content hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.close:hover {
+  color:#d4881d;
 }
 
 .menu ul {
@@ -69,7 +159,6 @@ html, body {
   }
   
   .donate-btn {
-    background-color: #ff6600;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -80,9 +169,7 @@ html, body {
     transition: background-color 0.3s ease;
   }
   
-  .donate-btn:hover {
-    background-color: #e65500;
-  }
+ 
   .social-icons {
     display: flex;
     align-items: center; 
@@ -101,8 +188,19 @@ html, body {
   }
   
   @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem; 
+  }
+
+  .hero-subtitle {
+      font-size: 1.4rem; 
+  }
+
+  .hero-buttons .adopt-btn, .hero-buttons .donate-btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+  }
    
-  
     .menu ul {
       flex-wrap: wrap;
       justify-content: center;
@@ -125,47 +223,70 @@ html, body {
     position: relative;
     width: 100%;
     height: 100vh; 
-    background-image: url("imagess/dog.jpg");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
 }
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
   .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 102, 0, 0.308); 
+    height: 60%;
+    background-color: transparent; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    padding: 20px;
   }
-  .hero-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; 
-    margin-bottom: 20px;
+
+.hero-content {
+  z-index: 2;
+  text-align: center;
 }
-  
   .hero-title {
-    font-size: 4.5rem; 
+    font-size: 4rem; 
     font-weight: bold;
-    color: #fff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
     margin-bottom: 20px;
   }
   
   .hero-subtitle {
-    font-size: 1.8rem; 
-    color: #f5f5f5;
+    font-size: 1.5rem; 
     margin-bottom: 40px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); 
   }
+
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+}
   
   .hero-buttons .adopt-btn, .hero-buttons .donate-btn {
     background: linear-gradient(45deg, #ff6600, #ff9900); 
@@ -182,16 +303,22 @@ html, body {
     background: linear-gradient(45deg, #e65500, #ff8000);
     transform: scale(1.1); 
 }
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    text-align: center;
-}
-.hero-title, .hero-subtitle, .hero-buttons {
-    animation: fadeInUp 1s ease-in-out;
-}
+
+
+.hero-video  {
+    width: 100%;
+    height: auto;
+    margin-top: 100%;  
+     .actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .signup-btn, .donate-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
 
 @keyframes fadeInUp {
     from {
@@ -203,20 +330,6 @@ html, body {
         transform: translateY(0);
     }
 }
-.hero {
-    background-attachment: fixed;
-}  
-.adopt-btn:hover {
-    background-color: #e76f51;
-  }
-  
-  .donate-btn {
-    background-color: #ff6600;
-  }
-  
-  .donate-btn:hover {
-    background-color: #e65500;
-  }
   .modal {
     position: fixed;
     top: 0;
@@ -228,7 +341,7 @@ html, body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none; 
   }
   
   .modal-content {
@@ -288,8 +401,6 @@ html, body {
     background: #4267B2;
     color: #fff;
   }
-
-
   .about {
     display: flex;
     align-items: center;
@@ -328,7 +439,6 @@ html, body {
   .about-btn {
     display: inline-block;
     text-decoration: none;
-    background-color: #ff6600;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -337,21 +447,17 @@ html, body {
   }
   
   .about-btn:hover {
-    background-color: #e65500;
     transform: scale(1.05);
   }
-  
-  .image {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .image img {
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
+
+.hero-video img {
+    width: 100%;
+    max-height: 300px; 
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
   .get-involved {
     padding: 40px 20px;
     text-align: center;
@@ -389,6 +495,8 @@ html, body {
     height: 180px;
     border-radius: 15px;
   }
+
+
   
   .overlay {
     position: absolute;
@@ -564,68 +672,4 @@ html, body {
     transform: scale(1.05); 
   }
 
-  .learn-more-section {
-    background-image: url(''); /* Vendos rrugën e fotos */
-    background-size: cover; /* Figura mbulon të gjithë seksionin */
-    background-position: center; /* Figura qendrohet */
-    background-repeat: no-repeat; /* Mos e përsërit figurën */
-    padding: 20px; /* Hapësira brenda seksionit */
-    border-radius: 10px; /* Këndet e buta (opsionale) */
-    color: #333; /* Ngjyra e tekstit që duket mirë mbi sfondin */
-    }
 
-.learn-more-section h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #333;
-    position: relative;
-}
-
-.learn-more-section h3::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 3px;
-    background-color: #FFC31F;
-    margin-top: 0.5rem;
-}
-
-.learn-more-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.learn-more-section ul li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-.learn-more-section ul li img {
-    width: 24px;
-    height: 24px;
-}
-
-.learn-more-section ul li a {
-    text-decoration: none;
-    color: #0056B3;
-    font-weight: bold;
-    border-bottom: 1px dotted #0056B3;
-}
-
-.learn-more-section ul li a:hover {
-    color: #002F6C;
-    border-bottom: 1px solid #002F6C;
-}
-
-.paw-background {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 100px;
-    opacity: 0.2;
-}
