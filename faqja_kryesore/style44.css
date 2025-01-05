@@ -141,35 +141,45 @@ button:hover {
     padding: 0 10px;
     padding-right: 50px;
   }
-  .signup-btn {
-    background-color: white;
-    color: #ff6600;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+
+  .signup-btn,
+  .donate-btn {
+    padding: 10px 20px;  
+    font-size: 16px;  
     border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, color 0.3s ease;
-    transform: scale(1.05); 
-  }
-  
-  .signup-btn:hover {
+    transform: scale(1.05);  
+    min-width: 120px; 
+    text-align: center;
+    margin: 0;
+}
+
+.signup-btn {
+    background-color: white;
+    color: #ff6600;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.signup-btn:hover {
     background-color: #ffe6cc;
     color: #ff6600;
-  }
-  
-  .donate-btn {
+}
+
+.donate-btn {
+    background-color: #ff6600;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-    transform: scale(1.05); 
-  }
+}
+
+.donate-btn:hover {
+    background-color: #e65c00;
+    color: white;
+}
+
  
   .social-icons {
     display: flex;
