@@ -40,7 +40,7 @@ amountButtons.forEach((button) => {
     });
     button.style.backgroundColor = '#ff7a00';
     button.style.color = '#fff';
-    customAmountInput.value = ''; // Fshij custom amount
+    customAmountInput.value = ''; 
     updateDonateButton();
   });
 });

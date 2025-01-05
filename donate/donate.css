@@ -427,7 +427,7 @@ td {
   transform: scale(1.05);
 }
 .sign-in-button:active {
-  transform: scale(0.95); /* Shto një efekt klikimi */
+  transform: scale(0.95); 
 }
 
 
