@@ -47,4 +47,5 @@ border: 2px solid #ff6600;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
+    outline: 3px solid white;
 }

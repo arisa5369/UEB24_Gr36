@@ -10,6 +10,7 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), 
                 url('images/pet adoptionn.jpg') no-repeat center center / cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
     padding: 80px; 
     text-align: center;
@@ -61,6 +62,7 @@ button.category {
     cursor: pointer;
     width: 160px;
     text-align: center;
+
 }
 
 button.category:hover {
@@ -155,10 +157,6 @@ button.category:hover img {
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-}
-.card img {
-    max-width: 70px;
-    margin-bottom: 15px;
 }
 .card h3 {
     font-size: 1.5rem;
