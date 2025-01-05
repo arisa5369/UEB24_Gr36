@@ -100,26 +100,27 @@ background-position: center bottom;
   gap: 2rem;
   align-items: center;
   margin-top: 2rem;
+  max-width: 1000px;
+  padding-left: 200px;
 }
 
-.donation-box{
-  width: 60%;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(3, 3, 3, 0.9);
-  border-radius: 8px;
-  text-align: center;
-}
+
 .litter-mates {
   width: 40%;
   padding: 1rem;
   border-radius: 8px;
   text-align: left;
+}.donation-box{
+  width: 60%;
+  padding: 1rem;
+ 
+  text-align: center;
 }
 
 .donation-box h2,
 .litter-mates h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 900;
   margin-bottom: 1rem;
 }
 
@@ -131,12 +132,13 @@ background-position: center bottom;
 }
 
 .donation-buttons button {
-  padding: 0.5rem 9rem;
+  width: 100%;
+  padding: 0.5rem 0;
   border: 1px solid #333333b9;
   background-color: #fff;
   color: #333;
-  border-radius: 5px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .donation-buttons button:hover {
@@ -151,26 +153,32 @@ background-position: center bottom;
 }
 
 .amount-options button {
-  padding: 0.5rem 4.2rem;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 0.5rem 0;
+  border: 1px solid #838181;
   background-color: #fff;
   color: #333;
   border-radius: 5px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .amount-options button:hover {
   background-color: #f0f0f0;
 }
 
-.custom-amount,
-.dedication-input {
+.custom-amount{
   display: block;
-  width: 95%;
-  padding: 0.75rem;
   margin: 0.5rem 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem 0;
+  border: 1px solid #4d4d4d;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .litter-mates p {
@@ -189,13 +197,25 @@ background-position: center bottom;
 }
 .donate-button {
   margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+  background-color: #333;
+  color: #fff;
   border: none;
-  background-color: #00000062;
-  color: white;
-  border-radius: 5px;
+  border-radius: 25px;
+  width: 80%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+     width: 100%;
+  
+
+  box-sizing: border-box;
 }
+.donate-button:hover {
+  background-color: #555;
+}
+
 .donation-section {
   display: flex;
   justify-content: center;
@@ -306,17 +326,21 @@ table {
 td {
   border: 1px solid #cfcecec9;
   padding: 10px;
+  border-radius: 5px;
+ 
 }
 
 .image-column {
   width: 25%;
   text-align: center;
   background-color: #cecece;
+  border-radius: 5px; 
 }
 
 .image-column img {
   max-width: 70px;
   height: auto;
+  border-radius: 5px;
 }
 
 .header {
@@ -324,6 +348,7 @@ td {
   color: #333;
   text-align: left;
   background-color: #ffffff;
+  border-radius: 5px;
 }
 
 .description {
@@ -369,8 +394,9 @@ td {
 }
 
 .community-partner p {
-  line-height: 1;
-  font-size:1rem;
+  
+  font-size: 1rem;
+  color: #444;
 }
 .sign-in-container {
   text-align: center;
