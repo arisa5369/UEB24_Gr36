@@ -5,34 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Petfinder</title>
   <link rel="stylesheet" href="style44.css">
+  <link rel="stylesheet" href="index1.js">
 </head>
 <body>
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <span class="purple-text">pet</span><span class="heart">❤</span><span class="purple-text">finder</span>
-        
-        </div>
-      <nav class="menu">
-        <ul>
-          <li><a href="#">Get Help</a></li>
-          <li><a href="index.html">Adopt</a></li>
-          <li><a href="#">Foster</a></li>
-          <li><a href="#">Donate</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </nav>
-      
+  <div id="header-placeholder"></div>
 
-        <button class="donate-btn">Donate Now</button>
-        <div class="social-icons">
-          <img src="imagess/facebook.logo.1.png" alt="Facebook Icon">
-          <img src="imagess/instagram.lofo.png" alt="Instagram Icon">
-        </div>
-      </div>
-    </div>
-  </header>
+
+  <script>
+  
+    fetch('../faqja_kryesore/header.html')
+      .then(response => response.text())
+      .then(data => {
+    
+        document.getElementById('header-placeholder').innerHTML = data;
+  
+       
+        const modal1 = document.getElementById("modal1");
+        const signUpButton = document.querySelector(".signup-btn");
+        const closeModal = document.getElementById("closeModal");
+  
+        const createAccountModal = document.getElementById("createAccountModal");
+        const openCreateAccount = document.getElementById("openCreateAccount");
+        const closeCreateAccount = document.getElementById("closeCreateAccount");
+  
+        const loginModal = document.getElementById("loginModal");
+        const openLogin = document.getElementById("openLogin");
+        const closeLogin = document.getElementById("closeLogin");
+  
+        
+        signUpButton?.addEventListener("click", () => {
+          modal1.style.display = "flex";
+        });
+  
+        closeModal?.addEventListener("click", () => {
+          modal1.style.display = "none";
+        });
+  
+        openCreateAccount?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          createAccountModal.style.display = "flex";
+        });
+  
+        closeCreateAccount?.addEventListener("click", () => {
+          createAccountModal.style.display = "none";
+        });
+  
+        openLogin?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          loginModal.style.display = "flex";
+        });
+  
+        closeLogin?.addEventListener("click", () => {
+          loginModal.style.display = "none";
+        });
+  
+        window.addEventListener("click", (event) => {
+          if (event.target === modal1) {
+            modal1.style.display = "none";
+          } else if (event.target === createAccountModal) {
+            createAccountModal.style.display = "none";
+          } else if (event.target === loginModal) {
+            loginModal.style.display = "none";
+          }
+        });
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+  
+ 
+  <script src="../faqja_kryesore/script.js"></script>
+  
   <section class="hero">
           <div class="video-container">
             <video autoplay muted loop>

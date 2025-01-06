@@ -7,6 +7,73 @@
   <link rel="stylesheet" href="stylef.css">
 </head>
 <body>
+  <div id="header-placeholder"></div>
+
+
+  <script>
+  
+    fetch('../faqja_kryesore/header.html')
+      .then(response => response.text())
+      .then(data => {
+    
+        document.getElementById('header-placeholder').innerHTML = data;
+  
+       
+        const modal1 = document.getElementById("modal1");
+        const signUpButton = document.querySelector(".signup-btn");
+        const closeModal = document.getElementById("closeModal");
+  
+        const createAccountModal = document.getElementById("createAccountModal");
+        const openCreateAccount = document.getElementById("openCreateAccount");
+        const closeCreateAccount = document.getElementById("closeCreateAccount");
+  
+        const loginModal = document.getElementById("loginModal");
+        const openLogin = document.getElementById("openLogin");
+        const closeLogin = document.getElementById("closeLogin");
+  
+        
+        signUpButton?.addEventListener("click", () => {
+          modal1.style.display = "flex";
+        });
+  
+        closeModal?.addEventListener("click", () => {
+          modal1.style.display = "none";
+        });
+  
+        openCreateAccount?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          createAccountModal.style.display = "flex";
+        });
+  
+        closeCreateAccount?.addEventListener("click", () => {
+          createAccountModal.style.display = "none";
+        });
+  
+        openLogin?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          loginModal.style.display = "flex";
+        });
+  
+        closeLogin?.addEventListener("click", () => {
+          loginModal.style.display = "none";
+        });
+  
+        window.addEventListener("click", (event) => {
+          if (event.target === modal1) {
+            modal1.style.display = "none";
+          } else if (event.target === createAccountModal) {
+            createAccountModal.style.display = "none";
+          } else if (event.target === loginModal) {
+            loginModal.style.display = "none";
+          }
+        });
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+  
+ 
+  <script src="../faqja_kryesore/script.js"></script>
+
   <div class="container">
     <div class="content">
       <h1>Foster with Petfinder</h1>
@@ -31,8 +98,8 @@
           We’re a judgment-free, supportive community for both pets and humans, welcoming fosters who communicate openly and work toward timely adoptions, 
           helping us create space for more pets.
           </p>
-          <div class="actions">
-            <button class="signup-btn">Foster policies & Application</button>
+          <div class="actions1">
+            <button class="signup-btn1">Foster Application</button>
      </div>
      <div class="why-foster">
       </div>
@@ -41,7 +108,7 @@
         <div id="modal" class="modal">
           <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
-            <h2>Foster Policies & Application</h2>
+            <h2>Foster Application</h2>
             <p>Learn about our foster policies and complete your foster application to help us save more lives.</p>
             <button id="startFosterApplication">Start Foster Application</button>
             <hr>
@@ -188,7 +255,7 @@
       </tr>
     </table>
   </div>
-  <script src="foster.js"></script> 
+  <script src="../foster/foster.js"></script> 
 
     <section class="call-to-action">
     <div class="overlay2">
