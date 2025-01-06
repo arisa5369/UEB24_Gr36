@@ -10,16 +10,16 @@ body {
 
 .main-content {
     position: relative;
-    background: url('imageourteam/rb_21489130344.png') no-repeat center center/cover;
-    height: 500px;
+    background: url('imageourteam/665663-dogs-sunset-city-calm-quiet-sky-sea-rivers-nature-landscapes.jpg') no-repeat center center/cover;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    text-align: left;
+    text-align: right;
     color: white;
     padding: 40px;
     overflow: hidden;
-  
+  padding-left: 700px;
      background-attachment: fixed;
     }
 
