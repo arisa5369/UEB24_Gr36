@@ -6,6 +6,7 @@
   <title>Petfinder</title>
   <link rel="stylesheet" href="style44.css">
   <link rel="stylesheet" href="index1.js">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -70,6 +71,62 @@
         });
       })
       .catch(error => console.error('Error loading header:', error));
+      $(document).ready(function () {
+    setTimeout(function () {
+        $('#myModal').addClass('show'); 
+    }, 2000);
+
+    $('#closeModalBtn').on('click', function () { 
+        $('#myModal').removeClass('show'); 
+    });
+
+    $('#openModalBtn').on('click', function () {
+        $('#myModal').fadeIn(); 
+    });
+
+    $('#closeModalBtn').on('click', function () {
+        $('#myModal').fadeOut(); 
+    });
+
+    $('.step').on('mouseenter', function () {
+        $(this).css({
+            'background-color': '#d1f5f5',
+            'transform': 'scale(1.05)',
+            'transition': 'all 0.3s ease'
+        });
+    }).on('mouseleave', function () {
+        $(this).css({
+            'background-color': '#eaf5f5',
+            'transform': 'scale(1)'
+        });
+    });
+
+    $(window).on('scroll', function () {
+        $('.adopting-expectations .step').each(function () {
+            var stepPosition = $(this).offset().top; 
+            var screenPosition = $(window).scrollTop() + $(window).height();
+
+            if (stepPosition < screenPosition) {
+                $(this).addClass('animate'); 
+            }
+        });
+    });
+
+    $('#callbackExample').on('click', function () {
+        $('#myModal').slideUp(500, function () { 
+            alert('Modal u mbyll!'); 
+        });
+    });
+
+    console.log($('#exampleDiv').html());
+
+    $('#exampleDiv').html('<p>Ky është përmbajtja e re!</p>');
+
+    $('#exampleDiv').append('<p>Ky është një paragraf i shtuar.</p>');
+
+    $('#exampleDiv p:first').remove();
+});
+      
   </script>
   
  
@@ -205,7 +262,7 @@
         <h2>Litter Mates Club</h2>
         <p>
 
-Petfinder was founded in St. Louis to help animals who don’t fit into the traditional shelter environment. Our Litter Mates Feline and Canine Ambassadors may have been injured or may have medical and/or behavioral issues. They may be sick, geriatric, or in need of hospice care. Many are neonatal kittens or puppies for which very few other resources exist. Some Litter Mates will spend their entire lives at Tenth Life, and we’re thankful that we can ensure they’re living the happy, healthy lives they deserve in comfort rather than facing unnecessary euthanasia.
+Petfinder was founded in St. Louis to help animals who don’t fit into the traditional shelter environment. Our Litter Mates Feline and Canine Ambassadors may have been injured or may have medical and/or behavioral issues. They may be sick, geriatric, or in need of hospice care. Many are neonatal kittens or puppies for which very few other resources exist. Some Litter Mates will spend their entire lives at Petfinder, and we’re thankful that we can ensure they’re living the happy, healthy lives they deserve in comfort rather than facing unnecessary euthanasia.
         </p>
         <a href="../donate/donate.html" class="learn-more-btn">Learn More About Litter Mates</a>
       </div>
