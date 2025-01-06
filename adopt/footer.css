@@ -1,0 +1,121 @@
+.footer {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    padding: 60px 20px;
+    font-size: 14px;
+}
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+.footer-section {
+    flex: 1 1 250px;
+    min-width: 200px;
+}
+.footer-logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff6600;
+}
+.footer-description {
+    font-size: 15px;
+    line-height: 1.8;
+}
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f3f3f3;
+    border-bottom: 2px solid #ff6600;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+.footer-section ul li a {
+    color: #ffe6cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 15px;
+}
+.footer-section ul li a:hover {
+    color: #ffffff;
+}
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    border: 1px solid #ff6600;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.subscribe-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+.subscribe-form button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: background-color 0.3s ease;
+}
+.subscribe-form button:hover {
+    background-color: #cc7a00;
+}
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #ffe6cc;
+}
+.footer-bottom a {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+.footer-section iframe {
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}  
+.get-help {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.help-button {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.help-button:hover {
+    background-color: #cc5500;
+} 
