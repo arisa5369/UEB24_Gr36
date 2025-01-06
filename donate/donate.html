@@ -4,24 +4,90 @@
   <link rel="stylesheet" href="donate.css">
 </head>
 <body>
+ 
+        <div id="header-placeholder"></div>
+
+
+  <script>
+  
+    fetch('../faqja_kryesore/header.html')
+      .then(response => response.text())
+      .then(data => {
+    
+        document.getElementById('header-placeholder').innerHTML = data;
+  
+       
+        const modal1 = document.getElementById("modal1");
+        const signUpButton = document.querySelector(".signup-btn");
+        const closeModal = document.getElementById("closeModal");
+  
+        const createAccountModal = document.getElementById("createAccountModal");
+        const openCreateAccount = document.getElementById("openCreateAccount");
+        const closeCreateAccount = document.getElementById("closeCreateAccount");
+  
+        const loginModal = document.getElementById("loginModal");
+        const openLogin = document.getElementById("openLogin");
+        const closeLogin = document.getElementById("closeLogin");
+  
+        
+        signUpButton?.addEventListener("click", () => {
+          modal1.style.display = "flex";
+        });
+  
+        closeModal?.addEventListener("click", () => {
+          modal1.style.display = "none";
+        });
+  
+        openCreateAccount?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          createAccountModal.style.display = "flex";
+        });
+  
+        closeCreateAccount?.addEventListener("click", () => {
+          createAccountModal.style.display = "none";
+        });
+  
+        openLogin?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          loginModal.style.display = "flex";
+        });
+  
+        closeLogin?.addEventListener("click", () => {
+          loginModal.style.display = "none";
+        });
+  
+        window.addEventListener("click", (event) => {
+          if (event.target === modal1) {
+            modal1.style.display = "none";
+          } else if (event.target === createAccountModal) {
+            createAccountModal.style.display = "none";
+          } else if (event.target === loginModal) {
+            loginModal.style.display = "none";
+          }
+        });
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+  
+ 
   <main class="donate-page">
   
     <section class="donate-banner">
-        <div class="overlay">
-          <video class="background-video" autoplay muted loop>
-            <source src="imagedonate/mixkit-dog-walking-with-its-owner-in-a-park-1476-hd-ready.mp4" type="video/mp4">
-
-        </video>
-        <h1>Finding forever homes for pets, together</h1>
-        <p>We can’t make this difference without you.</p>
-      </section>
+      <video class="background-video" autoplay muted loop>
+        <source src="imagedonate/mixkit-dog-walking-with-its-owner-in-a-park-1476-hd-ready.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay-content">
+        <h1>Make a Difference</h1>
+        <p>Your support helps save lives.</p>
+      </div>
+    </section>
     </div>
       <section class="donate-description">
         <p>
           At Petfinder, your generous support is essential to helping animals in need find loving homes. From dogs and cats to rabbits, birds, and more, your contributions empower our mission to connect pets with caring adopters, provide necessary medical care, and promote responsible pet ownership. No matter the size of your donation, you're making a meaningful impact on the lives of countless animals. Together, we’re creating brighter futures for pets everywhere!
         </p>
     </div>
-      </section>
     </section>
     <section class="donate-images">
         <div class="gallery">
@@ -190,5 +256,7 @@
 </div>
 
 <script src="donate.js"></script>
+<div id="footer"></div>
+<script src="../adopt/footer.js"></script>    
 </body>
 </html>

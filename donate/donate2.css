@@ -10,10 +10,10 @@ body {
     font-size: 2em;
     color: #ffffff; 
     text-align: center;
-    margin: 20px 0;
+    margin: 50px 0;
     padding: 10px;
     background: linear-gradient(90deg, #ff9900, #ff84006d);
-    border-radius: 15px;
+   
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
