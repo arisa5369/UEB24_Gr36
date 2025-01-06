@@ -86,13 +86,3 @@ closeButton.addEventListener('click', () => {
 });
 
 
-window.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-});
-document.querySelector('.sign-in-button').addEventListener('click', function () {
-  this.textContent = 'Email for more info';
-  this.style.background = '#4b4b4b'; 
-  this.style.color = '#fff'; 
-});
