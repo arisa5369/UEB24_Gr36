@@ -6,6 +6,7 @@
   <title>Petfinder</title>
   <link rel="stylesheet" href="style44.css">
   <link rel="stylesheet" href="index1.js">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -70,6 +71,62 @@
         });
       })
       .catch(error => console.error('Error loading header:', error));
+      $(document).ready(function () {
+    setTimeout(function () {
+        $('#myModal').addClass('show'); 
+    }, 2000);
+
+    $('#closeModalBtn').on('click', function () { 
+        $('#myModal').removeClass('show'); 
+    });
+
+    $('#openModalBtn').on('click', function () {
+        $('#myModal').fadeIn(); 
+    });
+
+    $('#closeModalBtn').on('click', function () {
+        $('#myModal').fadeOut(); 
+    });
+
+    $('.step').on('mouseenter', function () {
+        $(this).css({
+            'background-color': '#d1f5f5',
+            'transform': 'scale(1.05)',
+            'transition': 'all 0.3s ease'
+        });
+    }).on('mouseleave', function () {
+        $(this).css({
+            'background-color': '#eaf5f5',
+            'transform': 'scale(1)'
+        });
+    });
+
+    $(window).on('scroll', function () {
+        $('.adopting-expectations .step').each(function () {
+            var stepPosition = $(this).offset().top; 
+            var screenPosition = $(window).scrollTop() + $(window).height();
+
+            if (stepPosition < screenPosition) {
+                $(this).addClass('animate'); 
+            }
+        });
+    });
+
+    $('#callbackExample').on('click', function () {
+        $('#myModal').slideUp(500, function () { 
+            alert('Modal u mbyll!'); 
+        });
+    });
+
+    console.log($('#exampleDiv').html());
+
+    $('#exampleDiv').html('<p>Ky është përmbajtja e re!</p>');
+
+    $('#exampleDiv').append('<p>Ky është një paragraf i shtuar.</p>');
+
+    $('#exampleDiv p:first').remove();
+});
+      
   </script>
   
  
