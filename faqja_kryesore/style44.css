@@ -59,16 +59,20 @@ html, body {
   text-align: center;
 }
   .hero-title {
+    font-family: 'Cinzel', serif; 
     font-size: 4rem; 
     font-weight: bold;
+    color: #ffffff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
     margin-bottom: 20px;
+    animation: fadeInUp 1s ease-in-out;
   }
   
   .hero-subtitle {
     font-size: 1.5rem; 
     margin-bottom: 40px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); 
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    margin-bottom: 40px; 
   }
 
   .hero-buttons {
