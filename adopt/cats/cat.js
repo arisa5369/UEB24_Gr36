@@ -22,3 +22,18 @@ fetch('cat.json')
         }
     })
     .catch(error => console.error('Error fetching cat data:', error));
+    document.getElementById('playable-gif').addEventListener('click', function() {
+        const audio = document.getElementById('audio');
+        if (!audio) {
+            console.error('Audio element not found!');
+            return;
+        }
+        if (audio.paused) {
+            audio.play().catch(error => {
+                console.error('Error playing audio:', error);
+            });
+        } else {
+            audio.pause();
+            audio.currentTime = 0; 
+        }
+    });
