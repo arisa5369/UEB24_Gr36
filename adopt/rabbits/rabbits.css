@@ -11,6 +11,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
+    position: relative; 
 }
 .rabbit-list {
     display: flex;
@@ -48,4 +49,38 @@ border: 2px solid #ff6600;
     text-decoration: none;
     border-radius: 5px;
     outline: 3px solid white;
+}
+.gif-container {
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px; 
+    padding: 0; 
+}
+
+.audio-button {
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #f7941e; 
+    color: white;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px; 
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
+
+.audio-button:hover {
+    background-color: #d6781b;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
+}
+
+.audio-button:active {
+    background-color: #c06217; 
+    transform: scale(0.95); 
 }
