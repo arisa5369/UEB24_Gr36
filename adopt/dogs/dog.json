@@ -1,0 +1,113 @@
+[
+    {
+        "name": "Buddy",
+        "image": "../images/dog1.avif",
+        "breed": "Golden Retriever",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Golden",
+        "personality": "Friendly, Playful, Loyal",
+        "houseTrained": "Yes",
+        "health": "Vaccinated, Neutered"
+    },
+    {
+        "name": "Luna",
+        "image": "../images/dog2.jpg",
+        "breed": "Yorkshire Terrier",
+        "age": "1 years",
+        "gender": "Female",
+        "color": "Brown",
+        "personality": "Affectionate, Energetic,Sociable",
+        "houseTrained": "Yes",
+        "health": "Vaccinated, Spayed"
+    },
+    {
+        "name": "Rocco",
+        "image": "../images/dog3.jpg",
+        "breed": "German Shepherd ",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Black",
+        "personality": "Energetic, Enthusiastic, Spirited",
+        "houseTrained": "Yes" ,
+        "health": "Fully Vaccinated, Healthy Teeth"
+    },
+    {
+        "name": "Ozzy",
+        "image": "../images/dog4.jpg",
+        "breed": " Staffordshire Bull Terrier",
+        "age": "1 years",
+        "gender": "Female",
+        "color": "Brown",
+        "personality": "Cheerful, Outgoing,Relaxed",
+        "houseTrained": "Yes",
+        "health": "Spayed, Regular Vet Check-ups"
+    },
+    {
+        "name": "Champ",
+        "image": "../images/dog5.jpg",
+        "breed": " Pitbull",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Brown",
+        "personality": "Curious,Independent,Determined ",
+        "houseTrained": "Yes",
+        "health": "Neutered, Up-to-date on Vaccines"
+    },
+    {
+        "name": "Ginger",
+        "image": "../images/dog6.webp",
+        "breed": "Pomeranian",
+        "age": "1 years",
+        "gender": "Female",
+        "color": "white",
+        "personality": "Playful, Loyal, Affectionate",
+        "houseTrained": "Yes",
+        "health": "Neutered, Up-to-date on Vaccines"
+    },
+    {
+        "name": "Apollo",
+        "image": "../images/dog7.webp",
+        "breed": "Rottweiler",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Black & Brown" ,
+        "personality": "Alert,Friendly, Loyal ",
+        "houseTrained": "Yes",
+        "health": "Spayed, Regular Vet Check-ups"
+    },
+    {
+        "name": "Milo",
+        "image": "../images/dog8.webp",
+        "breed": "Husky",
+        "age": "4 years",
+        "gender": "Female",
+        "color": "Black & White",
+        "personality": "Intelligent, Energetic",
+        "houseTrained": "Yes",
+        "health": "Fully Vaccinated, Healthy Teeth"
+    },
+    {
+        "name": "Gunter",
+        "image": "../images/dog9.webp",
+        "breed": "Alaskan Shepherd",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Black & Brown",
+        "personality": "Protective, Alert ,Brave",
+        "houseTrained": "Yes",
+        "health": "Neutered, Up-to-date on Vaccines"
+    },
+    {
+        "name": "Lulu",
+        "image": "../images/dog10.jpg",
+        "breed": "Goberian",
+        "age": "1 years",
+        "gender": "Female",
+        "color": "Brown & White ",
+        "personality": "Affectionate, Energetic, Playful",
+        "houseTrained": "Yes",
+        "health": "Spayed, Regular Vet Check-ups"
+    }
+
+]
