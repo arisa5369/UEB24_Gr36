@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+}
 .footer {
     background-color: #2b2b2b;
     color: #ffffff;
@@ -23,6 +27,7 @@
 .footer-description {
     font-size: 15px;
     line-height: 1.8;
+    color: white;
 }
 .footer-section h3 {
     font-size: 18px;
