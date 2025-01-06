@@ -2,7 +2,6 @@
     font-family: 'Poppins';
     src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 }
-
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -12,7 +11,6 @@ body {
     color: #333;
     overflow-x: hidden;
 }
-
 .adoption-info {
     text-align: center;
     padding: 50px 20px;
@@ -26,7 +24,6 @@ body {
     position: relative;
     overflow: hidden;
 }
-
 .adoption-info::before {
     content: '';
     position: absolute;
@@ -37,7 +34,6 @@ body {
     background: rgba(255, 255, 255, 0.8);
     z-index: -1;
 }
-
 .adoption-info h2 {
     font-size: 2.5rem;
     color: #e65500;
@@ -45,7 +41,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     padding-left: 205px;
 }
-
 .info-card {
     display: flex;
     justify-content: center;
@@ -54,7 +49,6 @@ body {
     flex-wrap: wrap;
     margin-left: 350px;
 }
-
 .card {
     background: #fff;
     border: 2px solid #ff6600;
@@ -70,26 +64,22 @@ body {
     flex-direction: column; 
     justify-content: space-between; 
 }
-
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
 }
-
 .card h3 {
     font-size: 1.7rem;
     color: #e65500;
     margin-bottom: 15px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
-
 .card p {
     font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
     line-height: 1.5;
 }
-
 .card button {
     background-color: #ff6600;
     color: #fff;
@@ -101,7 +91,6 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
-
 .card button:hover {
     background-color: #f0a93f;
     transform: scale(1.05);
@@ -129,27 +118,22 @@ body {
     align-items: center;
     text-align: center;
 }
-
 #back-to-top.show {
     opacity: 100;
     visibility: visible;
 }
-
 #back-to-top i {
     margin-right: 10px; 
     font-size: 1.3rem; 
     transition: transform 0.3s ease;
 }
-
 #back-to-top:hover {
     transform: scale(1.1);
     box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.8);
 }
-
 #back-to-top:hover i {
     transform: translateY(-3px);
 }
-
 @keyframes glow {
     0% {
         box-shadow: 0px 4px 15px rgba(255, 165, 0, 0.5);
@@ -161,7 +145,6 @@ body {
         box-shadow: 0px 4px 15px rgba(255, 165, 0, 0.5);
     }
 }
-
 #back-to-top:hover {
     animation: glow 1.5s infinite;
 }
@@ -169,7 +152,6 @@ body {
     .info-card {
         flex-direction: column;
     }
-
     .card {
         width: 90%;
     }
