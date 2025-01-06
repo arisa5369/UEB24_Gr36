@@ -7,17 +7,7 @@
     });
   });
   
-  const petCards = document.querySelectorAll(".pet-card, .pet-card1");
-  petCards.forEach(card => {
-    card.addEventListener("mouseover", () => {
-      card.style.transform = "scale(1.1)";
-      card.style.transition = "transform 0.3s ease";
-    });
-    card.addEventListener("mouseout", () => {
-      card.style.transform = "scale(1)";
-    });
-  });
-  
+ 
   const faqDetails = document.querySelectorAll("details");
   faqDetails.forEach(detail => {
     detail.addEventListener("toggle", () => {
@@ -66,7 +56,7 @@ fosterImages.forEach(img => {
   });
 });
 
-document.querySelector(".signup-btn").addEventListener("click", () => {
+document.querySelector(".signup-btn1").addEventListener("click", () => {
     document.querySelector("#modal").style.display = "block";
   });
   

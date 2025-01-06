@@ -1,4 +1,4 @@
-const modal = document.getElementById("modal");
+const modal1 = document.getElementById("modal1");
 const signUpButton = document.querySelector(".signup-btn");
 const closeModal = document.getElementById("closeModal");
 
@@ -11,23 +11,24 @@ const openLogin = document.getElementById("openLogin");
 const closeLogin = document.getElementById("closeLogin");
 
 signUpButton.addEventListener("click", () => {
-  modal.style.display = "flex";
+  modal1.style.display = "flex";
 });
 
 closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
+  modal1.style.display = "none";
 });
 
 openCreateAccount.addEventListener("click", () => {
-  modal.style.display = "none"; 
+  modal1.style.display = "none"; 
   createAccountModal.style.display = "flex";
 });
+
 closeCreateAccount.addEventListener("click", () => {
   createAccountModal.style.display = "none";
 });
 
 openLogin.addEventListener("click", () => {
-  modal.style.display = "none"; 
+  modal1.style.display = "none"; 
   loginModal.style.display = "flex";
 });
 
@@ -36,8 +37,8 @@ closeLogin.addEventListener("click", () => {
 });
 
 window.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    modal.style.display = "none";
+  if (event.target === modal1) {
+    modal1.style.display = "none";
   } else if (event.target === createAccountModal) {
     createAccountModal.style.display = "none";
   } else if (event.target === loginModal) {
