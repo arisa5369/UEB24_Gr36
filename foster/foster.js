@@ -7,7 +7,6 @@
     });
   });
   
- 
   const faqDetails = document.querySelectorAll("details");
   faqDetails.forEach(detail => {
     detail.addEventListener("toggle", () => {
