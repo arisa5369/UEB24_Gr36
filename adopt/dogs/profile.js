@@ -22,7 +22,7 @@ fetch('dog.json')
         }
     })
     .catch(error => console.error('Error fetching dog data:', error));
-    document.getElementById('playable-gif').addEventListener('click', function() {
+    document.getElementById('audio-button').addEventListener('click', function() {
         const audio = document.getElementById('audio');
         if (!audio) {
             console.error('Audio element not found!');
