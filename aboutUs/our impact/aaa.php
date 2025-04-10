@@ -10,7 +10,7 @@
 
     <script>
     
-      fetch('../../faqja_kryesore/header.html')
+      fetch('/UEB24_Gr36/faqja_kryesore/header.php')
         .then(response => response.text())
         .then(data => {
       
@@ -70,7 +70,7 @@
     </script>
     
    
-    <script src="../faqja_kryesore/script.js"></script>
+    <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
         <section class="main-content" id="main-content">
             <div class="overlay">
                 <h1>Our Impact</h1>
@@ -80,7 +80,7 @@
                     to ensure a meaningful impact on pets in need,<br>
                     providing them with love and care.
                 </p>
-                <a href="../ourteam/ourTeam.html" class="learn-more-button">Discover More About Us</a>
+                <a href="/UEB24_Gr36/aboutUs/ourteam/ourTeam.php" class="learn-more-button">Discover More About Us</a>
             </div>
         </section>
     
@@ -140,7 +140,7 @@
             <div class="impact-text">
                 <h2>Your Impact in Action</h2>
                 <p>Our success stories, written by the adoption groups that receive our grants, introduce you to the pets helped by your donations.</p>
-                <a href="../../donate/donate2.html" class="button">READ SUCCESS STORIES</a>
+                <a href="/UEB24_Gr36/donate/donate2.php" class="button">READ SUCCESS STORIES</a>
             </div>
             <div class="impact-image">
                 <img src="images/male-vs-female-dogs.webp" alt="Man with dogs">
@@ -148,6 +148,6 @@
         </section>
     </main>
     <div id="footer"></div>
-<script src="../../adopt/footer.js"></script>  
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>

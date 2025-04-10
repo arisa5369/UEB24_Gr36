@@ -9,7 +9,7 @@
 
   <script>
   
-    fetch('../../faqja_kryesore/header.html')
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
@@ -69,7 +69,7 @@
   </script>
   
  
-  <script src="../../faqja_kryesore/header.html"></script>
+  <script src="/UEB24_Gr36/faqja_kryesore/header.php"></script>
         <section class="main-content" id="main-content">
             <div class="overlay">
                 <h1>Welcome to Our Team</h1>
@@ -79,7 +79,7 @@
             We are a dedicated team of three passionate individuals managing<br>  over 
             <strong>5,000 grants annually</strong>,we work towards making a significant <br>  impact with efficiency and care.</br>
           </p>
-          <a href="../our impact/aaa.html" class="learn-more-button">Our Impact</a>
+          <a href="/UEB24_Gr36/aboutUs/our impact/aaa.php" class="learn-more-button">Our Impact</a>
         </div>
         </section>
         <section class="team-section">
@@ -118,7 +118,7 @@
             </div>
           </section>
           <div id="footer"></div>
-          <script src="../../../adopt/footer.js"></script>  
+          <script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>
 

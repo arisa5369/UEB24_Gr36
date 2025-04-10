@@ -14,7 +14,7 @@
 
   <script>
   
-    fetch('../faqja_kryesore/header.html')
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
@@ -33,7 +33,7 @@
         const openLogin = document.getElementById("openLogin");
         const closeLogin = document.getElementById("closeLogin");
   
-        
+          
         signUpButton?.addEventListener("click", () => {
           modal1.style.display = "flex";
         });
@@ -130,7 +130,7 @@
   </script>
   
  
-  <script src="../faqja_kryesore/script.js"></script>
+  <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
   
   <section class="hero">
           <div class="video-container">
@@ -143,8 +143,8 @@
             <h1 class="hero-title">Petfinder</h1>
             <p class="hero-subtitle">Giving Pets the Lives They Deserve</p>
             <div class="hero-buttons">
-                <a href="../adopt/index.html" class="adopt-btn">Adoptable Pets</a>
-                <a href="../donate/donate.html" class="donate-btn">Donate</a>
+                <a href="/UEB24_Gr36/adopt/index.php" class="adopt-btn">Adoptable Pets</a>
+                <a href="/UEB24_Gr36/donate/donate.php" class="donate-btn">Donate</a>
             </div>
     </div>
 </section>
@@ -189,7 +189,7 @@
                     <img src="imagess/Man with cat.jpg" alt="Volunteer with cats">
                     <div class="overlay">
                         <h3>Stories</h3>
-                        <a href="../donate/donate2.html" class="btn">SUCCESS STORIES</a>
+                        <a href="/UEB24_Gr36/donate/donate2.php" class="btn">SUCCESS STORIES</a>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                     <img src="imagess/lepuri.jpg" alt="Donate for the rabbit">
                     <div class="overlay">
                         <h3>Donate</h3>
-                        <a href="../donate/donate.html" class="btn">Donation Options</a>
+                        <a href="/UEB24_Gr36/donate/donate.php" class="btn">Donation Options</a>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
                     <img src="imagess/parrot2.webp" alt="Foster a parrot">
                     <div class="overlay">
                         <h3>Foster</h3>
-                        <a href="../foster/foster.html" class="btn">Learn About Fostering</a>
+                        <a href="/UEB24_Gr36/foster/foster.php" class="btn">Learn About Fostering</a>
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
         </div>
       </div>
       <div class="cta">
-        <a href="../adopt/index.html" class="adoptable-cats-btn">Adoptable Pets</a>
+        <a href="/UEB24_Gr36/adopt/index.php" class="adoptable-cats-btn">Adoptable Pets</a>
       </div>
     </div>
   </section>
@@ -264,11 +264,11 @@
 
 Petfinder was founded in St. Louis to help animals who don’t fit into the traditional shelter environment. Our Litter Mates Feline and Canine Ambassadors may have been injured or may have medical and/or behavioral issues. They may be sick, geriatric, or in need of hospice care. Many are neonatal kittens or puppies for which very few other resources exist. Some Litter Mates will spend their entire lives at Petfinder, and we’re thankful that we can ensure they’re living the happy, healthy lives they deserve in comfort rather than facing unnecessary euthanasia.
         </p>
-        <a href="../donate/donate.html" class="learn-more-btn">Learn More About Litter Mates</a>
+        <a href="/UEB24_Gr36/donate/donate.php" class="learn-more-btn">Learn More About Litter Mates</a>
       </div>
     </div>
   </section>
   <div id="footer"></div>
-<script src="../adopt/footer.js"></script>  
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>

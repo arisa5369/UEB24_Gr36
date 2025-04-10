@@ -12,7 +12,7 @@
 
   <script>
   
-    fetch('../faqja_kryesore/header.html')
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
@@ -184,7 +184,7 @@
         </div>
       </div>
     </div>
-    <a href="../aboutUs/our impact/aaa.html" class="back-button">← Back to Home</a>
+    <a href="/UEB24_Gr36/aboutUs/our impact/aaa.php" class="back-button">← Back to Home</a>
     <div id="footer"></div>
         <script src="../adopt/footer.js"></script>   
 </body>

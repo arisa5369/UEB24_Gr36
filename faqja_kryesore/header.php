@@ -173,10 +173,6 @@ hr {
   margin: 20px 0;
 }
 
-
-
-
-
 .close {
   position: absolute;
   top: 10px;
@@ -315,7 +311,7 @@ hr {
         
         <div class="navbar">
             <div class="logo">
-                <a href="../../faqja_kryesore/index1.html" style="text-decoration: none;">
+                <a href="/UEB24_Gr36/faqja_kryesore/index1.php" style="text-decoration: none;">
                   <span class="purple-text">pet</span>
                   <span class="heart">❤</span>
                   <span class="purple-text">finder</span>
@@ -323,11 +319,11 @@ hr {
               </div>
           <nav class="menu">
             <ul>
-              <li><a href="../../get help/getHelp.html">Get Help</a></li>
-              <li><a href="../../adopt/index.html">Adopt</a></li>
-              <li><a href="../../foster/foster.html">Foster</a></li>
-              <li><a href="../../donate/donate.html">Donate</a></li>
-              <li><a href="../../aboutUs/our impact/aaa.html">About Us</a></li>
+              <li><a href="/UEB24_Gr36/get help/getHelp.php">Get Help</a></li>
+              <li><a href="/UEB24_Gr36/adopt/index.php">Adopt</a></li>
+              <li><a href="/UEB24_Gr36/foster/foster.php">Foster</a></li>
+              <li><a href="/UEB24_Gr36/donate/donate.php">Donate</a></li>
+              <li><a href="/UEB24_Gr36/aboutUs/our impact/aaa.php">About Us</a></li>
             </ul>
           </nav>
           <div class="actions">
@@ -374,15 +370,15 @@ hr {
               </div>
             </div>
           
-          <script src="../faqja_kryesore/script.js"></script>
+          <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
     
-            <button class="donate-btn"  onclick="location.href='../donate/donate.html'" >Donate Now</button>
+            <button class="donate-btn"  onclick="location.href='/UEB24_Gr36/donate/donate.php'" >Donate Now</button>
             <div class="social-icons">
               <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                <img src="../../faqja_kryesore/imagess/facebook.logo.1.png" alt="Facebook Icon">
+                <img src="/UEB24_Gr36/faqja_kryesore/imagess/facebook.logo.1.png" alt="Facebook Icon">
               </a>
               <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="../../faqja_kryesore/imagess/instagram.lofo.png" alt="Instagram Icon">
+                <img src="/UEB24_Gr36/faqja_kryesore/imagess/instagram.lofo.png" alt="Instagram Icon">
               </a>
             </div>
           </div>
