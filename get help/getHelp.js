@@ -6,8 +6,6 @@ window.onscroll = function () {
         backToTopButton.classList.remove("show");
     }
 };
-
-
 function scrollToTop() {
     window.scrollTo({
         top: 0,

@@ -10,7 +10,7 @@
 
   <script>
   
-    fetch('../faqja_kryesore/header.html')
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
@@ -70,7 +70,7 @@
   </script>
   
  
-  <script src="../faqja_kryesore/script.js"></script>
+  <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
     <div class="content">
         <h1>Welcome to Pet Adoption</h1>
         <p>Browse pets from our network of shelters and recues.</p>
@@ -142,13 +142,15 @@
         </div>
     </div>
     <div class="get-help">
-        <button class="help-button" onclick="window.location.href='../get help/getHelp.html'">
+        <button class="help-button" onclick="window.location.href='/UEB24_Gr36/get help/getHelp.html'">
             Get Help
         </button>
     </div>
 </section>
 <div id="footer"></div>
-<script src="../adopt/footer.js"></script>  
+<?php include("/UEB24_Gr36/a/adopt/footer.php"); ?>
+
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
 
  </body>
 </html>

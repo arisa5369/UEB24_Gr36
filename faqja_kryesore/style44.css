@@ -101,6 +101,7 @@ html, body {
     width: 100%;
     height: auto;
     margin-top: 100%;  
+    
      .actions {
       flex-direction: column;
       gap: 10px;
