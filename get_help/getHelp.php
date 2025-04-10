@@ -9,12 +9,13 @@
 
 
   <script>
-  
-    fetch('../faqja_kryesore/header.html')
+   
+   fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
         document.getElementById('header-placeholder').innerHTML = data;
+    
   
        
         const modal1 = document.getElementById("modal1");
@@ -155,7 +156,7 @@
       <script src="getHelp.js"></script>
        
         <div id="footer"></div>
-        <script src="../adopt/footer.js"></script>     
+        <script src="/UEB24_Gr36/adopt/footer.js"></script>     
     </body>
 
 </html>

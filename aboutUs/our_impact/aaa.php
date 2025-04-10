@@ -9,13 +9,14 @@
 
 
     <script>
+     fetch('/UEB24_Gr36/faqja_kryesore/header.php')
+      .then(response => response.text())
+      .then(data => {
     
-      fetch('../../faqja_kryesore/header.html')
-        .then(response => response.text())
-        .then(data => {
-      
-          document.getElementById('header-placeholder').innerHTML = data;
-    
+        document.getElementById('header-placeholder').innerHTML = data;
+
+  
+
          
           const modal1 = document.getElementById("modal1");
           const signUpButton = document.querySelector(".signup-btn");
@@ -148,6 +149,6 @@
         </section>
     </main>
     <div id="footer"></div>
-<script src="../../adopt/footer.js"></script>  
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>

@@ -1,4 +1,4 @@
-fetch('../../adopt/footer.html')
+fetch('/UEB24_Gr36/adopt/footer.php')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok ' + response.statusText);
@@ -6,12 +6,14 @@ fetch('../../adopt/footer.html')
     return response.text();
   })
   .then(data => {
-    document.getElementById('footer').innerHTML = data;
+    const footer = document.getElementById('footer');
+    footer.innerHTML = data;
+    footer.style.display = 'block'; 
 
-    // Dynamically load footer.css
+    
     const footerStyle = document.createElement('link');
     footerStyle.rel = 'stylesheet';
-    footerStyle.href = '../adopt/footer.css';
+    footerStyle.href = '/UEB24_Gr36/adopt/footer.css';
     document.head.appendChild(footerStyle);
   })
   .catch(error => console.error('Error loading footer:', error));

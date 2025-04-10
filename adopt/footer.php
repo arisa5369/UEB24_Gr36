@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-<link rel="stylesheet" href="../../adopt/footer.css">
+<link rel="stylesheet" href="/UEB24_Gr36/adopt/footer.css">
 </head>
+<body>
 <footer class="footer">
     <div class="container1">
         <div class="footer-section">
@@ -59,7 +60,9 @@
     </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Pet Adoption | All rights reserved</p>
+        <p>&copy; <?php echo date("Y"); ?> Petfinder. All rights reserved.</p>
+        
     </div>
 </footer>
+</body>
 </html>

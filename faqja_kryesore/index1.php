@@ -14,7 +14,7 @@
 
   <script>
   
-    fetch('../faqja_kryesore/header.html')
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
       .then(data => {
     
@@ -269,6 +269,6 @@ Petfinder was founded in St. Louis to help animals who don’t fit into the trad
     </div>
   </section>
   <div id="footer"></div>
-<script src="../adopt/footer.js"></script>  
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>
