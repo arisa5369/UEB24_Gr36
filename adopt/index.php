@@ -70,26 +70,26 @@
   </script>
   
  
-  <script src="../faqja_kryesore/script.js"></script>
+  <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
     <div class="content">
         <h1>Welcome to Pet Adoption</h1>
         <p>Browse pets from our network of shelters and recues.</p>
     </div>
  
     <div class="categories">
-        <button class="category" onclick="window.location.href='dogs/dogs.html'">
+        <button class="category" onclick="window.location.href='dogs/dogs.php'">
             <img src="images/dog.png" alt="dogs">
             <p>Dogs</p>
         </button>
-        <button class="category" onclick="window.location.href='cats/cats.html'">
+        <button class="category" onclick="window.location.href='cats/cats.php'">
             <img src="images/Cat.png" alt="cat">
             <p>Cats</p>
         </button>
-        <button class="category" onclick="window.location.href='rabbits/rabbits.html'">
+        <button class="category" onclick="window.location.href='rabbits/rabbits.php'">
             <img src="images/Rabbit.png" alt="rabbit">
             <p>Rabbits</p>
         </button>
-        <button class="category" onclick="window.location.href='birds/birds.html'">
+        <button class="category" onclick="window.location.href='birds/birds.php'">
             <img src="images/Bird.png" alt="bird">
             <p>Birds</p>
         </button>
@@ -99,19 +99,19 @@
         <p>Help pets get out.</p>
     </div>
     <div class="pets">
-        <button class="pet-card" onclick="window.location.href='dogs/dog.html?name=Buddy'">
+        <button class="pet-card" onclick="window.location.href='/UEB24_Gr36/adopt/dogs/dog.html?name=Buddy'">
             <img src="images/dog1.avif" alt="dog1">
             <p>Buddy</p>
         </button>
-        <button class="pet-card" onclick="window.location.href='cats/cat.html?name=Tom'">
+        <button class="pet-card" onclick="window.location.href='/UEB24_Gr36/adopt/cats/cat.html?name=Tom'">
             <img src="images/cat1.jpg" alt="act1">
             <p>Tom</p>
         </button>
-        <button class="pet-card" onclick="window.location.href='rabbits/rabbit.html?name=Houdini'">
+        <button class="pet-card" onclick="window.location.href='/UEB24_Gr36/adopt/rabbits/rabbit.html?name=Houdini'">
             <img src="images/rabbit1.jpg" alt="rabbit1">
             <p>Houdini</p>
         </button>
-        <button class="pet-card1" onclick="window.location.href='birds/bird.html?name=Bruno'">
+        <button class="pet-card1" onclick="window.location.href='/UEB24_Gr36/adopt/birds/bird.html?name=Bruno'">
             <img src="images/bird1.jpg" alt="">
             <p>Bruno</p>
         </button>
@@ -142,7 +142,7 @@
         </div>
     </div>
     <div class="get-help">
-        <button class="help-button" onclick="window.location.href='../get help/getHelp.html'">
+        <button class="help-button" onclick="window.location.href='/UEB24_Gr36/get_help/getHelp.php'">
             Get Help
         </button>
     </div>

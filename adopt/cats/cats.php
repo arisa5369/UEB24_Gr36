@@ -9,7 +9,7 @@
    <div class="content">
         <h1>Meet Our Cats</h1>
         <p>Discover your purr-fect companion from our list of lovable cats today!</p>
-        <a href="../index.html" class="back-button">← Back to Home</a>
+        <a href="/UEB24_Gr36/adopt/index.php" class="back-button">← Back to Home</a>
         <div class="gif-container">
           
             <audio id="audio" src="../images/cat-98721.mp3"></audio>
@@ -60,6 +60,6 @@
     
     </section>
     <div id="footer"></div>
-          <script src="../../../adopt/footer.js"></script>  
+          <script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
 </html>

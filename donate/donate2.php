@@ -184,7 +184,7 @@
         </div>
       </div>
     </div>
-    <a href="../aboutUs/our impact/aaa.html" class="back-button">← Back to Home</a>
+    <a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php" class="back-button">← Back to Home</a>
     <div id="footer"></div>
         <script src="/UEB24_Gr36/adopt/footer.js"></script>   
 </body>

@@ -141,7 +141,7 @@
             <div class="impact-text">
                 <h2>Your Impact in Action</h2>
                 <p>Our success stories, written by the adoption groups that receive our grants, introduce you to the pets helped by your donations.</p>
-                <a href="../../donate/donate2.html" class="button">READ SUCCESS STORIES</a>
+                <a href="/UEB24_Gr36/donate/donate2.php" class="button">READ SUCCESS STORIES</a>
             </div>
             <div class="impact-image">
                 <img src="images/male-vs-female-dogs.webp" alt="Man with dogs">

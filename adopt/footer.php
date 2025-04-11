@@ -24,17 +24,17 @@
         <div class="footer-section">
             <h3>About us</h3>
             <ul>
-                <li><a href="../../aboutUs/our impact/aaa.html">Our Impact </a></li>
-                <li><a href="../../aboutUs/ourteam/ourteam.html">Our Team</a></li>
+                <li><a href="/UEB24_Gr36/aboutUS/our_impact/aaa.php">Our Impact </a></li>
+                <li><a href="/UEB24_Gr36/aboutUs/ourteam/ourteam.php">Our Team</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h3>Adopt</h3>
             <ul>
-                <li><a href="../../adopt/dogs/dogs.html">Dog</a></li>
-                <li><a href="../../adopt/cats/cats.html">Cat</a></li>
-                <li><a href="../../adopt/rabbits/rabbits.html">Rabbit</a></li>
-                <li><a href="../../adopt/birds/birds.html">Bird</a></li>
+                <li><a href="/UEB24_Gr36/adopt/dogs/dogs.php">Dog</a></li>
+                <li><a href="/UEB24_Gr36/adopt/cats/cats.php">Cat</a></li>
+                <li><a href="/UEB24_Gr36/adopt/rabbits/rabbits.php">Rabbit</a></li>
+                <li><a href="/UEB24_Gr36/adopt/birds/birds.php">Bird</a></li>
             </ul>
         </div>
         <div class="footer-section">
