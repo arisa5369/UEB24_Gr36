@@ -148,6 +148,30 @@
             </div>
     </div>
 </section>
+<?php
+  define("ORGANIZATION_NAME", "Petfinder");
+
+  $hour = date("H"); // Ora në format 24h (0-23)
+  $greeting = "";
+
+  switch (true) {
+    case ($hour >= 5 && $hour < 12):
+      $greeting = "Good Morning";
+      break;
+    case ($hour >= 12 && $hour < 17):
+      $greeting = "Good Afternoon";
+      break;
+    case ($hour >= 17 && $hour < 21):
+      $greeting = "Good Evening";
+      break;
+    default:
+      $greeting = "Good Night";
+      break;
+  }
+
+  echo "<h2 style='text-align:center; color:#ff6600;'>$greeting and welcome to " . ORGANIZATION_NAME . "</h2>";
+?>
+
 <div id="auth-modal" class="modal">
   <div class="modal-content">
     <h2>Welcome to Petfinder</h2>
