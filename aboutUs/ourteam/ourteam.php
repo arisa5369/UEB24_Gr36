@@ -79,7 +79,7 @@
             We are a dedicated team of three passionate individuals managing<br>  over 
             <strong>5,000 grants annually</strong>,we work towards making a significant <br>  impact with efficiency and care.</br>
           </p>
-          <a href="../our impact/aaa.html" class="learn-more-button">Our Impact</a>
+          <a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php" class="learn-more-button">Our Impact</a>
         </div>
         </section>
         <section class="team-section">
@@ -114,8 +114,8 @@
                 We can NOT answer questions about Petfinder.com, the pet adoption website. 
                 If you need to contact Petfinder.com, please click the button below.
               </p>
-              <a href="..." class="contact-button">Get Help</a>
-            </div>
+              <a href="/UEB24_Gr36/get_help/getHelp.php" class="contact-button">Get Help</a>
+              </div>
           </section>
           <div id="footer"></div>
           <script src="/UEB24_Gr36/adopt/footer.js"></script>  
