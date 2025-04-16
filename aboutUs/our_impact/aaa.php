@@ -81,7 +81,7 @@
                     to ensure a meaningful impact on pets in need,<br>
                     providing them with love and care.
                 </p>
-                <a href="../ourteam/ourTeam.html" class="learn-more-button">Discover More About Us</a>
+                <a href="/UEB24_Gr36/aboutUs/ourteam/ourteam.php" class="learn-more-button">Discover More About Us</a>
             </div>
         </section>
     

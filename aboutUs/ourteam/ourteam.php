@@ -79,7 +79,7 @@
             We are a dedicated team of three passionate individuals managing<br>  over 
             <strong>5,000 grants annually</strong>,we work towards making a significant <br>  impact with efficiency and care.</br>
           </p>
-          <a href="../our impact/aaa.html" class="learn-more-button">Our Impact</a>
+          <a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php" class="learn-more-button">Our Impact</a>
         </div>
         </section>
         <section class="team-section">
