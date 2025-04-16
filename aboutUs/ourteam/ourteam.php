@@ -114,8 +114,8 @@
                 We can NOT answer questions about Petfinder.com, the pet adoption website. 
                 If you need to contact Petfinder.com, please click the button below.
               </p>
-              <a href="..." class="contact-button">Get Help</a>
-            </div>
+              <a href="/UEB24_Gr36/get_help/getHelp.php" class="contact-button">Get Help</a>
+              </div>
           </section>
           <div id="footer"></div>
           <script src="/UEB24_Gr36/adopt/footer.js"></script>  

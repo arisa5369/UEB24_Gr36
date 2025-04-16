@@ -8,6 +8,7 @@
     <div id="header-placeholder"></div>
 
 
+
     <script>
      fetch('/UEB24_Gr36/faqja_kryesore/header.php')
       .then(response => response.text())
@@ -81,25 +82,15 @@
                     to ensure a meaningful impact on pets in need,<br>
                     providing them with love and care.
                 </p>
-                <a href="/UEB24_Gr36/aboutUs/ourteam/ourteam.php" class="learn-more-button">Discover More About Us</a>
+                <a href="/UEB24_Gr36/aboutUs/ourteam/ourTeam.php" class="learn-more-button">Discover More About Us</a>
             </div>
         </section>
     
-
+        <?php include 'impactInfo.php'; ?>
     <main>
-        <div class="content">
-            <h2><u>Efficiency + Effectiveness</u></h2>
-            <p>
-            The <b>Petfinder Foundation</b> is the ONLY national organization that funds animal shelters and rescue groups exclusively.</p>
-            <p>
-                More than 91% of every dollar we spend goes toward programs that help homeless pets, earning us the highest possible ratings from independent charity watchdogs Charity Navigator and GuideStar.
-            </p>
-            <p>
-                Give with confidence to the Petfinder Foundation, knowing that your donation will make a difference!
-            </p>
-        </div>
+     
 
-        <div class="content-item"  align="center">
+        <div class="content-item" >
             <h2>Where Your Money Goes</h2>
             <p>Read our 990 forms and audited financial statements to see where your donations go.</p>
         </div>
