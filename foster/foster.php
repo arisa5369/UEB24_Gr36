@@ -1,3 +1,52 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $errors = [];
+
+  $firstName = trim($_POST["firstName"] ?? "");
+  $lastName = trim($_POST["lastName"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $phone = trim($_POST["phone"] ?? "");
+  $address = trim($_POST["address"] ?? "");
+  $experience = trim($_POST["experience"] ?? "");
+  $birthDate = trim($_POST["birthDate"] ?? "");  
+
+  if (empty($firstName) || !preg_match("/^[A-Za-z]{2,}$/", $firstName)) {
+    $errors[] = "First name is required and should be at least 2 letters.";
+  }
+
+  if (empty($lastName) || !preg_match("/^[A-Za-z]{2,}$/", $lastName)) {
+    $errors[] = "Last name is required and should be at least 2 letters.";
+  }
+
+  if (empty($email) || !preg_match("/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/", $email)) {
+    $errors[] = "Valid email is required.";
+  }
+
+  if (empty($phone) || !preg_match("/^(\d{2,4}-?)+$/", $phone)) {
+    $errors[] = "Valid phone number is required (can include -).";
+  }
+
+  if (!empty($birthDate) && !preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthDate)) {
+    $errors[] = "Birth date must be in format YYYY-MM-DD.";
+  }
+
+  if (empty($address)) {
+    $errors[] = "Address is required.";
+  }
+
+  if (empty($experience)) {
+    $errors[] = "Please tell us why you want to foster a pet.";
+  }
+
+  $experience = preg_replace("/\s+/", " ", $experience);
+
+  if (empty($errors)) {
+    header("Location: foster.php?success=1");
+    exit();
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +58,6 @@
 <body>
   <div id="header-placeholder"></div>
 
-
   <script>
   
     fetch('/UEB24_Gr36/faqja_kryesore/header.php')
@@ -17,7 +65,6 @@
       .then(data => {
     
         document.getElementById('header-placeholder').innerHTML = data;
-  
        
         const modal1 = document.getElementById("modal1");
         const signUpButton = document.querySelector(".signup-btn");
@@ -30,7 +77,6 @@
         const loginModal = document.getElementById("loginModal");
         const openLogin = document.getElementById("openLogin");
         const closeLogin = document.getElementById("closeLogin");
-  
         
         signUpButton?.addEventListener("click", () => {
           modal1.style.display = "flex";
@@ -69,11 +115,9 @@
         });
       })
       .catch(error => console.error('Error loading header:', error));
-
       
   </script>
   
- 
   <script src="../faqja_kryesore/script.js"></script>
 
   <div class="container">
@@ -121,7 +165,19 @@
         <div class="modal-content">
           <span class="close" id="closeApplicationModal">&times;</span>
           <h2>Foster Application</h2>
-          <form id="fosterForm">
+
+          <?php if (!empty($errors)): ?>
+            <div class="error-messages">
+             <ul>
+              <?php foreach ($errors as $error): ?>
+                <li><?php echo htmlspecialchars($error); ?></li>
+                <?php endforeach; ?>
+                </ul>
+                </div>
+                <?php endif; ?>
+
+          <form id="fosterForm" method="POST" action="foster.php">
+
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" required />
       
@@ -140,7 +196,7 @@
             <label for="experience">Why do you want to foster a pet?</label>
             <textarea id="experience" name="experience" rows="4" required></textarea>
       
-            <button type="submit" class="submit-btn">Submit Application</button>
+            <button type="submit">Submit Application</button>
           </form>
         </div>
       </div>
@@ -171,8 +227,8 @@
       </div>
     </div>
               <h2>Pets Looking For a Foster Family</h2> 
-   <div class="pets">
-        <button class="pet-card" onclick="window.location.href='../adopt/dogs/dog.html?name=Buddy'">
+              <div class="pets">
+              <button class="pet-card" onclick="window.location.href='../adopt/dogs/dog.html?name=Buddy'">
             <img src="images2/dog1.avif" alt="dog1">
             <p>Buddy</p>
         </button>
@@ -189,6 +245,7 @@
             <p>Bruno</p>
         </button>
     </div>
+
   <div class="faq-container">
     <h2>FAQs About Petfinder and Animal Adoption</h2>
     <table>
@@ -269,6 +326,124 @@
       </div>
   </div>
   <div id="footer"></div>
-<script src="/UEB24_Gr36/adopt/footer.js"></script>  
+<script src="/UEB24_Gr36/adopt/footer.js"></script> 
+
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <h2> Thank you for your application!🐾 </h2>
+      <p> Our team will get in touch with you shortly.</p>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <style>
+    .modal {
+      display: flex;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 400px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content h2 {
+      color: #236e69;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .modal-content button {
+      background-color: #236e69;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #236e69;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+<script>
+   window.addEventListener("DOMContentLoaded", () => {
+    const thankYouModal = document.getElementById("successModal");
+    const closeBtn = thankYouModal?.querySelector("button");
+    const startFosterBtn = document.getElementById("startFosterApplication");
+    const applicationModal = document.getElementById("applicationModal");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+
+    if (success === '1') {
+      if (startFosterBtn) {
+        startFosterBtn.disabled = true;
+        startFosterBtn.style.display = 'none'; 
+      }
+
+      if (applicationModal) {
+        applicationModal.style.display = "none";
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          thankYouModal.style.display = "none";
+        });
+      }
+    }
+
+    if (startFosterBtn && applicationModal) {
+      startFosterBtn.addEventListener("click", () => {
+        if (success !== '1') {
+          applicationModal.style.display = "flex";
+        }
+      });
+    }
+
+    const closeApplicationModal = document.getElementById("closeApplicationModal");
+    if (closeApplicationModal) {
+      closeApplicationModal.addEventListener("click", () => {
+        applicationModal.style.display = "none";
+      });
+    }
+
+  });
+  <?php endif; ?> 
+</script>
+
 </body>
 </html>
