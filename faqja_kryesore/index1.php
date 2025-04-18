@@ -40,7 +40,7 @@
         const openLogin = document.getElementById("openLogin");
         const closeLogin = document.getElementById("closeLogin");
   
-        
+          
         signUpButton?.addEventListener("click", () => {
           modal1.style.display = "flex";
         });
@@ -137,7 +137,7 @@
   </script>
   
  
-  <script src="../faqja_kryesore/script.js"></script>
+  <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
   
   <section class="hero">
           <div class="video-container">
@@ -211,7 +211,7 @@
                     <img src="imagess/Man with cat.jpg" alt="Volunteer with cats">
                     <div class="overlay">
                         <h3>Stories</h3>
-                        <a href="../donate/donate2.html" class="btn">SUCCESS STORIES</a>
+                        <a href="/UEB24_Gr36/donate/donate2.php" class="btn">SUCCESS STORIES</a>
                     </div>
                 </div>
             </div>
@@ -220,7 +220,7 @@
                     <img src="imagess/lepuri.jpg" alt="Donate for the rabbit">
                     <div class="overlay">
                         <h3>Donate</h3>
-                        <a href="../donate/donate.html" class="btn">Donation Options</a>
+                        <a href="/UEB24_Gr36/donate/donate.php" class="btn">Donation Options</a>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@
                     <img src="imagess/parrot2.webp" alt="Foster a parrot">
                     <div class="overlay">
                         <h3>Foster</h3>
-                        <a href="../foster/foster.html" class="btn">Learn About Fostering</a>
+                        <a href="/UEB24_Gr36/foster/foster.php" class="btn">Learn About Fostering</a>
                     </div>
                 </div>
             </div>

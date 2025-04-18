@@ -142,13 +142,21 @@
         </div>
     </div>
     <div class="get-help">
+
         <button class="help-button" onclick="window.location.href='/UEB24_Gr36/get_help/getHelp.php'">
+
+
             Get Help
         </button>
     </div>
 </section>
 <div id="footer"></div>
-<script src="/UEB24_Gr36/adopt/footer.js"></script> 
+
+
+<?php include("/UEB24_Gr36/a/adopt/footer.php"); ?>
+
+<script src="/UEB24_Gr36/adopt/footer.js"></script>  
+
 
  </body>
 </html>

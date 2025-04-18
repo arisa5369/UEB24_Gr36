@@ -9,8 +9,10 @@
 
 
   <script>
-   
-   fetch('/UEB24_Gr36/faqja_kryesore/header.php')
+
+  
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
+
       .then(response => response.text())
       .then(data => {
     
