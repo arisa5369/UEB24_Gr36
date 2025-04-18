@@ -195,16 +195,24 @@
     <div class="involved-container">
         <h2>At Petfinder, it’s about the animals</h2>
         <p>Whether you are here to adopt or you want to help out with writing, fundraising, or event planning and support, these are just a few of the incredibly valuable ways to be of service.</p>
-        <?php
-  $mesazhe = [
-     "You can’t buy love, but you can adopt it.",
-  ];
-  $mesazhRandom = $mesazhe[array_rand($mesazhe)];
-  
+       
+       <?php
+
+$citates = [
+    "You can’t buy love, but you can adopt it.",
+    "Saving one pet won’t change the world, but for that pet, the world will change forever.",
+    "Adopt, don’t shop.",
+    "Until one has loved an animal, a part of one’s soul remains unawakened."
+];
+
+$citatiRandom = $citates[array_rand($citates)];
+
 ?>
+
 <div class="motivational-quote">
-  <blockquote><?php echo $mesazhRandom; ?></blockquote>
+  <blockquote><?php echo $citatiRandom; ?></blockquote>
 </div>
+
         <div class="cards">
             <div class="card">
                 <div class="image-container">
@@ -271,6 +279,7 @@
           </p>
         </div>
       </div>
+
       <div class="cta">
         <a href="/UEB24_Gr36/adopt/index.php" class="adoptable-cats-btn">Adoptable Pets</a>
       </div>
