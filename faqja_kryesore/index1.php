@@ -253,46 +253,61 @@ $citatiRandom = $citates[array_rand($citates)];
       <p>
         We are seeking true forever homes. Most of the animals in our care live in foster homes while they await adoption, which is how we know so much about their habits, likes, and dislikes. Our adoption counselors are happy to help you every step of the way to find the best match for you.
       </p>
-      <div class="steps">
-        <div class="step">
-          <img src="imagess/Apply.png" alt="Apply Icon">
-          <h3>Apply</h3>
-          <p>Visit our adoption page and click on the animal you’re interested in to apply.</p>
-        </div>
-        <div class="step">
-          <img src="imagess/Matchmaking Icon.png" alt="Matchmaking Icon">
-          <h3>Matchmaking Call</h3>
-          <p>
-            Within 24-72 hours of applying, you can expect to connect and chat with one of our adoption counselors to get you started on your search to find the right animal!
-           </p>
-        </div>
-        <div class="step">
-          <img src="imagess/Meet Greet Session.png" alt="Meet & Greet Icon">
-          <h3>Meet & Greet Session</h3>
-          <p>We’ll introduce you to pets either at our adoption lounge and/or in Petfinder foster homes.</p>
-        </div>
-        <div class="step">
-          <img src="imagess/Finalize Adoption Icon 1.png" alt="Finalize Adoption Icon">
-          <h3>Finalize the Adoption</h3>
-          <p>
-            Adopt the animal of your dreams and live happily ever after! Receive a text from our team to finalize the adoption, sign your contract, and pay your fee. Then, the only thing left to do is prepare and arrange to have your new family member join you at home.
-          </p>
-        </div>
-      </div>
+      
+      <?php
 
-      <div class="cta">
-        <a href="/UEB24_Gr36/adopt/index.php" class="adoptable-cats-btn">Adoptable Pets</a>
-      </div>
+$steps = [
+"Apply" => [
+  "description" => "Visit our adoption page and click on the animal you’re interested in to apply.",
+  "image" => "Apply.png",
+  "alt" => "Apply Icon"
+],
+"Matchmaking Call" => [
+  "description" => "Within 24-72 hours of applying, you can expect to connect and chat with one of our adoption counselors to get you started on your search to find the right animal!",
+  "image" => "Matchmaking Icon.png",
+  "alt" => "Matchmaking Icon"
+],
+"Meet & Greet Session" => [
+  "description" => "We’ll introduce you to pets either at our adoption lounge and/or in Petfinder foster homes.",
+  "image" => "Meet Greet Session.png",
+  "alt" => "Meet & Greet Icon"
+],
+"Finalize the Adoption" => [
+  "description" => "Adopt the animal of your dreams and live happily ever after! Receive a text from our team to finalize the adoption, sign your contract, and pay your fee. Then, the only thing left to do is prepare and arrange to have your new family member join you at home.",
+  "image" => "Finalize Adoption Icon 1.png",
+  "alt" => "Finalize Adoption Icon"
+]
+];
+
+?>
+
+<div class="steps">
+
+  <?php 
+  foreach ($steps as $title => $info): 
+  ?>
+
+   <div class="step">
+    <img src="imagess/<?php echo $info['image']; ?>" alt="<?php echo $info['alt']; ?>">
+     <h3><?php echo $title; ?></h3>
+     <p><?php echo $info['description']; ?></p>
     </div>
-  </section>
-  <section class="litter-mates-club">
-    <div class="content-wrapper">
-      <div class="image">
-        <img src="imagess/woman with pets.jpg" alt="Woman holding pets">
-      </div>
-      <div class="text-content">
-        <h2>Litter Mates Club</h2>
-        <p>
+    <?php endforeach; ?>
+
+</div>
+<div class="cta">
+  <a href="/UEB24_Gr36/adopt/index.php" class="adoptable-cats-btn">Adoptable Pets</a>
+</div>
+ </div>
+</section>
+<section class="litter-mates-club">
+  <div class="content-wrapper">
+    <div class="image">
+      <img src="imagess/woman with pets.jpg" alt="Woman holding pets">
+    </div>
+    <div class="text-content">
+      <h2>Litter Mates Club</h2>
+      <p>
 
 Petfinder was founded in St. Louis to help animals who don’t fit into the traditional shelter environment. Our Litter Mates Feline and Canine Ambassadors may have been injured or may have medical and/or behavioral issues. They may be sick, geriatric, or in need of hospice care. Many are neonatal kittens or puppies for which very few other resources exist. Some Litter Mates will spend their entire lives at Petfinder, and we’re thankful that we can ensure they’re living the happy, healthy lives they deserve in comfort rather than facing unnecessary euthanasia.
         </p>
