@@ -1,9 +1,16 @@
+<?php
+  $faqja = "Faqja Kryesore";
+  $dataAktuale = date("d/m/Y");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Petfinder</title>
+  <title>Petfinder - <?php echo $faqja; ?></title>
   <link rel="stylesheet" href="style44.css">
   <link rel="stylesheet" href="index1.js">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -148,6 +155,8 @@
             </div>
     </div>
 </section>
+
+
 <div id="auth-modal" class="modal">
   <div class="modal-content">
     <h2>Welcome to Petfinder</h2>
@@ -172,7 +181,11 @@
 
           Our purpose is to Make Life Better for Pets and People. Our team shares your passion to improve the situation for our community’s animals. Become a part of our community, in whatever way you can, and let’s start improving lives together today.
         </p>
+        <br>
       </div>
+<div class="motivational-quote">
+</div>
+
       <div class="image">
         <img src="imagess/Kafshet.jpg">
       </div>
@@ -182,7 +195,16 @@
     <div class="involved-container">
         <h2>At Petfinder, it’s about the animals</h2>
         <p>Whether you are here to adopt or you want to help out with writing, fundraising, or event planning and support, these are just a few of the incredibly valuable ways to be of service.</p>
-        
+        <?php
+  $mesazhe = [
+     "You can’t buy love, but you can adopt it.",
+  ];
+  $mesazhRandom = $mesazhe[array_rand($mesazhe)];
+  
+?>
+<div class="motivational-quote">
+  <blockquote><?php echo $mesazhRandom; ?></blockquote>
+</div>
         <div class="cards">
             <div class="card">
                 <div class="image-container">
@@ -216,6 +238,7 @@
     </section>
     </section>
   </section>
+  
   <section class="adopting-expectations">
     <div class="container">
       <h2>What to Expect When Adopting</h2>
@@ -268,6 +291,8 @@ Petfinder was founded in St. Louis to help animals who don’t fit into the trad
       </div>
     </div>
   </section>
+
+
   <div id="footer"></div>
 <script src="/UEB24_Gr36/adopt/footer.js"></script>  
 </body>
