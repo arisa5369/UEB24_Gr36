@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $errors = [];
+  $hasError = false;
 
   $firstName = trim($_POST["firstName"] ?? "");
   $lastName = trim($_POST["lastName"] ?? "");
@@ -12,35 +12,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($firstName) || !preg_match("/^[A-Za-z]{2,}$/", $firstName)) {
     echo "First name is required and should be at least 2 letters.<br>";
+    $hasError = true;
   }
-  
+
   if (empty($lastName) || !preg_match("/^[A-Za-z]{2,}$/", $lastName)) {
     echo "Last name is required and should be at least 2 letters.<br>";
+    $hasError = true;
   }
-  
+
   if (empty($email) || !preg_match("/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/", $email)) {
     echo "Valid email is required.<br>";
+    $hasError = true;
   }
-  
+
   if (empty($phone) || !preg_match("/^(\d{2,4}-?)+$/", $phone)) {
     echo "Valid phone number is required (can include -).<br>";
+    $hasError = true;
   }
-  
+
   if (!empty($birthDate) && !preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthDate)) {
     echo "Birth date must be in format YYYY-MM-DD.<br>";
+    $hasError = true;
   }
-  
+
   if (empty($address)) {
     echo "Address is required.<br>";
+    $hasError = true;
   }
-  
+
   if (empty($experience)) {
     echo "Please tell us why you want to foster a pet.<br>";
+    $hasError = true;
   }
 
   $experience = preg_replace("/\s+/", " ", $experience);
 
-  if (empty($errors)) {
+  if (!$hasError) {
     header("Location: foster.php?success=1");
     exit();
   }
