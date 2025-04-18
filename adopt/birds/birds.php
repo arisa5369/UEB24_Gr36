@@ -11,7 +11,7 @@
         <a href="/UEB24_Gr36/adopt/index.php" class="back-button">← Back to Home</a>
         <div class="gif-container">
             <audio id="audio" src="../images/bird-sounds-241394.mp3"></audio>
-            <button class="audio-button" onclick="document.getElementById('audio').play()">▶︎•၊၊||</button>
+            <button class="audio-button" onclick="document.getElementById('audio').play()">▶︎•၊၊||၊|။||||။၊|။•</button>
         </div> 
     </div>
 

@@ -72,7 +72,17 @@
  
   <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
     <div class="content">
-        <h1>Welcome to Pet Adoption</h1>
+        <h1><?php
+        $ora = date("H");
+
+        if ($ora >= 5 && $ora < 12) {
+            echo "Good Morning – Welcome to Pet Adoption";
+        } elseif ($ora >= 12 && $ora < 18) {
+            echo "Good Afternoon – Welcome to Pet Adoption";
+        } else {
+            echo "Good Evening – Welcome to Pet Adoption";
+        }
+        ?></h1>
         <p>Browse pets from our network of shelters and recues.</p>
     </div>
  
