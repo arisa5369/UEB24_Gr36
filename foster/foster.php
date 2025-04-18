@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $phone = trim($_POST["phone"] ?? "");
   $address = trim($_POST["address"] ?? "");
   $experience = trim($_POST["experience"] ?? "");
-  $birthDate = trim($_POST["birthDate"] ?? "");  
+  $birthDate = trim($_POST["birthDate"] ?? "");
+  $fosteredPets = trim($_POST["fosteredPets"] ?? ""); 
 
   if (empty($firstName) || !preg_match("/^[A-Za-z]{2,}$/", $firstName)) {
     echo "First name is required and should be at least 2 letters.<br>";
@@ -48,11 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $experience = preg_replace("/\s+/", " ", $experience);
 
   if (!$hasError) {
+    $petNumbers = preg_split("/-/", $fosteredPets);
+    $totalPets = array_sum($petNumbers);
+
     header("Location: foster.php?success=1");
     exit();
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
