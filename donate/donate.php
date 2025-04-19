@@ -240,8 +240,8 @@
 <div id="donation-modal" class="modal">
   <div class="modal-content">
     <span class="close-button">&times;</span>
-    <h2>Thank you for your generosity! ♡</h2>
-    <p>Your donation helps provide food, shelter, and medical care to pets in need. Together, we can make a difference.</p>
+    
+    <p>Your donation helps provide food, shelter, and medical care to pets in need.</p>
     <hr>
     <p><strong>To proceed with the payment, please contact us using the details below:</strong></p>
     <div class="contact-info">
@@ -249,7 +249,6 @@
         <strong>Email:</strong> 
         <a href="mailto:petfinder@gmail.com?subject=Donation Inquiry&body=I would like to donate and need further assistance.">petfinder@gmail.com</a>
       </p>
-     
     </div>
     <button class="close-donation-button">Close</button>
   </div>

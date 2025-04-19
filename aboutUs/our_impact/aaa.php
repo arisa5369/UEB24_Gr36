@@ -73,8 +73,14 @@
     <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
         <section class="main-content" id="main-content">
             <div class="overlay">
-                <h1>Our Impact</h1>
-                <span><i>Making a Difference</i></span>
+            <?php $title = "Our Impact";
+$upperTitle = strtoupper($title); 
+?>
+            <h1><?php echo $upperTitle; ?></h1>
+                
+                <?php $subtitle = "Making a Difference";
+$lowerSubtitle = strtolower($subtitle); ?>
+              <span><?php echo $lowerSubtitle; ?></span>
                 <p>
                     At the <b>Petfinder Foundation</b>, we maximize your donations<br>
                     to ensure a meaningful impact on pets in need,<br>
