@@ -1,7 +1,7 @@
 [
     {
         "name": "Buddy",
-        "image": "../images/dog1.avif",
+        "image": "/images/dog1.avif",
         "breed": "Golden Retriever",
         "age": "2 years",
         "gender": "Male",

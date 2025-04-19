@@ -9,7 +9,7 @@ fetch('dog.json')
         if (dog) {
             document.getElementById('dog-name').textContent = dog.name;
             document.getElementById('dog-name-display').textContent = dog.name;
-            document.getElementById('dog-image').src = `../images/${dog.image}`;
+            document.getElementById('dog-image').src = `/UEB24_Gr36/adopt/images/${dog.image}`;
             document.getElementById('dog-breed').textContent = dog.breed;
             document.getElementById('dog-age').textContent = dog.age;
             document.getElementById('dog-gender').textContent = dog.gender;
@@ -36,4 +36,4 @@ fetch('dog.json')
             audio.pause();
             audio.currentTime = 0; 
         }
-    });
+    }); 
