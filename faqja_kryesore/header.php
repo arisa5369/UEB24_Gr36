@@ -319,20 +319,12 @@ hr {
               </div>
           <nav class="menu">
             <ul>
-<<<<<<< HEAD
               <li><a href="/UEB24_Gr36/get_help/getHelp.php">Get Help</a></li>
               <li><a href="/UEB24_Gr36/adopt/index.php">Adopt</a></li>
               <li><a href="/UEB24_Gr36/foster/foster.php">Foster</a></li>
               <li><a href="/UEB24_Gr36/donate/donate.php">Donate</a></li>
               <li><a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php">About Us</a></li>
-=======
-              <li><a href="/UEB24_Gr36/get help/getHelp.php">Get Help</a></li>
-              <li><a href="/UEB24_Gr36/adopt/index.php">Adopt</a></li>
-              <li><a href="/UEB24_Gr36/foster/foster.php">Foster</a></li>
-              <li><a href="/UEB24_Gr36/donate/donate.php">Donate</a></li>
-              <li><a href="/UEB24_Gr36/aboutUs/our impact/aaa.php">About Us</a></li>
->>>>>>> f00224939c7ab546e42842d9a236f3c104076f77
-            </ul>
+
           </nav>
           <div class="actions">
             <button class="signup-btn">Sign in</button>
