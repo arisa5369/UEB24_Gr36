@@ -1,6 +1,10 @@
 <?php
-  $faqja = "Faqja Kryesore";
-  $dataAktuale = date("d/m/Y");
+require_once 'classes/pet.php';
+require_once 'classes/dog.php';
+$pets = [
+  new Dog(1, 'Baki', 3, 'assets/images/dog1.jpg', 'Labrador'),
+  new Dog(2, 'Rex', 5, 'assets/images/dog2.jpg', 'German Shepherd')
+];
 ?>
 
 <!DOCTYPE html>
@@ -342,6 +346,10 @@ Petfinder was founded in St. Louis to help animals who don’t fit into the trad
 
 
   <div id="footer"></div>
-<script src="/UEB24_Gr36/adopt/footer.js"></script>  
-</body>
+<script src="/UEB24_Gr36/adopt/footer.js"></script>
+
+
+        </div>
+    </div>
+</section>
 </html>
