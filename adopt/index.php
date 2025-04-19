@@ -162,9 +162,6 @@
 </section>
 <div id="footer"></div>
 
-
-<?php include("/UEB24_Gr36/a/adopt/footer.php"); ?>
-
 <script src="/UEB24_Gr36/adopt/footer.js"></script>  
 
 
