@@ -1,3 +1,19 @@
+<?php
+$email = "";
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+
+
+    if (preg_match("/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/", $email)) {
+        $message = "Email-i është valid!";
+    } else {
+        $message = "Email-i nuk është valid!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,10 +56,11 @@
         <div class="footer-section">
             <h3>Become a Volunteer</h3>
             <p>Join us and make a difference in the lives of pets.</p>
-            <form class="subscribe-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">➤</button>
-            </form>
+            <form class="subscribe-form" method="POST" action="">
+        <input type="email" name="email" placeholder="Enter your email address" required value="<?php echo htmlspecialchars($email); ?>">
+        <button type="submit">➤</button>
+    </form>
+    <p><?php echo $message; ?></p>
             <h3>Make a difference in the lives of animals, help them find loving homes.</h3>
         </div>
         <div class="footer-section">
