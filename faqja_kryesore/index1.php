@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Petfinder - <?php echo $faqja; ?></title>
   <link rel="stylesheet" href="style44.css">
-  <link rel="stylesheet" href="index1.js">
+  <script src="index1.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
@@ -155,6 +155,30 @@
             </div>
     </div>
 </section>
+
+<?php
+  define("ORGANIZATION_NAME", "Petfinder");
+
+  $hour = date("H"); // Ora në format 24h (0-23)
+  $greeting = "";
+
+  switch (true) {
+    case ($hour >= 5 && $hour < 12):
+      $greeting = "Good Morning";
+      break;
+    case ($hour >= 12 && $hour < 17):
+      $greeting = "Good Afternoon";
+      break;
+    case ($hour >= 17 && $hour < 21):
+      $greeting = "Good Evening";
+      break;
+    default:
+      $greeting = "Good Night";
+      break;
+  }
+
+  echo "<h2 style='text-align:center; color:#ff6600;'>$greeting and welcome to " . ORGANIZATION_NAME . "</h2>";
+?>
 
 
 <div id="auth-modal" class="modal">

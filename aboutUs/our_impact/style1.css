@@ -63,38 +63,7 @@ body {
 }
 
 
-.content {
-    max-width: 600px; 
-    width: 100%;
-    margin: 40px auto; 
-    padding: 20px;
-    background-color: #f9f9f9;
-    text-align: left; 
-}
 
-.content h2 {
-    font-size: 1.9em;
-    color: #2c3e50;
-    font-family: 'Georgia', serif;
-    margin-bottom: 20px;
-    border-left: none; 
-    text-align: left; 
-}
-
-.content p {
-    font-size: 1em;
-    margin-bottom: 15px;
-    color: #555;
-    line-height: 1.6; 
-}
-
-.content a {
-    color: #0077cc;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block; 
-    margin-top: 10px;
-}
 
 
 .stats-section {
