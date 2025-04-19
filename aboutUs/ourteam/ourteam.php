@@ -71,10 +71,15 @@
  
   <script src="/UEB24_Gr36/faqja_kryesore/header.php"></script>
         <section class="main-content" id="main-content">
+        <?php
+$title = "Welcome to Our Team";
+$upperTitle = strtoupper($title); 
+?>
             <div class="overlay">
-                <h1>Welcome to Our Team</h1>
-
-              <span>Making a Difference</span>
+            <h1><?php echo $upperTitle; ?></h1>
+           <?php $subtitle = "Making a Difference";
+$lowerSubtitle = strtolower($subtitle); ?>
+              <span><?php echo $lowerSubtitle; ?></span>
               <p>
             We are a dedicated team of three passionate individuals managing<br>  over 
             <strong>5,000 grants annually</strong>,we work towards making a significant <br>  impact with efficiency and care.</br>
