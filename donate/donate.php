@@ -244,7 +244,7 @@ Edit
 
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <span id="closeModal" class="close-button">&times;</span>
+            <span id="closeModal" class="close-button"git&times;</span>
             <p>Sign up for more updates!</p>
         </div>
     </div>
