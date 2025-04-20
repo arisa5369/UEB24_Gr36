@@ -16,18 +16,15 @@
     </div>
 
     <section class="rabbit-list">
+    <?php
 
-        <?php
-
-class Rabbit {
+class Animal {
     private $name;
     private $image;
-    private $personality;
 
-    public function __construct($name, $image, $personality) {
+    public function __construct($name, $image) {
         $this->name = $name;
         $this->image = $image;
-        $this->personality = $personality;
     }
 
     public function getName() {
@@ -38,10 +35,6 @@ class Rabbit {
         return $this->image;
     }
 
-    public function getPersonality() {
-        return $this->personality;
-    }
-
     public function setName($name) {
         $this->name = $name;
     }
@@ -50,14 +43,34 @@ class Rabbit {
         $this->image = $image;
     }
 
+    public function display() {
+        echo '<button class="animal-card" onclick="window.location.href=\'animal.html?name=' . urlencode($this->name) . '\'">';
+        echo '<img src="' . htmlspecialchars($this->image) . '" alt="' . htmlspecialchars($this->name) . '">';
+        echo '<p>' . htmlspecialchars($this->name) . '</p>';
+        echo '</button>';
+    }
+}
+
+class Rabbit extends Animal {
+    private $personality;
+
+    public function __construct($name, $image, $personality) {
+        parent::__construct($name, $image); 
+        $this->personality = $personality;
+    }
+
+    public function getPersonality() {
+        return $this->personality;
+    }
+
     public function setPersonality($personality) {
         $this->personality = $personality;
     }
 
     public function display() {
-        echo '<button class="rabbit-card" onclick="window.location.href=\'rabbit.html?name=' . urlencode($this->name) . '\'">';
-        echo '<img src="' . htmlspecialchars($this->image) . '" alt="' . htmlspecialchars($this->name) . '">';
-        echo '<p>' . htmlspecialchars($this->name) . '</p>';
+        echo '<button class="rabbit-card" onclick="window.location.href=\'rabbit.html?name=' . urlencode($this->getName()) . '\'">';
+        echo '<img src="' . htmlspecialchars($this->getImage()) . '" alt="' . htmlspecialchars($this->getName()) . '">';
+        echo '<p><strong>' . htmlspecialchars($this->getName()) . '</strong></p>';
         echo '<p><em>' . htmlspecialchars($this->personality) . '</em></p>';
         echo '</button>';
     }
