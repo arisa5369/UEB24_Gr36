@@ -86,9 +86,9 @@ $lowerSubtitle = strtolower($subtitle); ?>
           </p>
 
           <a href="/UEB24_Gr36/aboutUs/our impact/aaa.php" class="learn-more-button">Our Impact</a>
-
         </div>
         </section>
+
         <?php
         $team_members = [
   [

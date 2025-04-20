@@ -115,18 +115,19 @@ body {
 
 .impact {
     background: url('images/008C99.png.png') no-repeat center center/cover;
-    display: flex;
-    align-items:center;
+    background-color: #e68a12;
+    background-attachment: fixed;
+    color: white;
     padding: 40px 20px;
-    background-color:#e68a12;
+
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;     
     gap: 20px;
     overflow: hidden;
-    background-attachment: fixed;
-     position: relative;
-    display: flex;
-    justify-content: flex-start;
-    color: white;
+    position: relative;
+    text-align: center;
     
 
 }

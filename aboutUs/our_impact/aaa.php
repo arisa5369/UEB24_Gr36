@@ -91,6 +91,39 @@ $lowerSubtitle = strtolower($subtitle); ?>
         </section>
     
         <?php include 'impactInfo.php'; ?>
+
+        <?php
+
+class ImpactStat {
+    public $amount;
+    public $description;
+    public $image;
+    public $alt;
+
+    public function __construct($amount, $description, $image, $alt) {
+        $this->amount = $amount;
+        $this->description = $description;
+        $this->image = $image;
+        $this->alt = $alt;
+    }
+
+    public function display() {
+        echo '<div class="stats-item">';
+        echo '<img src="' . $this->image . '" alt="' . $this->alt . '" class="stats-icon">';
+        echo '<h2>' . $this->amount . '</h2>';
+        echo '<p>' . $this->description . '</p>';
+        echo '</div>';
+    }
+}
+
+$stats = [
+    new ImpactStat('$625,000', 'Grant funds<br>awarded in 2024', 'images/wired-outline-948-stock-share-hover-pinch.gif', 'Grant Funds Icon'),
+    new ImpactStat('2,101', 'Total grants<br>to shelters in 2024', 'images/system-solid-160-trending-up-hover-trend-up.gif', 'Home Pets Icon'),
+    new ImpactStat('122,937', 'Homeless pets<br>helped in 2024', 'images/love.png', 'Homeless Pets Icon')
+];
+
+?>
+
     <main>
      
 
@@ -108,29 +141,19 @@ $lowerSubtitle = strtolower($subtitle); ?>
                 </div>
             </div>
         </section>
-
         <section class="stats-section">
-            <hr class="styled-line">
-            <div class="stats-items">
-                <div class="stats-item">
-                    <img src="images/wired-outline-948-stock-share-hover-pinch.gif" alt="Grant Funds Icon" class="stats-icon">
-                    <h2>$625,000</h2>
-                    <p>Grant funds<br>awarded in 2024</p>
-                </div>
-                <div class="stats-item">
-                    <img src="images/system-solid-160-trending-up-hover-trend-up.gif" alt="Home Pets Icon" class="stats-icon">
-                    <h2>2,101</h2>
-                    <p>Total grants<br>to shelters in 2024</p>
-                </div>
-                <div class="stats-item">
-                    <img src="images/love.png" alt="Homeless Pets Icon" class="stats-icon">
-                    <h2>122,937</h2>
-                    <p>Homeless pets<br>helped in 2024</p>
-                </div>
-                 
-            </div>
-            <hr class="styled-line">
-        </section>
+    <hr class="styled-line">
+    <div class="stats-items">
+        <?php
+        foreach ($stats as $stat) {
+            $stat->display();
+        }
+        ?>
+    </div>
+    <hr class="styled-line">
+</section>
+
+        
        
         <section class="impact">
             <div class="impact-text">
