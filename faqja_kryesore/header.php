@@ -344,7 +344,7 @@ hr {
               <div class="modal-content1">
                 <span class="close" id="closeCreateAccount">&times;</span>
                 <h2>Create Petfinder Account</h2>
-                <form>
+                <form method="POST" action="register.php">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username" required>
 
@@ -368,7 +368,7 @@ hr {
               <div class="modal-content1">
                 <span class="close" id="closeLogin">&times;</span>
                 <h2>Log in with Petfinder</h2>
-                <form>
+                <form method="POST" action="login.php">
   <label for="login-email">Email:</label>
   <input type="email" id="login-email" name="login-email" required 
          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
