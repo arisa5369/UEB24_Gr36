@@ -355,9 +355,8 @@ hr {
 
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" required
-  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}"
-  title="Password must be at least 6 characters long, contain at least one uppercase letter, one number, and one special character.">
-
+  pattern="^[A-Za-z0-9]{6,}$"
+  title="Password must be at least 6 characters long and contain only letters and numbers.">
   <button type="submit">Sign Up</button>
 </form>
 
@@ -369,15 +368,15 @@ hr {
                 <span class="close" id="closeLogin">&times;</span>
                 <h2>Log in with Petfinder</h2>
                 <form method="POST" action="login.php">
-  <label for="login-email">Email:</label>
-  <input type="email" id="login-email" name="login-email" required 
+               <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="login-email" required 
          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
          title="Please enter a valid email address.">
 
   <label for="login-password">Password:</label>
   <input type="password" id="login-password" name="login-password" required
-  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}"
-  title="Password must be at least 6 characters long, contain at least one uppercase letter, one number, and one special character.">
+  pattern="^[A-Za-z0-9]{6,}$"
+  title="Password must be at least 6 characters long and contain only letters and numbers.">
   <button type="submit">Log In</button>
 </form>
               </div>
