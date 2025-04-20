@@ -1,255 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Tenth Life Cat Rescue</title>
-    <link rel="stylesheet" href="donate.css">
+  <title>Donate - Tenth Life Cat Rescue</title>
+  <link rel="stylesheet" href="donate.css">
 </head>
 <body>
+ 
+        <div id="header-placeholder"></div>
 
-    <div id="header-placeholder"></div>
 
-    <script>
-        class Modal {
-            constructor(modalId, openButtonSelector, closeButtonSelector) {
-                this.modal = document.getElementById(modalId);
-                this.openButton = document.querySelector(openButtonSelector);
-                this.closeButton = document.getElementById(closeButtonSelector);
+  <script>
+  
+    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
+      .then(response => response.text())
+      .then(data => {
+    
+        document.getElementById('header-placeholder').innerHTML = data;
+  
+       
+        const modal1 = document.getElementById("modal1");
+        const signUpButton = document.querySelector(".signup-btn");
+        const closeModal = document.getElementById("closeModal");
+  
+        const createAccountModal = document.getElementById("createAccountModal");
+        const openCreateAccount = document.getElementById("openCreateAccount");
+        const closeCreateAccount = document.getElementById("closeCreateAccount");
+  
+        const loginModal = document.getElementById("loginModal");
+        const openLogin = document.getElementById("openLogin");
+        const closeLogin = document.getElementById("closeLogin");
+  
+        
+        signUpButton?.addEventListener("click", () => {
+          modal1.style.display = "flex";
+        });
+  
+        closeModal?.addEventListener("click", () => {
+          modal1.style.display = "none";
+        });
+  
+        openCreateAccount?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          createAccountModal.style.display = "flex";
+        });
+  
+        closeCreateAccount?.addEventListener("click", () => {
+          createAccountModal.style.display = "none";
+        });
+  
+        openLogin?.addEventListener("click", () => {
+          modal1.style.display = "none";
+          loginModal.style.display = "flex";
+        });
+  
+        closeLogin?.addEventListener("click", () => {
+          loginModal.style.display = "none";
+        });
+  
+        window.addEventListener("click", (event) => {
+          if (event.target === modal1) {
+            modal1.style.display = "none";
+          } else if (event.target === createAccountModal) {
+            createAccountModal.style.display = "none";
+          } else if (event.target === loginModal) {
+            loginModal.style.display = "none";
+          }
+        });
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+  
+ 
+  <main class="donate-page">
+  
+    <section class="donate-banner">
+      <video class="background-video" autoplay muted loop>
+        <source src="imagedonate/mixkit-dog-walking-with-its-owner-in-a-park-1476-hd-ready.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay-content">
+        <h1>Make a Difference</h1>
+        <p>Your support helps save lives.</p>
+      </div>
+    </section>
+    </div>
+      <section class="donate-description">
+        <p>
+          At Petfinder, your generous support is essential to helping animals in need find loving homes. From dogs and cats to rabbits, birds, and more, your contributions empower our mission to connect pets with caring adopters, provide necessary medical care, and promote responsible pet ownership. No matter the size of your donation, you're making a meaningful impact on the lives of countless animals. Together, we’re creating brighter futures for pets everywhere!
+        </p>
+    </div>
+    </section>
+    <section class="donate-images">
+        <div class="gallery">
+      <div class="image-container">
+        <img src="imagedonate/df472840921f08163ae745ecf06d1806.jpg" alt="Person with parrot">
+      </div>
+      <div class="image-container">
+        <img src="imagedonate/2a5b0228078f6644588581e0c765c1ab.jpg" alt="Person with orange and white cat">
+      </div>
+      <div class="image-container">
+        <img src="imagedonate/50f9bfa1ae8fce5f43bc9037d0089ba9.jpg" alt="Person with cream-colored cat">
+      </div>
+      <div class="image-container">
+        <img src="imagedonate/56f2654586a09cbc2d273fcf91cb4d7b.jpg" alt="Person with black cat">
+      </div> <div class="image-container">
+        <img src="imagedonate/dogperson.jpg" alt="Person with blackkcat">
+    </div>
+        </div>
+    </section>
+    <section class="donation-options">
+      <div class="donation-box">
+        <h2>One Time Donation</h2>
+        <div class="donation-buttons">
+          <button>Monthly</button>
+          <button>One Time</button>
+        </div>
+        <div class="amount-options">
+          <button>$25</button>
+          <button>$50</button>
+          <button>$100</button>
+          <button>$250</button>
+        </div>
+        <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
+        <button class="donate-button">DONATE♡</button>
+      </div>
+      <div class="litter-mates">
+        <h2>Litter Mates Club</h2>
+        <p>
+          Join our monthly giving program and make a lasting impact! Your ongoing support of any amount helps Petfinder provide shelter, care, and love to animals in need. By contributing to our efforts, you’re ensuring that pets of all kinds—whether furry, feathered, or scaly—are given the chance to find their forever homes and live the happy lives they deserve.
+        </p>
+            
+        <a href="https://www.wildapricot.com/blog/monthly-giving-programs" target="_blank">
+        <button class="learn-button">LEARN ABOUT MONTHLY GIVING</button>
+      </a>
+      </div>
+    </section>
+    <section class="donation-section">
+        <div class="overlay2">
+          <h1>What does my donation do?</h1>
+          <div class="donation-grid">
+            <div class="donation-item">
+                <h2>$10</h2>
+                <p>Feed 3 neonatal pets for a week</p>
+              </div>
+              <div class="donation-item">
+                <h2>$50</h2>
+                <p>Provides medication for a sick pet</p>
+              </div>
+              <div class="donation-item">
+                <h2>$100</h2>
+                <p>Provides a pet with their first vet visit, tests, and vaccinations</p>
+              </div>
+              <div class="donation-item">
+                <h2>$125</h2>
+                <p>Feeds a litter of pets for a month</p>
+              </div>
+              <div class="donation-item">
+                <h2>$250</h2>
+                <p>Covers imaging to help heal a broken limb</p>
+              </div>
+              <div class="donation-item">
+                <h2>$500</h2>
+                <p>Helps cover a costly emergency veterinary procedure</p>
+              </div>
 
-                this.init();
-            }
-
-            init() {
-                if (this.openButton) {
-                    this.openButton.addEventListener("click", () => {
-                        this.modal.style.display = "flex";
-                    });
-                }
-
-                if (this.closeButton) {
-                    this.closeButton.addEventListener("click", () => {
-                        this.modal.style.display = "none";
-                    });
-                }
-
-                window.addEventListener("click", (event) => {
-                    if (event.target === this.modal) {
-                        this.modal.style.display = "none";
-                    }
-                });
-            }
-        }
-
-        class Donation {
-            constructor(buttonSelector, amountInputSelector) {
-                this.donateButton = document.querySelector(buttonSelector);
-                this.amountInput = document.querySelector(amountInputSelector);
-                this.init();
-            }
-
-            init() {
-                if (this.donateButton) {
-                    this.donateButton.addEventListener("click", () => {
-                        let amount = this.amountInput.value || "Custom Amount";
-                        alert(Thank you for donating ${amount}!);
-                    });
-                }
-            }
-        }
-
-        // Instantiation of classes
-        const modal = new Modal("modal1", ".signup-btn", "closeModal");
-        const donation = new Donation(".donate-button", ".custom-amount");
-
-        fetch('/UEB24_Gr36/faqja_kryesore/header.php')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-
-    <main class="donate-page">
-        <!-- Video Banner Section -->
-        <section class="donate-banner">
-            <video class="background-video" autoplay muted loop>
-                <source src="imagedonate/mixkit-dog-walking-with-its-owner-in-a-park-1476-hd-ready.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="overlay-content">
-                <h1>Make a Difference</h1>
-                <p>Your support helps save lives.</p>
-            </div>
-        </section>
-
-        <!-- Donation Section -->
-        <section class="donation-options">
-            <div class="donation-box">
-                <h2>One Time Donation</h2>
-                <div class="amount-options">
-                    <button>$25</button>
-                    <button>$50</button>
-                    <button>$100</button>
-                    <button>$250</button>
-                </div>
-                <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
-                <button class="donate-button">DONATE♡</button>
-            </div>
-        </section>
-    </main>
-
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close-button">&times;</span>
-            <p>Sign up for more updates!</p>
+              
         </div>
     </div>
-
-    <script src="donate.js"></script>
-</body>
-</html>
-Përmbledhje e ndryshimeve:
-Modal Class: Kjo klasë kontrollon hapjen dhe mbylljen e modalit për regjistrim (signup).
-
-Donation Class: Kjo klasë kontrollon funksionalitetin për dhënien e donacioneve. Përdoruesi mund të zgjedhë një shumë ose të shkruajë një shumë të personalizuar.
-
-Duke përdorur instancimin: Krijojmë instanca të klasave Modal dhe Donation që drejtojnë funksionet në faqe.
-
-Ky është një version më i thjeshtë dhe i organizuar i kodit që përdor OOP për të menaxhuar modalet dhe donacionet. Të gjitha funksionet janë të ndara në klasa të veçanta, që e bëjnë kodin më të qartë dhe të menaxhueshëm.
-
-
-
-
-
-
-
-You said:
-o jo ta ndryshoj te gjithen por vetem ndonje ndryshim te thjeshte te atij kodi qe mund ta shtoj oop
-
-
-ChatGPT said:
-E kuptoj! Nëse dëshironi të bëni një ndryshim të thjeshtë dhe të shtoni OOP pa ndryshuar krejt kodin, mund të përdorni OOP për menaxhimin e modaleve dhe funksionalitetin e dhënies së donacioneve në një mënyrë më të thjeshtë.
-
-Ja një shembull ku vetëm disa pjesë të kodit janë ndërruar në OOP, pa prekur pjesën e mbetur të kodit:
-
-html
-Copy
-Edit
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Tenth Life Cat Rescue</title>
-    <link rel="stylesheet" href="donate.css">
-</head>
-<body>
-
-    <div id="header-placeholder"></div>
-
-    <script>
-        // OOP për menaxhimin e modalit
-        class Modal {
-            constructor(modalId, openButtonSelector, closeButtonSelector) {
-                this.modal = document.getElementById(modalId);
-                this.openButton = document.querySelector(openButtonSelector);
-                this.closeButton = document.getElementById(closeButtonSelector);
-
-                this.init();
-            }
-
-            init() {
-                this.openButton?.addEventListener("click", () => {
-                    this.modal.style.display = "flex";
-                });
-
-                this.closeButton?.addEventListener("click", () => {
-                    this.modal.style.display = "none";
-                });
-
-                window.addEventListener("click", (event) => {
-                    if (event.target === this.modal) {
-                        this.modal.style.display = "none";
-                    }
-                });
-            }
-        }
-
-        // OOP për menaxhimin e donacioneve
-        class Donation {
-            constructor(donateButtonSelector, amountInputSelector) {
-                this.donateButton = document.querySelector(donateButtonSelector);
-                this.amountInput = document.querySelector(amountInputSelector);
-
-                this.init();
-            }
-
-            init() {
-                this.donateButton?.addEventListener("click", () => {
-                    let amount = this.amountInput.value || "Custom Amount";
-                    alert(Thank you for donating ${amount}!);
-                });
-            }
-        }
-
-        // Instancimi i objekteve për modalet dhe donacionet
-        const modal1 = new Modal("modal1", ".signup-btn", "closeModal");
-        const donation = new Donation(".donate-button", ".custom-amount");
-
-        fetch('/UEB24_Gr36/faqja_kryesore/header.php')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-
-    <main class="donate-page">
-        <section class="donate-banner">
-            <video class="background-video" autoplay muted loop>
-                <source src="imagedonate/mixkit-dog-walking-with-its-owner-in-a-park-1476-hd-ready.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="overlay-content">
-                <h1>Make a Difference</h1>
-                <p>Your support helps save lives.</p>
-            </div>
-        </section>
-
-        <section class="donate-description">
-            <p>
-                At Petfinder, your generous support is essential to helping animals in need find loving homes.
-                Your contributions empower our mission to connect pets with caring adopters, provide necessary
-                medical care, and promote responsible pet ownership. No matter the size of your donation, you're
-                making a meaningful impact on the lives of countless animals. Together, we’re creating brighter
-                futures for pets everywhere!
-            </p>
-        </section>
-
-        <section class="donation-options">
-            <div class="donation-box">
-                <h2>One Time Donation</h2>
-                <div class="amount-options">
-                    <button>$25</button>
-                    <button>$50</button>
-                    <button>$100</button>
-                    <button>$250</button>
-                </div>
-                <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
-                <button class="donate-button">DONATE♡</button>
-            </div>
-        </section>
-    </main>
-
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close-button"git&times;</span>
-            <p>Sign up for more updates!</p>
+      </section>
+ 
+      <div class="content-layout">
+        <table cellspacing="3" cellpadding="8">
+          <tr>
+            <td rowspan="2" class="image-column">
+              <img src="imagedonate/monetary donation.gif" alt="Monetary Donation">
+            </td>
+            <td class="header"><b>💵 Monetary Donation</b></td>
+          </tr>
+          <tr>
+            <td class="description">
+              Your tax-deductible donation makes it possible for PetFinder to continue rescuing pets in need, providing them with food, shelter, and medical care.            </td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="image-column">
+              <img src="imagedonate/man.gif" alt="Sponsor Event">
+            </td>
+            <td class="header"><b>🎉 Sponsor an Event</b></td>
+          </tr>
+          <tr>
+            <td class="description">
+              By sponsoring an event like our annual Adoption Fair, you play a vital role in funding PetFinder’s mission to save lives and connect pets with loving families.            </td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="image-column">
+              <img src="imagedonate/icons8-cat-64.png" alt="Donate Supplies">
+            </td>
+            <td class="header"><b>🎁 Donate Supplies or a Gift Card</b></td>
+          </tr>
+          <tr>
+            <td class="description">
+              Every gift of food, toys, litter, or other essentials allows us to focus funds on life-saving medical care and rehabilitation for pets in need.            </td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="image-column">
+              <img src="imagedonate/home.gif" alt="Donate Sales">
+            </td>
+            <td class="header"><b>🍽️ Donate a Portion of Your Sales</b></td>
+          </tr>
+          <tr>
+            <td class="description">
+              Support PetFinder by donating a portion of your restaurant, store, or service sales and help make a difference in the lives of vulnerable animals.            </td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="image-column">
+              <img src="imagedonate/system-regular-48-favorite-heart-hover-heart-1.gif" alt="Heart Icon">
+            </td>
+            <td class="header"><b>❤️ Donate a Gift Card or Prize</b></td>
+          </tr>
+          <tr>
+            <td class="description">
+              Help PetFinder host auctions and raffles that raise essential funds for our mission to create a brighter future for pets everywhere.            </td>
+          </tr>
+        </table>
+      
+        <div class="community-partner">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+          
+          <h1>Become a Community Partner ♡</h1>
+          <p>
+            We’d love to share with the world how your business is saving lives with PetFinder! By partnering with us, you’re making a meaningful difference for the neediest pets and the people who care for them. From donating essential supplies to sponsoring events, there are countless impactful opportunities for your business to make a difference. Join us in creating a safer, happier future for pets in need!          </p>
+           
         </div>
+      </div>
+    
+</main>
+
+
+<div id="donation-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    
+    <p>Your donation helps provide food, shelter, and medical care to pets in need.</p>
+    <hr>
+    <p><strong>To proceed with the payment, please contact us using the details below:</strong></p>
+    <div class="contact-info">
+      <p>
+        <strong>Email:</strong> 
+        <a href="mailto:petfinder@gmail.com?subject=Donation Inquiry&body=I would like to donate and need further assistance.">petfinder@gmail.com</a>
+      </p>
     </div>
+    <button class="close-donation-button">Close</button>
+  </div>
+</div>
 
-    <script src="donate.js"></script>
-
+<script src="donate.js"></script>
+<div id="footer"></div>
+<script src="/UEB24_Gr36/adopt/footer.js"></script>    
 </body>
 </html>
