@@ -88,7 +88,7 @@ $lowerSubtitle = strtolower($subtitle); ?>
           <a href="/UEB24_Gr36/aboutUs/our impact/aaa.php" class="learn-more-button">Our Impact</a>
         </div>
         </section>
-        
+
         <?php
         $team_members = [
   [
@@ -114,7 +114,7 @@ $lowerSubtitle = strtolower($subtitle); ?>
 <section class="team-section">
   <h1 class="section-title">Meet Our Team</h1>
   <div class="team-members">
-    <?php foreach ($team_members as $member): ?>
+     <?php foreach ($team_members as $member): ?>
       <div class="team-member">
         <img src="<?= htmlspecialchars($member['image']) ?>" alt="<?= htmlspecialchars($member['alt']) ?>" class="team-icon">
         <h2><?= htmlspecialchars($member['name']) ?></h2>

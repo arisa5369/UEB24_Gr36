@@ -345,14 +345,22 @@ hr {
                 <span class="close" id="closeCreateAccount">&times;</span>
                 <h2>Create Petfinder Account</h2>
                 <form>
-                  <label for="username">Username:</label>
-                  <input type="text" id="username" name="username" required>
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" name="email" required>
-                  <label for="password">Password:</label>
-                  <input type="password" id="password" name="password" required>
-                  <button type="submit">Sign Up</button>
-                </form>
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required 
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+         title="Please enter a valid email address.">
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required
+  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}"
+  title="Password must be at least 6 characters long, contain at least one uppercase letter, one number, and one special character.">
+
+  <button type="submit">Sign Up</button>
+</form>
+
               </div>
             </div>
           
@@ -361,12 +369,17 @@ hr {
                 <span class="close" id="closeLogin">&times;</span>
                 <h2>Log in with Petfinder</h2>
                 <form>
-                  <label for="login-email">Email:</label>
-                  <input type="email" id="login-email" name="login-email" required>
-                  <label for="login-password">Password:</label>
-                  <input type="password" id="login-password" name="login-password" required>
-                  <button type="submit">Log In</button>
-                </form>
+  <label for="login-email">Email:</label>
+  <input type="email" id="login-email" name="login-email" required 
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+         title="Please enter a valid email address.">
+
+  <label for="login-password">Password:</label>
+  <input type="password" id="login-password" name="login-password" required
+  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}"
+  title="Password must be at least 6 characters long, contain at least one uppercase letter, one number, and one special character.">
+  <button type="submit">Log In</button>
+</form>
               </div>
             </div>
           

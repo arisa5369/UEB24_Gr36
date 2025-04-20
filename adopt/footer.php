@@ -26,17 +26,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2 class="footer-logo">Petfinder</h2>
             <p class="footer-description"> Finding Forever Friends,<br> One Paw at a Time!</p>
         </div>
-        <div class="footer-section">
-            <h3>Contact us</h3>
-            <address>
-                <ul>
-                    <li>+383 45 *** ***</li>
-                    <li><a href="mailto:petfinder@gmail.com">petfinder@gmail.com</a></li>
-                    <li><a href="https://www.instagram.com/">Instagram</a></li>
-                    <li><a href="https://www.facebook.com/">Facebook</a></li>
-                </ul>
-            </address>
-        </div>
+        <?php
+$contactInfo = [
+    ['label' => '+383 45 *** ***', 'href' => 'tel:+38345123456'], 
+    ['label' => 'petfinder@gmail.com', 'href' => 'mailto:petfinder@gmail.com'],
+    ['label' => 'Instagram', 'href' => 'https://www.instagram.com/'],
+    ['label' => 'Facebook', 'href' => 'https://www.facebook.com/']
+];
+?>
+
+<div class="footer-section">
+    <h3>Contact us</h3>
+    <address>
+        <ul>
+            <?php foreach ($contactInfo as $item): ?>
+                <li><a href="<?= htmlspecialchars($item['href']) ?>" target="_blank"><?= htmlspecialchars($item['label']) ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </address>
+</div>
         <div class="footer-section">
             <h3>About us</h3>
             <ul>
