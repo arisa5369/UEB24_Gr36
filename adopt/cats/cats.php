@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Cats - Pet Adoption</title>
     <link rel="stylesheet" href="cats.css">
 </head>
+
 <body>
-   <div class="content">
+    <div class="content">
         <h1>Meet Our Cats</h1>
         <p>Discover your purr-fect companion from our list of lovable cats today!</p>
         <a href="/UEB24_Gr36/adopt/index.php" class="back-button">← Back to Home</a>
         <div class="gif-container">
             <audio id="audio" src="../images/cat-98721.mp3"></audio>
             <button class="audio-button" onclick="document.getElementById('audio').play()">▶︎•၊၊||၊|။||||။၊|။•</button>
-        </div> 
+        </div>
     </div>
 
     <section class="cat-list">
@@ -23,7 +25,7 @@
 
         $ages = [];
         foreach ($cats as $key => $cat) {
- 
+
             preg_match('/[\d.]+/', $cat['age'], $matches);
             $ageValue = floatval($matches[0]);
             $ages[$key] = $ageValue;
@@ -46,6 +48,7 @@
     </section>
 
     <div id="footer"></div>
-    <script src="/UEB24_Gr36/adopt/footer.js"></script>  
+    <script src="/UEB24_Gr36/adopt/footer.js"></script>
 </body>
+
 </html>

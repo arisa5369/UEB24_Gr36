@@ -11,4 +11,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = $auth->register($username, $email, $password);
     echo $message;
 }
-?>
