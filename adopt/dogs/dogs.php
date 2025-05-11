@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dogs - Pet Adoption</title>
     <link rel="stylesheet" href="dogs.css">
 </head>
+
 <body>
     <div class="content">
         <h1>Meet Our Dogs</h1>
@@ -12,7 +14,7 @@
         <div class="gif-container">
             <audio id="audio" src="../images/dog-barking-101729.mp3"></audio>
             <button class="audio-button" onclick="document.getElementById('audio').play()">▶︎•၊၊||၊|။||||။၊|။•</button>
-        </div> 
+        </div>
     </div>
 
     <section class="dog-list">
@@ -52,6 +54,7 @@
     </section>
 
     <div id="footer"></div>
-    <script src="/UEB24_Gr36/adopt/footer.js"></script>  
+    <script src="/UEB24_Gr36/adopt/footer.js"></script>
 </body>
+
 </html>

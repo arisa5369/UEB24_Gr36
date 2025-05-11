@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Birds - Pet Adoption</title>
     <link rel="stylesheet" href="birds.css">
 </head>
+
 <body>
-   <div class="content">
+    <div class="content">
         <h1>Meet Our Birds</h1>
         <p>Let your heart take flight with the perfect feathered friend today!</p>
         <a href="/UEB24_Gr36/adopt/index.php" class="back-button">← Back to Home</a>
         <div class="gif-container">
             <audio id="audio" src="../images/bird-sounds-241394.mp3"></audio>
             <button class="audio-button" onclick="document.getElementById('audio').play()">▶︎•၊၊||၊|။||||။၊|။•</button>
-        </div> 
+        </div>
     </div>
 
     <section class="bird-list">
@@ -37,12 +39,12 @@
 
         $healthStatuses = array_column($birds, 'health');
 
-        $healthPriorities = array_map(function($health) use ($healthPriority) {
+        $healthPriorities = array_map(function ($health) use ($healthPriority) {
             return $healthPriority[$health] ?? 3;
         }, $healthStatuses);
 
         array_multisort($healthPriorities, SORT_ASC, $birds);
-        
+
         foreach ($birds as $bird) {
             echo '<button class="bird-card" onclick="window.location.href=\'/UEB24_Gr36/adopt/birds/bird.html?name=' . urlencode($bird['name']) . '\'">';
             echo '<img src="' . htmlspecialchars($bird['image']) . '" alt="' . htmlspecialchars($bird['name']) . '">';
@@ -54,6 +56,7 @@
     </section>
 
     <div id="footer"></div>
-    <script src="/UEB24_Gr36/adopt/footer.js"></script>  
+    <script src="/UEB24_Gr36/adopt/footer.js"></script>
 </body>
+
 </html>

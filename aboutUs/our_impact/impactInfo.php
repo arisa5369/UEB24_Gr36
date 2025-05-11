@@ -7,7 +7,8 @@ $petsHelped = 122937;
 $foundationName = "Petfinder Foundation";
 $missionStatement = "making a difference";
 
-function generateImpactMessage($donation, $grants, $pets) {
+function generateImpactMessage($donation, $grants, $pets)
+{
     $donationFormatted = number_format($donation, 0, '.', ',');
     $grantsFormatted = number_format($grants);
     $petsFormatted = number_format($pets);
