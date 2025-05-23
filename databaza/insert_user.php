@@ -1,20 +1,28 @@
 <?php
-include 'db.php'; // Lidhja me databazën
+include 'db_connect.php';
 
-$username = 'ari';
-$email = 'ari@example.com';
-$password = password_hash('sekret123', PASSWORD_DEFAULT); // Enkriptimi i fjalëkalimit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = pg_escape_string($_POST['username']);
+    $email = pg_escape_string($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-// Përdor prepared statements për siguri
-$stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $username, $email, $password);
-
-if ($stmt->execute()) {
-    echo "Përdoruesi u shtua me sukses!";
-} else {
-    echo "Gabim gjatë futjes: " . $stmt->error;
+    $stmt = pg_prepare($conn, "insert_user", "INSERT INTO users (username, email, pass) VALUES ($1, $2, $3)");
+    if ($stmt) {
+        $result = pg_execute($conn, "insert_user", array($username, $email, $password));
+        if ($result) {
+            echo "Përdoruesi u shtua me sukses!";
+        } else {
+            $error = pg_last_error();
+            if (strpos($error, 'unique constraint') !== false) {
+                echo "Gabim: Email-i tashmë ekziston!";
+            } else {
+                echo "Gabim gjatë shtimit të përdoruesit: " . $error;
+            }
+        }
+    } else {
+        echo "Gabim gjatë përgatitjes së komandës: " . pg_last_error();
+    }
 }
 
-$stmt->close();
-$conn->close();
+pg_close($conn);
 ?>
