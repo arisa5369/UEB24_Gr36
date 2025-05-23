@@ -1,13 +1,13 @@
 <?php
 $host = 'localhost';
-$user = 'root';
-$password = ''; // ose fjalëkalimi yt
-$dbname = 'emri_database';
+$port = '5432'; // porta standarde e PostgreSQL
+$dbname = 'petfinder';
+$user = 'postgres'; // verifiko emrin e saktë të përdoruesit
+$password = '123';
 
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
-// Kontrollo lidhjen
-if ($conn->connect_error) {
-    die("Lidhja dështoi: " . $conn->connect_error);
+if (!$conn) {
+    die("Lidhja dështoi: " . pg_last_error());
 }
 ?>
