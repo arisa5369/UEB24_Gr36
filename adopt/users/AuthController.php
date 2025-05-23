@@ -1,10 +1,12 @@
 <?php
 require_once 'User.php';
 
-class AuthController {
+class AuthController
+{
     private $usersFile = __DIR__ . '/users.json'; // file është në të njëjtin folder
 
-    private function loadUsers() {
+    private function loadUsers()
+    {
         if (!file_exists($this->usersFile)) {
             return [];
         }
@@ -12,11 +14,13 @@ class AuthController {
         return json_decode($json, true) ?? [];
     }
 
-    private function saveUsers($users) {
+    private function saveUsers($users)
+    {
         file_put_contents($this->usersFile, json_encode($users, JSON_PRETTY_PRINT));
     }
 
-    public function register($username, $email, $password) {
+    public function register($username, $email, $password)
+    {
         $users = $this->loadUsers();
 
         foreach ($users as $user) {
@@ -36,7 +40,8 @@ class AuthController {
         return "User registered successfully!";
     }
 
-    public function login($email, $password) {
+    public function login($email, $password)
+    {
         $users = $this->loadUsers();
 
         foreach ($users as $user) {
@@ -48,4 +53,3 @@ class AuthController {
         return "Invalid email or password.";
     }
 }
-?>

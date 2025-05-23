@@ -1,19 +1,30 @@
 <?php
+include 'db.php'; // Lidhja me databazën
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['login-email'];
     $password = $_POST['login-password'];
 
-    
-    $existingUsers = file_exists('users.json') ? json_decode(file_get_contents('users.json'), true) : [];
+    // Merr përdoruesin nga databaza
+    $stmt = $conn->prepare("SELECT username, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    foreach ($existingUsers as $user) {
-        if ($user['email'] == $email && password_verify($password, $user['password'])) {
-           
-            echo "Mirësevini, " . $user['username'] . "!";
-            exit;
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($username, $hashedPassword);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashedPassword)) {
+            echo "Mirësevini, " . $username . "!";
+        } else {
+            echo "Fjalëkalimi është i gabuar!";
         }
+    } else {
+        echo "Ky email nuk ekziston!";
     }
 
-    echo "Email ose fjalëkalimi i gabuar!";
+    $stmt->close();
+    $conn->close();
 }
 ?>
