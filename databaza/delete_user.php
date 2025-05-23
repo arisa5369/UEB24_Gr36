@@ -1,7 +1,7 @@
 <?php
-include 'db.php'; // Lidhja me databazën
+include 'db.php'; 
 
-$id = 1; // ID e përdoruesit që do fshihet
+$id = 1; 
 
 $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
 $stmt->bind_param("i", $id);
