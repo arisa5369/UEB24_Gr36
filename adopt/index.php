@@ -3,9 +3,6 @@
 session_start();
 setcookie('shfaq_imazh', 'false', time() + (30 * 24 * 3600));
 
-include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
-
-
 // Përfshij skedarin e konfigurimit
 require_once 'config.php';
 
@@ -40,7 +37,6 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
 
 // Vendos funksionin si trajtues të gabimeve
 set_error_handler("customErrorHandler");
-
 
 // Inicializimi i variablave të sesionit
 $_SESSION['shikime_profile'] = ($_SESSION['shikime_profile'] ?? 0);
@@ -136,6 +132,8 @@ if (!empty($_SESSION['kuiz_pergjigje']['aktiviteti'])) {
     $mesazh_asistent .= "Të pëlqejnë kafshë {$_SESSION['kuiz_pergjigje']['aktiviteti']}. ";
 }
 $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vizituar faqen {$_SESSION['vizita_faqe']} herë!";
+include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -148,8 +146,7 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
 </head>
 <body style="background-color: <?php echo $sfondi; ?>;">
     <div id="header-placeholder"></div>
-
-   <script>
+    <script>
         
 
         $(document).ready(function() {
