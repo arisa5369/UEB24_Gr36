@@ -9,4 +9,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $message = $auth->login($email, $password);
     echo $message;
-}
+} 

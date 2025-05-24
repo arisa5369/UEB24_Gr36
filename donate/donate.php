@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <head>
@@ -108,23 +109,38 @@
         <img src="imagedonate/dogperson.jpg" alt="Person with blackkcat">
     </div>
         </div>
-    </section>
-    <section class="donation-options">
-      <div class="donation-box">
-        <h2>One Time Donation</h2>
-        <div class="donation-buttons">
-          <button>Monthly</button>
-          <button>One Time</button>
-        </div>
-        <div class="amount-options">
-          <button>$25</button>
-          <button>$50</button>
-          <button>$100</button>
-          <button>$250</button>
-        </div>
-        <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
-        <button class="donate-button">DONATE♡</button>
-      </div>
+    <div class="donation-box">
+  <h2>Bëni një Donacion</h2>
+  <form id="donation-form" method="POST" action="/UEB24_Gr36/process.donate.php" >
+    <div class="donation-type">
+      <label>
+        <input type="radio" name="donation-type" value="one-time" checked> Një herë
+      </label>
+      <label>
+        <input type="radio" name="donation-type" value="monthly"> Mujore
+      </label>
+    </div>
+
+    <div class="amount-options">
+      <button type="button" data-amount="10">10€</button>
+      <button type="button" data-amount="25">25€</button>
+      <button type="button" data-amount="50">50€</button>
+      <button type="button" data-amount="100">100€</button>
+    </div>
+
+    <input type="number" id="custom-amount" name="amount" placeholder="Shuma tjeter (€)" min="1">
+
+    <div class="donor-info">
+     <input type="text" id="donor-name" name="donor-name" placeholder="Emri (opsional)">
+   <input type="email" id="donor-email" name="donor-email" placeholder="Email (opsional)">
+    </div>
+
+    <button type="submit" class="donate-button">DHURO</button>
+  </form>
+  <div id="donation-message"></div>
+</div>
+
+
       <div class="litter-mates">
         <h2>Litter Mates Club</h2>
         <p>
@@ -182,7 +198,7 @@
         </div>
       </div>
     </section>
-    <section class="donation-options">
+  <section class="donation-options">
       <div class="donation-box">
         <h2>One Time Donation</h2>
         <div class="donation-buttons">
@@ -190,14 +206,16 @@
           <button>One Time</button>
         </div>
         <div class="amount-options">
-          <button>$25</button>
-          <button>$50</button>
-          <button>$100</button>
-          <button>$250</button>
+          <button >$25</button>
+          <button >$50</button>
+          <button >$100</button>
+          <button >$250</button>
         </div>
         <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
-        <button class="donate-button">DONATE♡</button>
+      <button type="submit" class="donate-button">DONATE♡</button>
+
       </div>
+
       <div class="litter-mates">
         <h2>Litter Mates Club</h2>
         <p>

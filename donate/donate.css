@@ -93,16 +93,17 @@ html, body {
   display: block;
 }
 
-.donation-options {
+ .donation-options {
+  max-width: 400px;
   display: flex;
   justify-content: center;
   gap: 2rem;
   align-items: center;
   margin-top: 2rem;
   max-width: 1000px;
-  padding-left: 200px;
+  padding-left: 20px;
+  border-radius: 10px;
 }
-
 
 .litter-mates {
   width: 40%;
@@ -112,7 +113,7 @@ html, body {
 }.donation-box{
   width: 60%;
   padding: 1rem;
- 
+ margin-bottom: 20px;
   text-align: center;
 }
 
