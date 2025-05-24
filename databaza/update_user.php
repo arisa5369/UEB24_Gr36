@@ -1,7 +1,7 @@
 <?php
-include 'db.php'; // Lidhja me databazën
+include 'db.php'; 
 
-$id = 1; // ID e përdoruesit që do përditësohet
+$id = 1; 
 $newEmail = 'new@example.com';
 
 $stmt = $conn->prepare("UPDATE users SET email = ? WHERE id = ?");

@@ -3,6 +3,9 @@
 session_start();
 setcookie('shfaq_imazh', 'false', time() + (30 * 24 * 3600));
 
+include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
+
+
 // Përfshij skedarin e konfigurimit
 require_once 'config.php';
 
@@ -37,6 +40,7 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
 
 // Vendos funksionin si trajtues të gabimeve
 set_error_handler("customErrorHandler");
+
 
 // Inicializimi i variablave të sesionit
 $_SESSION['shikime_profile'] = ($_SESSION['shikime_profile'] ?? 0);
@@ -145,52 +149,8 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
 <body style="background-color: <?php echo $sfondi; ?>;">
     <div id="header-placeholder"></div>
 
-    <script>
-        fetch('/UEB24_Gr36/faqja_kryesore/header.php')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-                const modal1 = document.getElementById("modal1");
-                const signUpButton = document.querySelector(".signup-btn");
-                const closeModal = document.getElementById("closeModal");
-                const createAccountModal = document.getElementById("createAccountModal");
-                const openCreateAccount = document.getElementById("openCreateAccount");
-                const closeCreateAccount = document.getElementById("closeCreateAccount");
-                const loginModal = document.getElementById("loginModal");
-                const openLogin = document.getElementById("openLogin");
-                const closeLogin = document.getElementById("closeLogin");
-
-                signUpButton?.addEventListener("click", () => {
-                    modal1.style.display = "flex";
-                });
-                closeModal?.addEventListener("click", () => {
-                    modal1.style.display = "none";
-                });
-                openCreateAccount?.addEventListener("click", () => {
-                    modal1.style.display = "none";
-                    createAccountModal.style.display = "flex";
-                });
-                closeCreateAccount?.addEventListener("click", () => {
-                    createAccountModal.style.display = "none";
-                });
-                openLogin?.addEventListener("click", () => {
-                    modal1.style.display = "none";
-                    loginModal.style.display = "flex";
-                });
-                closeLogin?.addEventListener("click", () => {
-                    loginModal.style.display = "none";
-                });
-                window.addEventListener("click", (event) => {
-                    if (event.target === modal1) {
-                        modal1.style.display = "none";
-                    } else if (event.target === createAccountModal) {
-                        createAccountModal.style.display = "none";
-                    } else if (event.target === loginModal) {
-                        loginModal.style.display = "none";
-                    }
-                });
-            })
-            .catch(error => console.error('Error loading header:', error));
+   <script>
+        
 
         $(document).ready(function() {
             $('#kuiz-btn').on('click', function() {
@@ -252,7 +212,7 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
         });
     </script>
 
-    <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
+  
 
     <div class="content">
         <h1><?php
