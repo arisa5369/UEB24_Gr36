@@ -1,47 +1,62 @@
-const modal1 = document.getElementById("modal1");
-const signUpButton = document.querySelector(".signup-btn");
-const closeModal = document.getElementById("closeModal");
+document.addEventListener('DOMContentLoaded', function() {
+    // Hap modalin kryesor kur klikohet "Sign in"
+    document.querySelector('.signup-btn').addEventListener('click', function() {
+        document.getElementById('modal1').style.display = 'flex';
+    });
 
-const createAccountModal = document.getElementById("createAccountModal");
-const openCreateAccount = document.getElementById("openCreateAccount");
-const closeCreateAccount = document.getElementById("closeCreateAccount");
+    // Mbylle modalin kryesor
+    document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('modal1').style.display = 'none';
+    });
 
-const loginModal = document.getElementById("loginModal");
-const openLogin = document.getElementById("openLogin");
-const closeLogin = document.getElementById("closeLogin");
+    // Hap modalin e regjistrimit
+    document.getElementById('openCreateAccount').addEventListener('click', function() {
+        document.getElementById('modal1').style.display = 'none';
+        document.getElementById('createAccountModal').style.display = 'flex';
+    });
 
-signUpButton.addEventListener("click", () => {
-  modal1.style.display = "flex";
-});
+    // Mbylle modalin e regjistrimit
+    document.getElementById('closeCreateAccount').addEventListener('click', function() {
+        document.getElementById('createAccountModal').style.display = 'none';
+    });
 
-closeModal.addEventListener("click", () => {
-  modal1.style.display = "none";
-});
+    // Hap modalin e login-it
+    document.getElementById('openLogin').addEventListener('click', function() {
+        document.getElementById('modal1').style.display = 'none';
+        document.getElementById('loginModal').style.display = 'flex';
+    });
 
-openCreateAccount.addEventListener("click", () => {
-  modal1.style.display = "none"; 
-  createAccountModal.style.display = "flex";
-});
+    // Mbylle modalin e login-it
+    document.getElementById('closeLogin').addEventListener('click', function() {
+        document.getElementById('loginModal').style.display = 'none';
+    });
 
-closeCreateAccount.addEventListener("click", () => {
-  createAccountModal.style.display = "none";
-});
+    // Toggle password visibility
+    function togglePasswordVisibility() {
+        console.log("Toggle password visibility called");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        if (passwordInput && confirmPasswordInput) {
+            const newType = passwordInput.type === "password" ? "text" : "password";
+            passwordInput.type = newType;
+            confirmPasswordInput.type = newType;
+        }
+    }
 
-openLogin.addEventListener("click", () => {
-  modal1.style.display = "none"; 
-  loginModal.style.display = "flex";
-});
+    // Check password match
+    function checkPasswordMatch() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+            document.getElementById("confirmPassword").setCustomValidity("Passwords do not match");
+        } else {
+            document.getElementById("confirmPassword").setCustomValidity("");
+        }
+    }
 
-closeLogin.addEventListener("click", () => {
-  loginModal.style.display = "none";
-});
-
-window.addEventListener("click", (event) => {
-  if (event.target === modal1) {
-    modal1.style.display = "none";
-  } else if (event.target === createAccountModal) {
-    createAccountModal.style.display = "none";
-  } else if (event.target === loginModal) {
-    loginModal.style.display = "none";
-  }
+    // Add event listener to the show password checkbox
+    const showPasswordCheckbox = document.getElementById("showPassword");
+    if (showPasswordCheckbox) {
+        showPasswordCheckbox.addEventListener("change", togglePasswordVisibility);
+    }
 });
