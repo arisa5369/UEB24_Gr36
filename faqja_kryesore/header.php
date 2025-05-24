@@ -64,14 +64,17 @@
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
+    overflow: auto; /* Allow scrolling for the entire modal if content overflows */
   }
 
   .modal-content1 {
     background-color: #fff;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px; /* Reduced from 30px for a more compact look */
     width: 90%;
-    max-width: 400px;
+    max-width: 350px; /* Reduced from 400px for a smaller width */
+    max-height: 70vh; /* Limit height to 70% of viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
@@ -83,7 +86,6 @@
       transform: translateY(-20px);
       opacity: 0;
     }
-
     to {
       transform: translateY(0);
       opacity: 1;
@@ -298,9 +300,32 @@
       text-align: center;
     }
   }
+
+  /* Optional: Style the scrollbar for better aesthetics */
+  .modal-content1::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-content1::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .modal-content1::-webkit-scrollbar-thumb {
+    background: #ff6600;
+    border-radius: 10px;
+  }
+
+  .modal-content1::-webkit-scrollbar-thumb:hover {
+    background: #e65c00;
+  }
+
+  /* Firefox scrollbar styling */
+  .modal-content1 {
+    scrollbar-width: thin;
+    scrollbar-color: #ff6600 #f1f1f1;
+  }
 </style>
-
-
 
 <header>
     <?php
@@ -339,44 +364,44 @@
           </div>
         </div>
 
-   <div id="createAccountModal" class="modal1">
-    <div class="modal-content1">
-        <span class="close" id="closeCreateAccount">×</span>
-        <h2>Create Petfinder Account</h2>
+        <div id="createAccountModal" class="modal1">
+            <div class="modal-content1">
+                <span class="close" id="closeCreateAccount">×</span>
+                <h2>Create Petfinder Account</h2>
 
-        <form method="POST" action="/UEB24_Gr36/databaza/insert_user.php">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
+                <form method="POST" action="/UEB24_Gr36/databaza/insert_user.php">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
 
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required
-                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                   title="Please enter a valid email address.">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           title="Please enter a valid email address.">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required
-                   pattern="^[A-Za-z0-9]{6,}$"
-                   title="Password must be at least 6 characters long and contain only letters and numbers.">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required
+                           pattern="^[A-Za-z0-9]{6,}$"
+                           title="Password must be at least 6 characters long and contain only letters and numbers.">
 
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required
-                   oninput="checkPasswordMatch()">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                           oninput="checkPasswordMatch()">
 
-            <div style="display: flex; align-items: center; margin-top: 10px;">
-                <input type="checkbox" id="showPassword" style="margin-right: 5px;">
-                <label for="showPassword" style="margin: 0;">Show password</label>
+                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                        <input type="checkbox" id="showPassword" style="margin-right: 5px;">
+                        <label for="showPassword" style="margin: 0;">Show password</label>
+                    </div>
+
+                    <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
+                </form>
             </div>
-
-            <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
-        </form>
-    </div>
-</div>
+        </div>
 
         <div id="loginModal" class="modal1">
           <div class="modal-content1">
@@ -413,4 +438,3 @@
       </div>
     </div>
 </header>
-
