@@ -65,6 +65,12 @@ $sqlStatements = [
         health TEXT NOT NULL,
         wingspan INT NOT NULL CHECK (wingspan >= 0),
         CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
+    );" , 
+    "CREATE TABLE IF NOT EXISTS donation (
+        id SERIAL PRIMARY KEY,
+        donation_type VARCHAR(100) NOT NULL,
+        amount NUMERIC(10, 2) NOT NULL,
+        donation_date DATE NOT NULL
     );"
 ];
 
