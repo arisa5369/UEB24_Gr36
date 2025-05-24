@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 0;
+            $mail->SMTPDebug = 0; // Debugging është çaktivizuar për përdorim normal
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
@@ -107,6 +107,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Subject = 'Confirmation of Foster Application';
             $mail->Body = "
                 <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            color: #333;
+                            padding: 20px;
+                            line-height: 1.6;
+                        }
+                        .container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        h2 {
+                            color: #2ecc71;
+                            text-align: center;
+                            border-bottom: 2px solid #2ecc71;
+                            padding-bottom: 10px;
+                        }
+                        ul {
+                            list-style-type: none;
+                            padding-left: 0;
+                        }
+                        li {
+                            background: url('https://via.placeholder.com/15/2ecc71/2ecc71?text=+') no-repeat left 5px;
+                            padding-left: 20px;
+                            margin: 10px 0;
+                        }
+                        .footer {
+                            text-align: center;
+                            font-size: 12px;
+                            color: #777;
+                            margin-top: 20px;
+                        }
+                        a {
+                            color: #2ecc71;
+                            text-decoration: underline;
+                        }
+                    </style>
+                </head>
                 <body>
                     <div class='container'>
                         <h2>🎉 Thank You for Joining Our Foster Family!</h2>
@@ -118,9 +162,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><strong>Preferred Pet Type:</strong> " . htmlspecialchars($preferredPetType) . "</li>
                             <li><strong>Appointment Time:</strong> " . htmlspecialchars($appointment) . "</li>
                         </ul>
-                        <p>Our dedicated team will reach out to you soon to discuss how we can support you on this amazing journey. In the meantime, feel free to explore our <a href='http://localhost/UEB24_Gr36/foster/foster.php' style='color: #2ecc71; text-decoration: underline;'>foster page</a> for more tips and resources!</p>
+                        <p>Our dedicated team will reach out to you soon to discuss how we can support you on this amazing journey. In the meantime, feel free to explore our <a href='http://localhost/UEB24_Gr36/foster/foster.php'>foster page</a> for more tips and resources!</p>
                         <div class='footer'>
-                            <p>Petfinder Team | <a href='mailto:" . htmlspecialchars($ADMIN_EMAIL) . "' style='color: #2ecc71;'>Contact Us</a> | Made with ❤️ for pets</p>
+                            <p>Petfinder Team | <a href='mailto:" . htmlspecialchars($ADMIN_EMAIL) . "'>Contact Us</a> | Made with ❤️ for pets</p>
                         </div>
                     </div>
                 </body>
@@ -157,7 +201,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="content">
             <h1>Foster with Petfinder</h1>
             <p>
-                Becoming a foster is one of the most important and rewarding ways to help Petfinder fulfill its mission to give every cat the life they deserve and to stop unnecessary euthanasia.
+                Becoming a foster is one of the most important and rewarding </br>
+                ways to help Petfinder fulfill its mission to give every cat the life </br>
+                they deserve and to stop unnecessary euthanasia.
             </p>
         </div>
         <div class="images">
@@ -216,13 +262,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <label for="preferredPetType">What type of pet would you prefer to foster?</label>
                 <select id="preferredPetType" name="preferredPetType" required>
-                    <option value="">Select an option</option>
-                    <option value="Dog">Dog</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Bird">Bird</option>
-                    <option value="Rabbit">Rabbit</option>
-                    <option value="Other">Other</option>
-                </select>
+                  <option value="">Select an option</option>
+                  <option value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Bird">Bird</option>
+                  <option value="Rabbit">Rabbit</option>
+                  <option value="Other">Other</option>
+                  </select>
 
                 <label for="appointment">Select an appointment time for the pet visit:</label>
                 <input type="datetime-local" id="appointment" name="appointment" required />
