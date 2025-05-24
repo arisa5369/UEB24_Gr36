@@ -50,14 +50,14 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
     </div>
         </div>
     <div class="donation-box">
-  <h2>Bëni një Donacion</h2>
+  <h2>Make Donation</h2>
   <form id="donation-form" method="POST" action="/UEB24_Gr36/process.donate.php" >
     <div class="donation-type">
       <label>
-        <input type="radio" name="donation-type" value="one-time" checked> Një herë
+        <input type="radio" name="donation-type" value="one-time" checked> One time
       </label>
       <label>
-        <input type="radio" name="donation-type" value="monthly"> Mujore
+        <input type="radio" name="donation-type" value="monthly"> Monthly
       </label>
     </div>
 
@@ -75,7 +75,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
    <input type="email" id="donor-email" name="donor-email" placeholder="Email (opsional)">
     </div>
 
-    <button type="submit" class="donate-button">DHURO</button>
+    <button type="submit" class="donate-button">DONATE♡</button>
   </form>
   <div id="donation-message"></div>
 </div>
