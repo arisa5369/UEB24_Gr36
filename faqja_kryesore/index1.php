@@ -1,4 +1,7 @@
 <?php
+include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
+?>
+<?php
 $faqja = "Faqja Kryesore";
 $dataAktuale = date("d/m/Y");
 ?>
@@ -18,127 +21,6 @@ $dataAktuale = date("d/m/Y");
 </head>
 
 <body>
-  <div id="header-placeholder"></div>
-
-
-  <script>
-    fetch('/UEB24_Gr36/faqja_kryesore/header.php')
-      .then(response => response.text())
-      .then(data => {
-
-        document.getElementById('header-placeholder').innerHTML = data;
-
-
-        const modal1 = document.getElementById("modal1");
-        const signUpButton = document.querySelector(".signup-btn");
-        const closeModal = document.getElementById("closeModal");
-
-        const createAccountModal = document.getElementById("createAccountModal");
-        const openCreateAccount = document.getElementById("openCreateAccount");
-        const closeCreateAccount = document.getElementById("closeCreateAccount");
-
-        const loginModal = document.getElementById("loginModal");
-        const openLogin = document.getElementById("openLogin");
-        const closeLogin = document.getElementById("closeLogin");
-
-
-        signUpButton?.addEventListener("click", () => {
-          modal1.style.display = "flex";
-        });
-
-        closeModal?.addEventListener("click", () => {
-          modal1.style.display = "none";
-        });
-
-        openCreateAccount?.addEventListener("click", () => {
-          modal1.style.display = "none";
-          createAccountModal.style.display = "flex";
-        });
-
-        closeCreateAccount?.addEventListener("click", () => {
-          createAccountModal.style.display = "none";
-        });
-
-        openLogin?.addEventListener("click", () => {
-          modal1.style.display = "none";
-          loginModal.style.display = "flex";
-        });
-
-        closeLogin?.addEventListener("click", () => {
-          loginModal.style.display = "none";
-        });
-
-        window.addEventListener("click", (event) => {
-          if (event.target === modal1) {
-            modal1.style.display = "none";
-          } else if (event.target === createAccountModal) {
-            createAccountModal.style.display = "none";
-          } else if (event.target === loginModal) {
-            loginModal.style.display = "none";
-          }
-        });
-      })
-      .catch(error => console.error('Error loading header:', error));
-    $(document).ready(function() {
-      setTimeout(function() {
-        $('#myModal').addClass('show');
-      }, 2000);
-
-      $('#closeModalBtn').on('click', function() {
-        $('#myModal').removeClass('show');
-      });
-
-      $('#openModalBtn').on('click', function() {
-        $('#myModal').fadeIn();
-      });
-
-      $('#closeModalBtn').on('click', function() {
-        $('#myModal').fadeOut();
-      });
-
-      $('.step').on('mouseenter', function() {
-        $(this).css({
-          'background-color': '#d1f5f5',
-          'transform': 'scale(1.05)',
-          'transition': 'all 0.3s ease'
-        });
-      }).on('mouseleave', function() {
-        $(this).css({
-          'background-color': '#eaf5f5',
-          'transform': 'scale(1)'
-        });
-      });
-
-      $(window).on('scroll', function() {
-        $('.adopting-expectations .step').each(function() {
-          var stepPosition = $(this).offset().top;
-          var screenPosition = $(window).scrollTop() + $(window).height();
-
-          if (stepPosition < screenPosition) {
-            $(this).addClass('animate');
-          }
-        });
-      });
-
-      $('#callbackExample').on('click', function() {
-        $('#myModal').slideUp(500, function() {
-          alert('Modal u mbyll!');
-        });
-      });
-
-      console.log($('#exampleDiv').html());
-
-      $('#exampleDiv').html('<p>Ky është përmbajtja e re!</p>');
-
-      $('#exampleDiv').append('<p>Ky është një paragraf i shtuar.</p>');
-
-      $('#exampleDiv p:first').remove();
-    });
-  </script>
-
-
-  <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
-
   <section class="hero">
     <div class="video-container">
       <video autoplay muted loop>

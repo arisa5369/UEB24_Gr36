@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Petfinder</title>
-</head>
 <style>
   html,
   body {
@@ -212,7 +203,6 @@
     color: #ffe6cc;
   }
 
-
   .actions {
     display: flex;
     align-items: center;
@@ -258,7 +248,6 @@
     background-color: #e65c00;
     color: white;
   }
-
 
   .social-icons {
     display: flex;
@@ -311,9 +300,14 @@
   }
 </style>
 
-<body>
-  <header>
 
+
+<header>
+    <?php
+    if (isset($_GET['success'])) {
+        echo "<div class='success-message'>" . htmlspecialchars($_GET['success']) . "</div>";
+    }
+    ?>
     <div class="navbar">
       <div class="logo">
         <a href="/UEB24_Gr36/faqja_kryesore/index1.php" style="text-decoration: none;">
@@ -329,14 +323,14 @@
           <li><a href="/UEB24_Gr36/foster/foster.php">Foster</a></li>
           <li><a href="/UEB24_Gr36/donate/donate.php">Donate</a></li>
           <li><a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php">About Us</a></li>
-
+        </ul>
       </nav>
       <div class="actions">
         <button class="signup-btn">Sign in</button>
 
         <div id="modal1" class="modal1">
           <div class="modal-content1">
-            <span class="close" id="closeModal">&times;</span>
+            <span class="close" id="closeModal">×</span>
             <h2>Welcome to Petfinder</h2>
             <p>Log in or sign up to save your favorite pets.</p>
             <button id="openCreateAccount">Create Petfinder Account</button>
@@ -345,36 +339,51 @@
           </div>
         </div>
 
-        <div id="createAccountModal" class="modal1">
-          <div class="modal-content1">
-            <span class="close" id="closeCreateAccount">&times;</span>
-            <h2>Create Petfinder Account</h2>
+   <div id="createAccountModal" class="modal1">
+    <div class="modal-content1">
+        <span class="close" id="closeCreateAccount">×</span>
+        <h2>Create Petfinder Account</h2>
 
-            <form method="POST" action="../databaza/insert_user.php">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+        <form method="POST" action="/UEB24_Gr36/databaza/insert_user.php">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required
-           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-           title="Please enter a valid email address.">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required
-           pattern="^[A-Za-z0-9]{6,}$"
-           title="Password must be at least 6 characters long and contain only letters and numbers.">
-    <button type="submit">Sign Up</button>
-</form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-          </div>
-        </div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address.">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required
+                   pattern="^[A-Za-z0-9]{6,}$"
+                   title="Password must be at least 6 characters long and contain only letters and numbers.">
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required
+                   oninput="checkPasswordMatch()">
+
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+                <input type="checkbox" id="showPassword" style="margin-right: 5px;">
+                <label for="showPassword" style="margin: 0;">Show password</label>
+            </div>
+
+            <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
+        </form>
+    </div>
+</div>
 
         <div id="loginModal" class="modal1">
           <div class="modal-content1">
-            <span class="close" id="closeLogin">&times;</span>
+            <span class="close" id="closeLogin">×</span>
             <h2>Log in with Petfinder</h2>
 
-            <form method="POST" action="login.php">
+            <form method="POST" action="/UEB24_Gr36/databaza/login.php">
               <label for="login-email">Email:</label>
               <input type="email" id="login-email" name="login-email" required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -391,7 +400,6 @@
 
         <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
 
-
         <button class="donate-btn" onclick="location.href='/UEB24_Gr36/donate/donate.php'">Donate Now</button>
 
         <div class="social-icons">
@@ -399,14 +407,10 @@
             <img src="/UEB24_Gr36/faqja_kryesore/imagess/facebook.logo.1.png" alt="Facebook Icon">
           </a>
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-
             <img src="/UEB24_Gr36/faqja_kryesore/imagess/instagram.lofo.png" alt="Instagram Icon">
-
           </a>
         </div>
       </div>
     </div>
-  </header>
-</body>
+</header>
 
-</html>
