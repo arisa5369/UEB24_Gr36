@@ -3,8 +3,8 @@ header('Content-Type: application/json');
 
 // Lidhja me bazën e të dhënave (ndrysho kredencialet sipas nevojës)
 $servername = "localhost";
-$username = "username";
-$password = "password";
+$username = "postgres";
+$password = "123";
 $dbname = "donation_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
