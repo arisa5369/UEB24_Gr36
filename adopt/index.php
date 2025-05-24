@@ -21,7 +21,7 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
     
     // Shkruaj gabimin në një skedar log
     try {
-        $logFile = fopen('logs/error_log.txt', 'a');
+        $logFile = fopen(LOG_DIR . 'error_log.txt', 'a');
         if ($logFile === false) {
             throw new Exception("Nuk mund të hapet skedari i gabimeve!");
         }
@@ -47,7 +47,7 @@ $_SESSION['vizita_faqe'] = ($_SESSION['vizita_faqe'] ?? 0) + 1;
 // Funksion për të manipuluar wishlist-in dhe regjistruar veprimet në log
 function modifikoWishlist($kafsha, $veprimi, $emri) {
     try {
-        $logFile = fopen('logs/user_actions.log', 'a');
+        $logFile = fopen(LOG_DIR . 'user_actions.log', 'a');
         if ($logFile === false) {
             throw new Exception("Nuk mund të hapet skedari log për veprimet!");
         }
@@ -142,7 +142,7 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-<body>
+<body style="background-color: <?php echo $sfondi; ?>;">
     <div id="header-placeholder"></div>
 
     <script>
@@ -208,6 +208,7 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
                     kafsha: petName,
                     veprimi: button.hasClass('favorite') ? 'fshi' : 'shto'
                 }, function(response) {
+                    console.log('Përgjigjja:', response);
                     if (response.success) {
                         button.toggleClass('favorite');
                         if (button.hasClass('favorite')) {
@@ -220,12 +221,18 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
                             $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
                                 'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke shtuar ' + petName + ' në listën tënde!' +
                                 '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
+                        } else {
+                            $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1');
+                            $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
+                                'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!' +
+                                '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
                         }
                     } else {
                         alert('Gabim: ' + response.message);
                     }
-                }, 'json').fail(function() {
-                    alert('Gabim gjatë komunikimit me serverin!');
+                }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error('Gabim AJAX:', textStatus, errorThrown, jqXHR.responseText);
+                    alert('Gabim gjatë komunikimit me serverin! Detaje: ' + textStatus + ' - ' + jqXHR.responseText);
                 });
             });
 
@@ -263,13 +270,13 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
 
     <div class="asistent">
         <img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">
-        <?php echo $mesazh_asistent; ?>
+        <?php echo htmlspecialchars($mesazh_asistent); ?>
         <span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>
     </div>
 
     <?php if ($cookies_array['shfaq_imazh'] == 'true'): ?>
     <div class="hero-image">
-        <img src="<?php echo $imazh_kryesor; ?>" alt="Kafshë e preferuar">
+        <img src="<?php echo htmlspecialchars($imazh_kryesor); ?>" alt="Kafshë e preferuar">
     </div>
     <?php endif; ?>
 
@@ -345,7 +352,7 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
                 </select><br>
                 <button type="submit">Kryej Veprimin</button>
             </form>
-            <?php if (isset($mesazh_wishlist)) echo "<p style='color: #ff6600;'>$mesazh_wishlist</p>"; ?>
+            <?php if (isset($mesazh_wishlist)) echo "<p style='color: #ff6600;'>".htmlspecialchars($mesazh_wishlist)."</p>"; ?>
         </div>
     </section>
 
@@ -366,9 +373,9 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
             if ($kafsha['lloji'] == $cookies_array['lloji_kafshes'] || $kafsha['mosha'] == $cookies_array['mosha_kafshes']) {
                 $isFavorite = in_array($kafsha['emri'], $_SESSION['wishlist'] ?? []) ? 'favorite' : '';
                 echo "<div class='pet-card" . ($kafsha['emri'] == 'Bruno' ? '1' : '') . "'>";
-                echo "<img src='{$kafsha['imazh']}' alt='{$kafsha['lloji']}' class='pet-image' data-link='{$kafsha['link']}'>";
-                echo "<p>{$kafsha['emri']}</p>";
-                echo "<button class='heart-button $isFavorite' data-pet='{$kafsha['emri']}' title='Shto në Wishlist'>";
+                echo "<img src='".htmlspecialchars($kafsha['imazh'])."' alt='".htmlspecialchars($kafsha['lloji'])."' class='pet-image' data-link='".htmlspecialchars($kafsha['link'])."'>";
+                echo "<p>".htmlspecialchars($kafsha['emri'])."</p>";
+                echo "<button class='heart-button $isFavorite' data-pet='".htmlspecialchars($kafsha['emri'])."' title='".($isFavorite ? 'Fshi nga Wishlist' : 'Shto në Wishlist')."'>";
                 echo '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
                 echo "</button>";
                 echo "</div>";
@@ -381,17 +388,31 @@ $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vi
 
     <section class="wishlist" id="wishlist">
         <h2>Lista Jote e Preferencave</h2>
-        <?php
-        if (empty($_SESSION['wishlist'])) {
-            echo "<p style='color: #555;'>Asnjë kafshë e shtuar ende.</p>";
-        } else {
-            echo "<ul>";
-            foreach ($_SESSION['wishlist'] as $kafsha) {
-                echo "<li>" . htmlspecialchars($kafsha) . "</li>";
-            }
-            echo "</ul>";
-        }
-        ?>
+        <?php if (empty($_SESSION['wishlist'])): ?>
+            <p style='color: #555;'>Asnjë kafshë e shtuar ende.</p>
+        <?php else: ?>
+            <div class="wishlist-pets">
+                <?php
+                foreach ($kafshe as $kafsha) {
+                    if (in_array($kafsha['emri'], $_SESSION['wishlist'])) {
+                        $isFavorite = 'favorite';
+                        echo "<div class='pet-card'>";
+                        echo "<img src='".htmlspecialchars($kafsha['imazh'])."' alt='".htmlspecialchars($kafsha['lloji'])."' class='pet-image' data-link='".htmlspecialchars($kafsha['link'])."'>";
+                        echo "<p>".htmlspecialchars($kafsha['emri'])."</p>";
+                        echo "<button class='heart-button $isFavorite' data-pet='".htmlspecialchars($kafsha['emri'])."' title='Fshi nga Wishlist'>";
+                        echo '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+                        echo "</button>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+            <ul>
+                <?php foreach ($_SESSION['wishlist'] as $kafsha): ?>
+                    <li><?php echo htmlspecialchars($kafsha); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
     </section>
 
     <section class="adoption-info">
