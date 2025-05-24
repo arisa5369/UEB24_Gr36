@@ -1,18 +1,20 @@
 <?php
-include 'db.php'; // Kjo lidh projektin me databazën
+include 'db_connect.php'; 
 
-$sql = "CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(100),
-    password VARCHAR(255) NOT NULL
+$sql = "CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    pass VARCHAR(255) NOT NULL
 )";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Tabela 'users' u krijua me sukses.";
+if (pg_query($conn, $sql)) {
+    echo "Tabela 'users' u krijua me sukses!";
 } else {
-    echo "Gabim në krijimin e tabelës: " . $conn->error;
+    echo "Gabim gjatë krijimit të tabelës: " . pg_last_error();
 }
 
-$conn->close();
+pg_close($conn);
 ?>
