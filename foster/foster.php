@@ -1,6 +1,6 @@
 <?php
-
 ob_start();
+session_start();
 
 require 'C:\XAMPP\htdocs\UEB24_Gr36\foster\config.php';
 
@@ -36,7 +36,6 @@ function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = n
     }
 }
 
-
 set_error_handler("customErrorHandler");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,9 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
     $email = isset($_POST['email']) ? trim(htmlspecialchars($_POST['email'])) : "";
-    $phone = isset($_POST['phone']) ? trim(htmlspecialchars($_POST['phone'])) : "";
     $experience = isset($_POST['experience']) ? trim(htmlspecialchars($_POST['experience'])) : "";
-    $fosteredPets = isset($_POST['fosteredPets']) ? trim(htmlspecialchars($_POST['fosteredPets'])) : "";
+    $preferredPetType = isset($_POST['preferredPetType']) ? trim(htmlspecialchars($_POST['preferredPetType'])) : "";
     $appointment = isset($_POST['appointment']) ? trim(htmlspecialchars($_POST['appointment'])) : "";
 
     try {
@@ -54,12 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("A valid email is required.");
         }
 
-        if (empty($phone) || !preg_match("/^\+?\d{9,15}$/", $phone)) {
-            throw new Exception("A valid phone number is required (e.g., +38349615676 or 049615676).");
+        $domain = substr(strrchr($email, "@"), 1);
+        if (!checkdnsrr($domain, "MX")) {
+            throw new Exception("Email domain does not exist or cannot receive emails.");
         }
 
         if (empty($experience)) {
             throw new Exception("Please tell us why you want to foster an animal.");
+        }
+
+        if (empty($preferredPetType)) {
+            throw new Exception("Please select the type of pet you would prefer to foster.");
         }
 
         if (empty($appointment)) {
@@ -67,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $appointmentTime = strtotime($appointment);
-        $currentTime = time(); 
+        $currentTime = time();
         if ($appointmentTime <= $currentTime) {
             throw new Exception("The appointment must be in the future.");
         }
@@ -75,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $experience = preg_replace("/\s+/", " ", $experience);
 
         $logFile = 'C:\XAMPP\htdocs\UEB24_Gr36\foster\applications.txt';
-        $logData = "Application: " . date('Y-m-d H:i:s') . " | Email: $email | Phone: $phone | Experience: $experience | Fostered Pets: $fosteredPets | Appointment: $appointment\n";
+        $logData = "Application: " . date('Y-m-d H:i:s') . " | Email: $email | Experience: $experience | Preferred Pet Type: $preferredPetType | Appointment: $appointment\n";
 
         if (!$handle = fopen($logFile, 'a')) {
             throw new Exception("Cannot open file for logging!");
@@ -87,9 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 2; 
-            $mail->Debugoutput = 'html';
-
+            $mail->SMTPDebug = 0;
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
@@ -97,69 +98,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Password = SMTP_PASSWORD;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
+            $mail->CharSet = 'UTF-8';
 
             $mail->setFrom(SMTP_USERNAME, 'Petfinder Team');
-            $mail->addAddress($email); 
+            $mail->addAddress($email);
             $mail->addReplyTo(ADMIN_EMAIL, 'Petfinder Team');
             $mail->isHTML(true);
             $mail->Subject = 'Confirmation of Foster Application';
             $mail->Body = "
-                <h2>Thank you for your application!</h2>
-                <p>Your details have been successfully received:</p>
-                <ul>
-                    <li><strong>Email:</strong> $email</li>
-                    <li><strong>Phone:</strong> $phone</li>
-                    <li><strong>Experience:</strong> $experience</li>
-                    <li><strong>Number of fostered pets:</strong> $fosteredPets</li>
-                    <li><strong>Appointment:</strong> $appointment</li>
-                </ul>
-                <p>Our team will contact you soon!</p>
+                <html>
+                <body>
+                    <div class='container'>
+                        <h2>🎉 Thank You for Joining Our Foster Family!</h2>
+                        <p>We’re thrilled to have you on board! Your application has been successfully received, and we’re excited to take the next steps together to give a pet a loving home.</p>
+                        <p>Here are the details we’ve captured:</p>
+                        <ul>
+                            <li><strong>Email:</strong> " . htmlspecialchars($email) . "</li>
+                            <li><strong>Your Passion for Fostering:</strong> " . htmlspecialchars($experience) . "</li>
+                            <li><strong>Preferred Pet Type:</strong> " . htmlspecialchars($preferredPetType) . "</li>
+                            <li><strong>Appointment Time:</strong> " . htmlspecialchars($appointment) . "</li>
+                        </ul>
+                        <p>Our dedicated team will reach out to you soon to discuss how we can support you on this amazing journey. In the meantime, feel free to explore our <a href='http://localhost/UEB24_Gr36/foster/foster.php' style='color: #2ecc71; text-decoration: underline;'>foster page</a> for more tips and resources!</p>
+                        <div class='footer'>
+                            <p>Petfinder Team | <a href='mailto:" . htmlspecialchars($ADMIN_EMAIL) . "' style='color: #2ecc71;'>Contact Us</a> | Made with ❤️ for pets</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
             ";
-            $mail->AltBody = "Thank you for your application!\nYour details have been successfully received:\n- Email: $email\n- Phone: $phone\n- Experience: $experience\n- Number of fostered pets: $fosteredPets\n- Appointment: $appointment\nOur team will contact you soon!";
+            $mail->AltBody = "Thank you for your application!\nYour details have been successfully received:\n- Email: $email\n- Experience: $experience\n- Preferred Pet Type: $preferredPetType\n- Appointment: $appointment\nOur team will contact you soon!";
 
             $mail->send();
         } catch (Exception $e) {
-            throw new Exception("Email could not be sent: {$mail->ErrorInfo}");
+            $errors[] = "Email could not be sent to user: {$mail->ErrorInfo}. However, your application was logged.";
         }
 
-        $mailAdmin = new PHPMailer(true);
-        try {
-            $mailAdmin->SMTPDebug = 2;
-            $mailAdmin->Debugoutput = 'html';
-
-            $mailAdmin->isSMTP();
-            $mailAdmin->Host = 'smtp.gmail.com';
-            $mailAdmin->SMTPAuth = true;
-            $mailAdmin->Username = SMTP_USERNAME;
-            $mailAdmin->Password = SMTP_PASSWORD;
-            $mailAdmin->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mailAdmin->Port = 587;
-
-            $mailAdmin->setFrom(SMTP_USERNAME, 'Petfinder Team');
-            $mailAdmin->addAddress(ADMIN_EMAIL); 
-            $mailAdmin->addReplyTo($email, 'Applicant');
-            $mailAdmin->isHTML(true);
-            $mailAdmin->Subject = 'New Foster Application Received';
-            $mailAdmin->Body = "
-                <h2>A new application has been received!</h2>
-                <p>Applicant details:</p>
-                <ul>
-                    <li><strong>Email:</strong> $email</li>
-                    <li><strong>Phone:</strong> $phone</li>
-                    <li><strong>Experience:</strong> $experience</li>
-                    <li><strong>Number of fostered pets:</strong> $fosteredPets</li>
-                    <li><strong>Appointment:</strong> $appointment</li>
-                </ul>
-                <p>Contact the applicant for further steps.</p>
-            ";
-            $mailAdmin->AltBody = "A new application has been received!\nApplicant details:\n- Email: $email\n- Phone: $phone\n- Experience: $experience\n- Number of fostered pets: $fosteredPets\n- Appointment: $appointment\nContact the applicant for further steps.";
-
-            $mailAdmin->send();
-        } catch (Exception $e) {
-            throw new Exception("Admin email could not be sent: {$mailAdmin->ErrorInfo}");
-        }
-
-        ob_end_clean(); 
+        $_SESSION['submitted_email'] = $email;
+        ob_end_clean();
         header("Location: success.php");
         exit();
     } catch (Exception $e) {
@@ -171,14 +146,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foster with Petfinder</title>
     <link rel="stylesheet" href="stylef.css">
 </head>
-
 <body>
     <div class="container">
         <div class="content">
@@ -238,14 +211,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required />
 
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" required />
-
                 <label for="experience">Why do you want to foster an animal?</label>
                 <textarea id="experience" name="experience" rows="4" required></textarea>
 
-                <label for="fosteredPets">Number of fostered pets (e.g., 2-3-1):</label>
-                <input type="text" id="fosteredPets" name="fosteredPets" />
+                <label for="preferredPetType">What type of pet would you prefer to foster?</label>
+                <select id="preferredPetType" name="preferredPetType" required>
+                    <option value="">Select an option</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Rabbit">Rabbit</option>
+                    <option value="Other">Other</option>
+                </select>
 
                 <label for="appointment">Select an appointment time for the pet visit:</label>
                 <input type="datetime-local" id="appointment" name="appointment" required />

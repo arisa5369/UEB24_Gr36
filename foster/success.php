@@ -39,7 +39,7 @@
         <h1>Application Successful! 🐾</h1>
         <p>Thank you for your application! A confirmation email will be sent to your email address shortly.</p>
         <p>Our team will contact you soon based on your selected appointment time.</p>
-        <a href="foster.php"><button class="back-btn">Back to Home Page</button></a>
+        <a href="foster.php"><button class="back-btn">Back to Foster Page</button></a>
     </div>
 </body>
 </html>
