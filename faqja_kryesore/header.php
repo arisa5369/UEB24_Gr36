@@ -418,6 +418,9 @@
               <input type="password" id="login-password" name="login-password" required
                 pattern="^[A-Za-z0-9]{6,}$"
                 title="Password must be at least 6 characters long and contain only letters and numbers.">
+                 <label>
+    <input type="checkbox" name="remember"> Remember me
+  </label>
               <button type="submit">Log In</button>
             </form>
           </div>
