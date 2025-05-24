@@ -339,44 +339,44 @@
           </div>
         </div>
 
-        <div id="createAccountModal" class="modal1">
-          <div class="modal-content1">
-            <span class="close" id="closeCreateAccount">×</span>
-            <h2>Create Petfinder Account</h2>
+   <div id="createAccountModal" class="modal1">
+    <div class="modal-content1">
+        <span class="close" id="closeCreateAccount">×</span>
+        <h2>Create Petfinder Account</h2>
 
-            <form method="POST" action="/UEB24_Gr36/databaza/insert_user.php">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
+        <form method="POST" action="/UEB24_Gr36/databaza/insert_user.php">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
 
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
 
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required
-                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                       title="Please enter a valid email address.">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address.">
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required
-                       pattern="^[A-Za-z0-9]{6,}$"
-                       title="Password must be at least 6 characters long and contain only letters and numbers.">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required
+                   pattern="^[A-Za-z0-9]{6,}$"
+                   title="Password must be at least 6 characters long and contain only letters and numbers.">
 
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required
-                       oninput="checkPasswordMatch()">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required
+                   oninput="checkPasswordMatch()">
 
-                <div style="display: flex; align-items: center; margin-top: 10px;">
-                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()" style="margin-right: 5px;">
-                    <label for="showPassword" style="margin: 0;">Show password</label>
-                </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+                <input type="checkbox" id="showPassword" style="margin-right: 5px;">
+                <label for="showPassword" style="margin: 0;">Show password</label>
+            </div>
 
-                <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
-            </form>
-          </div>
-        </div>
+            <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
+        </form>
+    </div>
+</div>
 
         <div id="loginModal" class="modal1">
           <div class="modal-content1">

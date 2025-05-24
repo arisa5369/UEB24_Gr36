@@ -41,7 +41,7 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
 // Vendos funksionin si trajtues të gabimeve
 set_error_handler("customErrorHandler");
 
->>>>>>> f64acc4300d96e192e2c0b180e6a87be3ef079fa
+
 // Inicializimi i variablave të sesionit
 $_SESSION['shikime_profile'] = ($_SESSION['shikime_profile'] ?? 0);
 $_SESSION['kuiz_pergjigje'] = $_SESSION['kuiz_pergjigje'] ?? [];
