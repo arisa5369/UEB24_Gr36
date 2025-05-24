@@ -152,7 +152,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
           <button >$250</button>
         </div>
         <input type="text" placeholder="Custom Amount ($)" class="custom-amount">
-      <button type="submit" class="donate-button">DONATE♡</button>
+      <button type="button" class="donate-button">DONATE♡</button>
 
       </div>
 
