@@ -133,7 +133,6 @@ if (!empty($_SESSION['kuiz_pergjigje']['aktiviteti'])) {
 }
 $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vizituar faqen {$_SESSION['vizita_faqe']} herë!";
 include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -147,69 +146,115 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
 <body style="background-color: <?php echo $sfondi; ?>;">
     <div id="header-placeholder"></div>
     <script>
-        
-
         $(document).ready(function() {
-            $('#kuiz-btn').on('click', function() {
-                $.post('/UEB24_Gr36/adopt/perpunoj_kuiz.php', {
-                    kuiz_aktiviteti: $('#kuiz_aktiviteti').val()
-                }, function(data) {
-                    $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + data + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
-                });
-            });
-
-            $('.heart-button').on('click', function() {
+            // Handle heart button clicks
+            $(document).on('click', '.heart-button', function() {
+                console.log('Heart button clicked');
                 let button = $(this);
                 let petName = button.data('pet');
+                let action = button.hasClass('favorite') ? 'fshi' : 'shto';
+                console.log('Pet:', petName, 'Action:', action);
+
                 $.post('/UEB24_Gr36/adopt/perpunoj_wishlist.php', {
                     kafsha: petName,
-                    veprimi: button.hasClass('favorite') ? 'fshi' : 'shto'
+                    veprimi: action
                 }, function(response) {
-                    console.log('Përgjigjja:', response);
+                    console.log('AJAX Response:', response);
                     if (response.success) {
                         button.toggleClass('favorite');
-                        if (button.hasClass('favorite')) {
-                            let toast = $('#addedToast');
-                            toast.addClass('show');
-                            setTimeout(() => {
-                                toast.removeClass('show');
-                            }, 2000);
-                            $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1');
+                        // Update the wishlist section
+                        $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1', function() {
+                            console.log('Wishlist reloaded');
+                            // Update the assistant message
+                            let message = action === 'shto' ?
+                                'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke shtuar ' + petName + ' në listën tënde!' :
+                                'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!';
                             $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
-                                'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke shtuar ' + petName + ' në listën tënde!' +
-                                '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
-                        } else {
-                            $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1');
-                            $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
-                                'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!' +
-                                '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
-                        }
+                                message + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
+
+                            // Show toast for adding to wishlist
+                            if (action === 'shto') {
+                                let toast = $('#addedToast');
+                                toast.addClass('show');
+                                setTimeout(() => {
+                                    toast.removeClass('show');
+                                }, 2000);
+                            }
+                        });
+                        // Update all heart buttons for this pet
+                        $('.heart-button[data-pet="' + petName + '"]').toggleClass('favorite');
                     } else {
                         alert('Gabim: ' + response.message);
                     }
                 }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
-                    console.error('Gabim AJAX:', textStatus, errorThrown, jqXHR.responseText);
+                    console.error('AJAX Error:', textStatus, errorThrown, jqXHR.responseText);
                     alert('Gabim gjatë komunikimit me serverin! Detaje: ' + textStatus + ' - ' + jqXHR.responseText);
                 });
             });
 
-            $('.pet-image').on('click', function() {
+            // Handle remove button clicks
+            $(document).on('click', '.remove-button', function() {
+                console.log('Remove button clicked');
+                let button = $(this);
+                let petName = button.data('pet');
+                console.log('Pet to remove:', petName);
+
+                $.post('/UEB24_Gr36/adopt/perpunoj_wishlist.php', {
+                    kafsha: petName,
+                    veprimi: 'fshi'
+                }, function(response) {
+                    console.log('AJAX Response:', response);
+                    if (response.success) {
+                        // Update heart buttons to remove favorite class
+                        $('.heart-button[data-pet="' + petName + '"]').removeClass('favorite');
+                        // Update the wishlist section
+                        $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1', function() {
+                            console.log('Wishlist reloaded after remove');
+                            // Update the assistant message
+                            let message = 'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!';
+                            $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
+                                message + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
+                        });
+                    } else {
+                        alert('Gabim: ' + response.message);
+                    }
+                }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error('AJAX Error:', textStatus, errorThrown, jqXHR.responseText);
+                    alert('Gabim gjatë komunikimit me serverin! Detaje: ' + textStatus + ' - ' + jqXHR.responseText);
+                });
+            });
+
+            // Handle quiz submission
+            $('#kuiz-btn').on('click', function() {
+                console.log('Quiz button clicked');
+                $.post('/UEB24_Gr36/adopt/perpunoj_kuiz.php', {
+                    kuiz_aktiviteti: $('#kuiz_aktiviteti').val()
+                }, function(data) {
+                    console.log('Quiz response:', data);
+                    $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + data + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
+                });
+            });
+
+            // Handle pet image clicks
+            $(document).on('click', '.pet-image', function() {
+                console.log('Pet image clicked:', $(this).data('link'));
                 window.location.href = $(this).data('link');
             });
 
+            // Scroll to wishlist function
             window.scrollToWishlist = function() {
+                console.log('Scrolling to wishlist');
                 $('html, body').animate({
                     scrollTop: $('.wishlist').offset().top
                 }, 500);
             };
 
+            // Scroll to wishlist if URL has #wishlist
             if (window.location.hash === '#wishlist') {
                 scrollToWishlist();
             }
         });
     </script>
-
-  
 
     <div class="content">
         <h1><?php
@@ -329,7 +374,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
         foreach ($kafshe as $kafsha) {
             if ($kafsha['lloji'] == $cookies_array['lloji_kafshes'] || $kafsha['mosha'] == $cookies_array['mosha_kafshes']) {
                 $isFavorite = in_array($kafsha['emri'], $_SESSION['wishlist'] ?? []) ? 'favorite' : '';
-                echo "<div class='pet-card" . ($kafsha['emri'] == 'Bruno' ? '1' : '') . "'>";
+                echo "<div class='pet-card'>";
                 echo "<img src='".htmlspecialchars($kafsha['imazh'])."' alt='".htmlspecialchars($kafsha['lloji'])."' class='pet-image' data-link='".htmlspecialchars($kafsha['link'])."'>";
                 echo "<p>".htmlspecialchars($kafsha['emri'])."</p>";
                 echo "<button class='heart-button $isFavorite' data-pet='".htmlspecialchars($kafsha['emri'])."' title='".($isFavorite ? 'Fshi nga Wishlist' : 'Shto në Wishlist')."'>";
@@ -366,7 +411,10 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
             </div>
             <ul>
                 <?php foreach ($_SESSION['wishlist'] as $kafsha): ?>
-                    <li><?php echo htmlspecialchars($kafsha); ?></li>
+                    <li>
+                        <?php echo htmlspecialchars($kafsha); ?>
+                        <button class="remove-button" data-pet="<?php echo htmlspecialchars($kafsha); ?>" title="Fshi nga Wishlist">✖</button>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>

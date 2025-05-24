@@ -63,7 +63,8 @@ if (isset($_POST['kafsha']) && isset($_POST['veprimi'])) {
         echo "</div>";
         echo "<ul>";
         foreach ($_SESSION['wishlist'] as $kafsha) {
-            echo "<li>" . htmlspecialchars($kafsha) . "</li>";
+            echo "<li>" . htmlspecialchars($kafsha) . 
+                 "<button class='remove-button' data-pet='" . htmlspecialchars($kafsha) . "' title='Fshi nga Wishlist'>✖</button></li>";
         }
         echo "</ul>";
     }
