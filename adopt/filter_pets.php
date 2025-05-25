@@ -162,7 +162,7 @@ if (empty($pets)) {
 usort($pets, function($a, $b) {
     return $b['score'] <=> $a['score'];
 });
-$pets = array_slice($pets, 0, 3);
+$pets = array_slice($pets, 0, 4);
 
 $filtered_pets_html = '';
 $wishlist = $_SESSION['wishlist'] ?? [];
@@ -176,9 +176,7 @@ if (!empty($pets)) {
         $filtered_pets_html .= "<img src='".htmlspecialchars($pet['image'])."' alt='".htmlspecialchars($pet['name'])."' class='pet-image' data-link='/UEB24_Gr36/adopt/".strtolower($pet['type'])."s/".strtolower($pet['type']).".html?name=".urlencode($pet['name'])."'>";
         $filtered_pets_html .= "<p>".htmlspecialchars($pet['name'])." (".htmlspecialchars($pet['type']).")</p>";
         $filtered_pets_html .= "<p>Përputhje: ".round(($pet['score'] / $max_score) * 100)."%</p>";
-        if (!$exact_matches) {
-            $filtered_pets_html .= "<p style='color: #ff6600; font-size: 0.9rem;'>Sugjerim: Nuk u gjetën përputhje të plota.</p>";
-        }
+        if (!$exact_matches) 
         $filtered_pets_html .= "<button class='heart-button $is_favorite' data-pet='".htmlspecialchars($pet['name'])."' title='".($is_favorite ? 'Fshi nga Wishlist' : 'Shto në Wishlist')."'>";
         $filtered_pets_html .= '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
         $filtered_pets_html .= "</button>";
