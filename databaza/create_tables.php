@@ -75,7 +75,7 @@ $sqlStatements = [
 ];
 
 // Execute each SQL statement and handle errors
-foreach ($sqlStatements as $sql) {
+ foreach ($sqlStatements as $sql){
     $result = pg_query($conn, $sql);
     if ($result) {
         // Extract the table name from the SQL for feedback

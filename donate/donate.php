@@ -57,7 +57,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
         <input type="radio" name="donation-type" value="one-time" checked> One time
       </label>
       <label>
-        <input type="radio" name="donation-type" value="monthly"> Monthly
+        <input type="radio" name="donation-type" value="monthly" checked> Monthly
       </label>
     </div>
 

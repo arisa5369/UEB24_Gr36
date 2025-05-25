@@ -1,4 +1,5 @@
 <?php
+file_put_contents('debug.txt', file_get_contents('php://input'));
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');
@@ -20,13 +21,11 @@ try {
     }
 
     // Merr të dhënat nga forma (përdor php://input për POST)
-    $input = file_get_contents('php://input');
-    parse_str($input, $post_data);
-
-    $donation_type = $post_data['donation-type'] ?? '';
-    $amount = $post_data['amount'] ?? 0;
-    $donor_name = $post_data['donor-name'] ?? '';
-    $donor_email = $post_data['donor-email'] ?? '';
+   $donation_type = $_POST['donation-type'] ?? '';
+    $amount = $_POST['amount'] ?? 0;
+    $donor_name = $_POST['donor-name'] ?? '';
+    $donor_email = $_POST['donor-email'] ?? '';
+   
 
     // Validimi
     if (empty($donation_type)) {  // Kllapa mbyllëse për empty()
@@ -38,8 +37,9 @@ try {
     }
 
     // SQL për tabelën donation_db
-    $sql = "INSERT INTO donation_db (donation_type, amount, donor_name, donor_email, donation_date) 
-            VALUES ($1, $2, $3, $4, NOW()) RETURNING id";
+    $sql = "INSERT INTO donation (donation_type, amount, donor_name, donor_email, donation_date) 
+        VALUES ($1, $2, $3, $4, NOW()) RETURNING id";
+
 
     $result = pg_query_params($conn, $sql, [
         $donation_type,
@@ -59,7 +59,7 @@ try {
     ]);
 
 } catch (Exception $e) {
-    http_response_code(500);
+ http_response_code(500);
     echo json_encode([
         "success" => false,
         "message" => $e->getMessage(),
