@@ -20,7 +20,7 @@ async function sendDonationData() {
         'donor-name': '', // Mund të shtoni fushë për emër në HTML nëse është e nevojshme
         'donor-email': '' // Mund të shtoni fushë për email në HTML nëse është e nevojshme
     };
-
+ console.log('Dërgoj këto të dhëna:', formData);
     try {
         const response = await fetch('process_donate.php', {
             method: 'POST',

@@ -51,7 +51,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
         </div>
     <div class="donation-box">
   <h2>Make Donation</h2>
-  <form id="donation-form" method="POST" action="/UEB24_Gr36/process.donate.php" >
+  <form id="donation-form" method="POST">
     <div class="donation-type">
       <label>
         <input type="radio" name="donation-type" value="one-time" checked> One time
