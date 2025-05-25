@@ -1,0 +1,1 @@
+2025-05-25 01:35:58 - [Paralajmërim] Undefined variable $conn në skedarin C:\xampp\htdocs\UEB24_Gr36\adopt\index.php, linja 87

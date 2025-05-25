@@ -19,7 +19,6 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
     $errorType = isset($errorTypes[$errno]) ? $errorTypes[$errno] : "Gabim i Panjohur";
     $mesazh = "[$errorType] $errstring në skedarin $errfile, linja $errline";
     
-    // Shkruaj gabimin në një skedar log
     try {
         $logFile = fopen(LOG_DIR . 'error_log.txt', 'a');
         if ($logFile === false) {
@@ -31,16 +30,12 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
         echo "Gabim gjatë shkrimit të log-ut: " . $e->getMessage();
     }
     
-    // Shfaq mesazh të personalizuar në shqip
     echo "<div style='color: red; padding: 10px; border: 1px solid red;'>$mesazh</div>";
 }
-
-// Vendos funksionin si trajtues të gabimeve
 set_error_handler("customErrorHandler");
 
 // Inicializimi i variablave të sesionit
 $_SESSION['shikime_profile'] = ($_SESSION['shikime_profile'] ?? 0);
-$_SESSION['kuiz_pergjigje'] = $_SESSION['kuiz_pergjigje'] ?? [];
 $_SESSION['wishlist'] = $_SESSION['wishlist'] ?? [];
 $_SESSION['vizita_faqe'] = ($_SESSION['vizita_faqe'] ?? 0) + 1;
 
@@ -70,9 +65,8 @@ function modifikoWishlist($kafsha, $veprimi, $emri) {
     }
 }
 
-// Përpunimi i formës për cookies dhe sesione
+// Përpunimi i formës për cookies
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Cookies për preferencat
     if (isset($_POST['emri'])) {
         setcookie('emri', $_POST['emri'], time() + (30 * 24 * 3600));
     }
@@ -86,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['tema'])) {
         setcookie('tema', $_POST['tema'], time() + (30 * 24 * 3600));
     }
-    // Fshirja e cookies
     if (isset($_POST['fshi_cookies'])) {
         setcookie('emri', '', time() - 3600);
         setcookie('lloji_kafshes', '', time() - 3600);
@@ -94,15 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         setcookie('tema', '', time() - 3600);
         setcookie('shfaq_imazh', '', time() - 3600);
     }
-    // Sesion për kuizin
-    if (isset($_POST['kuiz_aktiviteti'])) {
-        $_SESSION['kuiz_pergjigje']['aktiviteti'] = $_POST['kuiz_aktiviteti'];
-    }
-    // Manipulim i wishlist-it
-    if (isset($_POST['modifiko_wishlist']) && isset($_POST['kafsha'])) {
-        $mesazh_wishlist = modifikoWishlist($_POST['kafsha'], $_POST['modifiko_wishlist'], $_COOKIE['emri'] ?? 'Adoptues')['message'];
-    }
-    // Rifresko faqen
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
@@ -128,9 +112,6 @@ $imazh_kryesor = match ($cookies_array['lloji_kafshes']) {
 
 // Mesazh i asistentit virtual
 $mesazh_asistent = "Përshëndetje, {$cookies_array['emri']}! Ti preferon {$cookies_array['lloji_kafshes']} të {$cookies_array['mosha_kafshes']}. ";
-if (!empty($_SESSION['kuiz_pergjigje']['aktiviteti'])) {
-    $mesazh_asistent .= "Të pëlqejnë kafshë {$_SESSION['kuiz_pergjigje']['aktiviteti']}. ";
-}
 $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vizituar faqen {$_SESSION['vizita_faqe']} herë!";
 include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
 ?>
@@ -162,17 +143,13 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                     console.log('AJAX Response:', response);
                     if (response.success) {
                         button.toggleClass('favorite');
-                        // Update the wishlist section
                         $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1', function() {
                             console.log('Wishlist reloaded');
-                            // Update the assistant message
                             let message = action === 'shto' ?
                                 'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke shtuar ' + petName + ' në listën tënde!' :
                                 'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!';
                             $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
                                 message + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
-
-                            // Show toast for adding to wishlist
                             if (action === 'shto') {
                                 let toast = $('#addedToast');
                                 toast.addClass('show');
@@ -181,7 +158,6 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                                 }, 2000);
                             }
                         });
-                        // Update all heart buttons for this pet
                         $('.heart-button[data-pet="' + petName + '"]').toggleClass('favorite');
                     } else {
                         alert('Gabim: ' + response.message);
@@ -205,12 +181,9 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                 }, function(response) {
                     console.log('AJAX Response:', response);
                     if (response.success) {
-                        // Update heart buttons to remove favorite class
                         $('.heart-button[data-pet="' + petName + '"]').removeClass('favorite');
-                        // Update the wishlist section
                         $('.wishlist').load('/UEB24_Gr36/adopt/perpunoj_wishlist.php?reload_wishlist=1', function() {
                             console.log('Wishlist reloaded after remove');
-                            // Update the assistant message
                             let message = 'Përshëndetje, <?php echo htmlspecialchars($cookies_array['emri']); ?>! Ke fshirë ' + petName + ' nga lista jote!';
                             $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + 
                                 message + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
@@ -221,17 +194,6 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                 }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
                     console.error('AJAX Error:', textStatus, errorThrown, jqXHR.responseText);
                     alert('Gabim gjatë komunikimit me serverin! Detaje: ' + textStatus + ' - ' + jqXHR.responseText);
-                });
-            });
-
-            // Handle quiz submission
-            $('#kuiz-btn').on('click', function() {
-                console.log('Quiz button clicked');
-                $.post('/UEB24_Gr36/adopt/perpunoj_kuiz.php', {
-                    kuiz_aktiviteti: $('#kuiz_aktiviteti').val()
-                }, function(data) {
-                    console.log('Quiz response:', data);
-                    $('.asistent').html('<img src="/UEB24_Gr36/adopt/images/petpal-icon.png" alt="PetPal">' + data + '<span class="wishlist-link" onclick="scrollToWishlist()">Shiko Wishlist</span>');
                 });
             });
 
@@ -249,7 +211,6 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                 }, 500);
             };
 
-            // Scroll to wishlist if URL has #wishlist
             if (window.location.hash === '#wishlist') {
                 scrollToWishlist();
             }
@@ -328,33 +289,6 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
                 <button type="submit">Ruaj Preferencat</button>
                 <button type="submit" name="fshi_cookies" value="1">Fshi Preferencat</button>
             </form>
-        </div>
-        <div class="form-container">
-            <h2>Kuiz: Gjej Kafshën Perfekte</h2>
-            <form id="kuiz-form">
-                <label>A preferon kafshë aktive apo të qeta?</label>
-                <select id="kuiz_aktiviteti" name="kuiz_aktiviteti">
-                    <option value="aktive">Aktive</option>
-                    <option value="të qeta">Të qeta</option>
-                </select>
-                <button type="button" id="kuiz-btn">Përgjigju</button>
-            </form>
-            <h2>Manipulo Wishlist-in</h2>
-            <form method="post">
-                <label>Zgjidh kafshën:</label>
-                <select name="kafsha">
-                    <?php foreach (['Buddy', 'Tom', 'Houdini', 'Bruno'] as $k) {
-                        echo "<option value='$k'>$k</option>";
-                    } ?>
-                </select><br>
-                <label>Veprimi:</label>
-                <select name="modifiko_wishlist">
-                    <option value="shto">Shto</option>
-                    <option value="fshi">Fshi</option>
-                </select><br>
-                <button type="submit">Kryej Veprimin</button>
-            </form>
-            <?php if (isset($mesazh_wishlist)) echo "<p style='color: #ff6600;'>".htmlspecialchars($mesazh_wishlist)."</p>"; ?>
         </div>
     </section>
 

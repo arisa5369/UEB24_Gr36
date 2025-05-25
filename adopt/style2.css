@@ -366,22 +366,19 @@ button.category:hover img {
 }
 
 .personalize-section {
-    max-width: 1000px;
+    max-width: 500px;
     margin: 30px auto;
     padding: 20px;
     background: var(--section-background);
     border: 2px solid #ff6600;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+    text-align: center;
 }
 
 .personalize-section .form-container {
-    flex: 1;
-    min-width: 250px;
+    max-width: 400px;
+    margin: 0 auto;
     padding: 15px;
 }
 
@@ -426,6 +423,7 @@ button.category:hover img {
 .personalize-section button:hover {
     background-color: #cc5500;
 }
+
 
 .wishlist {
     max-width: 1200px;
@@ -494,7 +492,6 @@ button.category:hover img {
         max-width: 90%;
     }
     .personalize-section {
-        flex-direction: column;
         max-width: 90%;
         padding: 15px;
         margin: 20px auto;
@@ -507,10 +504,6 @@ button.category:hover img {
     .asistent img {
         width: 25px;
         height: 25px;
-    }
-    .personalize-section .form-container {
-        min-width: auto;
-        padding: 10px;
     }
     .pets {
         gap: 20px;
