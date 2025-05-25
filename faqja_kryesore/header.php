@@ -301,7 +301,7 @@
     }
   }
 
-  /* Optional: Style the scrollbar for better aesthetics */
+
   .modal-content1::-webkit-scrollbar {
     width: 8px;
   }
@@ -403,28 +403,72 @@
             </div>
         </div>
 
-        <div id="loginModal" class="modal1">
-          <div class="modal-content1">
-            <span class="close" id="closeLogin">×</span>
-            <h2>Log in with Petfinder</h2>
 
-            <form method="POST" action="/UEB24_Gr36/databaza/login.php">
-              <label for="login-email">Email:</label>
-              <input type="email" id="login-email" name="login-email" required
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                title="Please enter a valid email address.">
+        
+      <div id="loginModal" class="modal1">
+    <div class="modal-content1">
+        <span class="close" id="closeLogin">×</span>
+        <h2>Log in with Petfinder</h2>
+        <form method="POST" action="/UEB24_Gr36/databaza/login.php">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="login-username" required
+                   pattern="[A-Za-z0-9]{3,}"
+                   title="Username must be at least 3 characters long and contain only letters and numbers.">
 
-              <label for="login-password">Password:</label>
-              <input type="password" id="login-password" name="login-password" required
-                pattern="^[A-Za-z0-9]{6,}$"
-                title="Password must be at least 6 characters long and contain only letters and numbers.">
-                 <label>
-    <input type="checkbox" name="remember"> Remember me
-  </label>
-              <button type="submit">Log In</button>
-            </form>
-          </div>
-        </div>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password" required
+                   pattern="[A-Za-z0-9]{6,}"
+                   title="Password must be at least 6 characters long and contain only letters and numbers.">
+
+            <button type="submit">Log In</button>
+            <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+        </form>
+    </div>
+</div>
+
+<div id="forgotPasswordModal" class="modal1" style="display:none;">
+    <div class="modal-content1">
+        <span class="close" id="closeForgotPassword">×</span>
+        <h2>Reset Password</h2>
+        <form method="POST" action="/UEB24_Gr36/databaza/forgot_password.php">
+            <label for="reset-email">Email:</label>
+            <input type="email" id="reset-email" name="reset-email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address.">
+            <button type="submit">Send Verification Code</button>
+        </form>
+    </div>
+</div>
+
+<div id="verifyCodeModal" class="modal1" style="display:none;">
+    <div class="modal-content1">
+        <span class="close" id="closeVerifyCode">×</span>
+        <h2>Enter Verification Code</h2>
+        <form method="POST" action="/UEB24_Gr36/databaza/reset_password.php">
+            <label for="verify-email">Email:</label>
+            <input type="email" id="verify-email" name="verify-email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address.">
+
+            <label for="verify-code">Verification Code:</label>
+            <input type="text" id="verify-code" name="verify-code" required
+                   pattern="[0-9]{6}"
+                   title="Verification code must be a 6-digit number.">
+
+            <label for="new-password">New Password:</label>
+            <input type="password" id="new-password" name="new-password" required
+                   pattern="[A-Za-z0-9]{6,}"
+                   title="Password must be at least 6 characters long and contain only letters and numbers.">
+
+            <label for="confirm-new-password">Confirm New Password:</label>
+            <input type="password" id="confirm-new-password" name="confirm-new-password" required
+                   pattern="[A-Za-z0-9]{6,}"
+                   title="Password must be at least 6 characters long and contain only letters and numbers.">
+
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+</div>
 
         <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
 
