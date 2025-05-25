@@ -4,24 +4,35 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
-
 }
+
 .content {
     background-color: orange;
     color: white;
     text-align: center;
     padding: 20px;
-    position: relative; 
+    position: relative;
 }
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+}
+
 .bird-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
     margin: 20px 40px;
-} 
-.bird-card{ 
-border: 2px solid #ff6600;
+}
+
+.bird-card {
+    border: 2px solid #ff6600;
     border-radius: 12px;
     overflow: hidden;
     width: 220px;
@@ -29,17 +40,28 @@ border: 2px solid #ff6600;
     background: #fff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    position: relative;
 }
+
 .bird-card:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 .bird-card img {
     width: 100%;
     height: 160px;
     object-fit: cover;
     border-radius: 12px;
 }
+
+.bird-card p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
 .back-button {
     display: inline-block;
     margin: 10px;
@@ -49,18 +71,25 @@ border: 2px solid #ff6600;
     text-decoration: none;
     border-radius: 5px;
     outline: 3px solid white;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
+
+.back-button:hover {
+    background-color: #d6781b;
+}
+
 .gif-container {
-    position: absolute; 
-    bottom: 10px; 
-    left: 10px; 
-    padding: 0; 
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 0;
 }
 
 .audio-button {
     display: inline-block;
-    padding: 10px 20px; 
-    background-color: #f7941e; 
+    padding: 10px 20px;
+    background-color: #f7941e;
     color: white;
     font-size: 16px;
     font-family: 'Arial', sans-serif;
@@ -68,19 +97,327 @@ border: 2px solid #ff6600;
     text-align: center;
     text-decoration: none;
     border: none;
-    border-radius: 30px; 
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    transition: all 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .audio-button:hover {
     background-color: #d6781b;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
-    transform: scale(1.05); 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .audio-button:active {
-    background-color: #c06217; 
-    transform: scale(0.95); 
+    background-color: #c06217;
+    transform: scale(0.95);
+}
+
+.bird-image {
+    cursor: pointer;
+}
+
+.wishlist-button {
+    display: block;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-button:hover {
+    background-color: #cc5500;
+}
+
+.heart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.heart-button svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #ff6600;
+    stroke-width: 2;
+    display: block;
+    visibility: visible;
+}
+
+.heart-button.favorite svg {
+    fill: #ff6600;
+    stroke: none;
+}
+
+.heart-button:hover svg {
+    stroke: #ff6600;
+    transform: scale(1.2);
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 120px;
+    background-color: rgb(255, 157, 0);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: visibility 0s, opacity 0.4s linear;
+    opacity: 0;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .bird-list {
+        gap: 20px;
+        margin: 20px;
+    }
+    .bird-card {
+        width: 200px;
+    }
+    .bird-card img {
+        height: 150px;
+    }
+    .content h1 {
+        font-size: 2rem;
+    }
+    .content p {
+        font-size: 1rem;
+    }
+}body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.content {
+    background-color: orange;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+}
+
+.bird-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 40px;
+}
+
+.bird-card {
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.bird-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bird-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.bird-card p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background-color: orange;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    outline: 3px solid white;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #d6781b;
+}
+
+.gif-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 0;
+}
+
+.audio-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f7941e;
+    color: white;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.audio-button:hover {
+    background-color: #d6781b;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.audio-button:active {
+    background-color: #c06217;
+    transform: scale(0.95);
+}
+
+.bird-image {
+    cursor: pointer;
+}
+
+.wishlist-button {
+    display: block;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-button:hover {
+    background-color: #cc5500;
+}
+
+.heart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.heart-button svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #ff6600;
+    stroke-width: 2;
+    display: block;
+    visibility: visible;
+}
+
+.heart-button.favorite svg {
+    fill: #ff6600;
+    stroke: none;
+}
+
+.heart-button:hover svg {
+    stroke: #ff6600;
+    transform: scale(1.2);
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 120px;
+    background-color: rgb(255, 157, 0);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: visibility 0s, opacity 0.4s linear;
+    opacity: 0;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .bird-list {
+        gap: 20px;
+        margin: 20px;
+    }
+    .bird-card {
+        width: 200px;
+    }
+    .bird-card img {
+        height: 150px;
+    }
+    .content h1 {
+        font-size: 2rem;
+    }
+    .content p {
+        font-size: 1rem;
+    }
 }
