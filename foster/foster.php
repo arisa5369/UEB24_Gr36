@@ -3,6 +3,7 @@ ob_start();
 session_start();
 
 require 'C:\XAMPP\htdocs\UEB24_Gr36\foster\config.php';
+include '../databaza/db_connect.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -77,6 +78,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $experience = preg_replace("/\s+/", " ", $experience);
 
+        $sql = "INSERT INTO applications (email, experience, preferred_pet_type, appointment) 
+                VALUES ($1, $2, $3, $4)";
+        $result = pg_query_params($conn, $sql, [$email, $experience, $preferredPetType, $appointment]);
+
+        if (!$result) {
+            throw new Exception("Error saving application to database: " . pg_last_error($conn));
+        }
+
         $logFile = 'C:\XAMPP\htdocs\UEB24_Gr36\foster\applications.txt';
         $logData = "Application: " . date('Y-m-d H:i:s') . " | Email: $email | Experience: $experience | Preferred Pet Type: $preferredPetType | Appointment: $appointment\n";
 
@@ -90,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 0; // Debugging është çaktivizuar për përdorim normal
+            $mail->SMTPDebug = 0; 
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
@@ -267,7 +276,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <option value="Cat">Cat</option>
                   <option value="Bird">Bird</option>
                   <option value="Rabbit">Rabbit</option>
-                  <option value="Other">Other</option>
                   </select>
 
                 <label for="appointment">Select an appointment time for the pet visit:</label>

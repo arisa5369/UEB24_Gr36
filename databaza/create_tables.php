@@ -89,8 +89,16 @@ $sqlStatements = [
     PRIMARY KEY (user_id, pet_id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
-);"
-];
+);" ,
+    // Create applications table
+    "CREATE TABLE IF NOT EXISTS applications (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(100) NOT NULL,
+        experience TEXT,
+        preferred_pet_type VARCHAR(50),
+        appointment TIMESTAMP,
+    );" ,
+    ];
 
 // Execute each SQL statement and handle errors
 foreach ($sqlStatements as $sql) {
