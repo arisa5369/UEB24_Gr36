@@ -8,9 +8,7 @@ if (!$conn) {
 
 // Array of SQL statements to execute
 $sqlStatements = [
-    // No need to drop enum types since we're not using them
-
-    // Create users table (your existing table)
+    // Create users table
     "CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         firstName VARCHAR(50) NOT NULL,
@@ -18,6 +16,16 @@ $sqlStatements = [
         username VARCHAR(50) NOT NULL UNIQUE,
         email VARCHAR(100) NOT NULL UNIQUE,
         pass VARCHAR(255) NOT NULL
+    );",
+
+    // Create password_resets table for password reset functionality
+    "CREATE TABLE IF NOT EXISTS password_resets (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(100) NOT NULL,
+        code VARCHAR(6) NOT NULL CHECK (code ~ '^[0-9]{6}$'),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        expires_at TIMESTAMP NOT NULL,
+        CONSTRAINT fk_email FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE
     );",
 
     // Create main pets table for common attributes without enums
@@ -65,7 +73,9 @@ $sqlStatements = [
         health TEXT NOT NULL,
         wingspan INT NOT NULL CHECK (wingspan >= 0),
         CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
-    );" , 
+    );",
+
+    // Create donation table
     "CREATE TABLE IF NOT EXISTS donation (
         id SERIAL PRIMARY KEY,
         donation_type VARCHAR(100) NOT NULL,

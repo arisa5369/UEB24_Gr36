@@ -1,38 +1,36 @@
 <?php
-session_start(); // Fillojmë sesionin për të ruajtur të dhënat e përdoruesit pas login-it
+session_start();
 include 'db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = pg_escape_string($_POST['login-email']);
+
+    $username = pg_escape_string($_POST['login-username']);
     $password = $_POST['login-password'];
 
-    // Kërko përdoruesin me këtë email në databazë
-    $stmt = pg_prepare($conn, "select_user", "SELECT * FROM users WHERE email = $1");
+  
+    $stmt = pg_prepare($conn, "select_user", "SELECT pass FROM users WHERE username = $1");
     if ($stmt) {
-        $result = pg_execute($conn, "select_user", array($email));
+        $result = pg_execute($conn, "select_user", array($username));
         if ($result && pg_num_rows($result) > 0) {
-            // Email-i ekziston, merr të dhënat e përdoruesit
-            $user = pg_fetch_assoc($result);
-            $stored_password = $user['pass'];
+            $row = pg_fetch_assoc($result);
+            $stored_password = $row['pass'];
 
-            // Verifiko fjalëkalimin
+          
             if (password_verify($password, $stored_password)) {
-                // Login i suksesshëm, ruaj të dhënat në sesion
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['email'] = $user['email'];
-
-                // Ridrejto te index1.php me mesazh suksesi
-                header("Location: /UEB24_GR36/faqja_kryesore/index1.php?success=Ju u loguat me sukses!");
+                $_SESSION['username'] = $username;
+                header("Location: /UEB24_Gr36/faqja_kryesore/index1.php?success=Logged_in_successfully!");
                 exit();
             } else {
-                echo "Gabim: Fjalëkalimi është i pasaktë!";
+                header("Location: /UEB24_Gr36/faqja_kryesore/index1.php?error=Invalid_password!");
+                exit();
             }
         } else {
-            echo "Gabim: Email-i nuk ekziston! Ju lutem regjistrohuni së pari.";
+            header("Location: /UEB24_Gr36/faqja_kryesore/index1.php?error=Username_not_found!");
+            exit();
         }
     } else {
-        echo "Gabim gjatë përgatitjes së komandës: " . pg_last_error();
+        header("Location: /UEB24_Gr36/faqja_kryesore/index1.php?error=Database_error!");
+        exit();
     }
 }
 
