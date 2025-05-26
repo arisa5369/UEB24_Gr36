@@ -7,7 +7,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="donate2.css">
+  <link rel="stylesheet" href="stories.css">
   <title>Image Gallery</title>
 </head>
 
@@ -128,7 +128,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
     </div>
   </div>
 
-  <a href="/UEB24_Gr36/faqja_kryesore/index1.php" class="back-button">← Back to Home</a>
+  <a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php" class="back-button">← Back to Home</a>
 
   <div id="footer"></div>
   <script src="/UEB24_Gr36/adopt/footer.js"></script>

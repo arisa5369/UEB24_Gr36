@@ -33,7 +33,6 @@ $dataAktuale = date("d/m/Y");
         <p class="hero-subtitle">Giving Pets the Lives They Deserve</p>
         <div class="hero-buttons">
           <a href="/UEB24_Gr36/adopt/index.php" class="adopt-btn">Adoptable Pets</a>
-          <a href="/UEB24_Gr36/donate/donate.php" class="donate-btn">Donate</a>
         </div>
       </div>
   </section>
@@ -217,7 +216,7 @@ $dataAktuale = date("d/m/Y");
 
           Petfinder was founded in St. Louis to help animals who don’t fit into the traditional shelter environment. Our Litter Mates Feline and Canine Ambassadors may have been injured or may have medical and/or behavioral issues. They may be sick, geriatric, or in need of hospice care. Many are neonatal kittens or puppies for which very few other resources exist. Some Litter Mates will spend their entire lives at Petfinder, and we’re thankful that we can ensure they’re living the happy, healthy lives they deserve in comfort rather than facing unnecessary euthanasia.
         </p>
-        <a href="/UEB24_Gr36/donate/donate.php" class="learn-more-btn">Learn More About Litter Mates</a>
+        <a href="/UEB24_Gr36/get_help/getHelp.php" class="learn-more-btn">Learn More About Litter Mates</a>
       </div>
     </div>
   </section>

@@ -214,7 +214,7 @@
   }
 
   .signup-btn,
-  .donate-btn {
+  .foster-btn {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -241,12 +241,12 @@
     color: #ff6600;
   }
 
-  .donate-btn {
+  .foster-btn {
     background-color: #ff6600;
     color: white;
   }
 
-  .donate-btn:hover {
+  .foster-btn:hover {
     background-color: #e65c00;
     color: white;
   }
@@ -278,7 +278,7 @@
     }
 
     .hero-buttons .adopt-btn,
-    .hero-buttons .donate-btn {
+    .hero-buttons .foster-btn {
       font-size: 1rem;
       padding: 10px 20px;
     }
@@ -295,7 +295,7 @@
     }
 
     .signup-btn,
-    .donate-btn {
+    .foster-btn {
       width: 100%;
       text-align: center;
     }
@@ -346,7 +346,7 @@
           <li><a href="/UEB24_Gr36/get_help/getHelp.php">Get Help</a></li>
           <li><a href="/UEB24_Gr36/adopt/index.php">Adopt</a></li>
           <li><a href="/UEB24_Gr36/foster/foster.php">Foster</a></li>
-          <li><a href="/UEB24_Gr36/donate/donate.php">Donate</a></li>
+          <li><a href="/UEB24_Gr36/donate/donate2.php">Success Stories</a></li>
           <li><a href="/UEB24_Gr36/aboutUs/our_impact/aaa.php">About Us</a></li>
         </ul>
       </nav>
@@ -472,7 +472,7 @@
 
         <script src="/UEB24_Gr36/faqja_kryesore/script.js"></script>
 
-        <button class="donate-btn" onclick="location.href='/UEB24_Gr36/donate/donate.php'">Donate Now</button>
+        <button class="foster-btn" onclick="location.href='/UEB24_Gr36/foster/foster.php'">Foster Application</button>
 
         <div class="social-icons">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
