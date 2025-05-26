@@ -1,2 +1,3 @@
 2025-05-25 21:36:06 - Raw wishlist cookie: ["Tom","Buddy","Bella","Rocco"]
 2025-05-25 21:36:17 - Raw wishlist cookie: ["Tom","Buddy","Bella","Rocco"]
+2025-05-26 16:48:55 - [Paralajmërim] require_once(adopt/perpunoj_wishlist.php): Failed to open stream: No such file or directory në skedarin C:\xampp\htdocs\UEB24_Gr36\adopt\index.php, linja 317

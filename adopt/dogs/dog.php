@@ -12,7 +12,7 @@ if (empty($dog_name)) {
     die("Invalid dog name");
 }
 
-$query = "SELECT p.id, p.name, p.image, p.age, p.gender, p.color, p.personality, d.breed, d.size
+$query = "SELECT p.id, p.name, p.image, p.age, p.gender, p.color, p.personality, d.breed
           FROM pets p
           JOIN dogs d ON p.id = d.pet_id
           WHERE p.name = $1 AND p.type = 'Dog'";
@@ -136,7 +136,7 @@ pg_close($conn);
             <p><strong>Color:</strong> <span id="dog-color"><?php echo htmlspecialchars($dog['color']); ?></span></p>
             <p><strong>Personality:</strong> <span id="dog-personality"><?php echo htmlspecialchars($dog['personality']); ?></span></p>
             <p><strong>Health:</strong> <span id="dog-health">Good</span></p>
-            <p><strong>Size:</strong> <span id="dog-size"><?php echo htmlspecialchars($dog['size']); ?></span></p>
+          
             
             <!-- Add Adopt Now button -->
             <button id="adopt-button" class="adopt-button" <?php echo $is_adopted ? 'disabled' : ''; ?>>
