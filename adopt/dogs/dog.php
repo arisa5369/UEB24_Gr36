@@ -24,8 +24,16 @@ if (!$result || pg_num_rows($result) == 0) {
 }
 
 $dog = pg_fetch_assoc($result);
+
+// Check if the dog is already adopted
+$adopted_query = "SELECT 1 FROM adopted_pets WHERE pet_id = $1";
+$adopted_result = pg_prepare($conn, "adopted_query", $adopted_query);
+$adopted_result = pg_execute($conn, "adopted_query", [$dog['id']]);
+$is_adopted = pg_num_rows($adopted_result) > 0;
+
 $isFavorite = in_array($dog['name'], $_SESSION['wishlist'] ?? []) ? 'favorite' : '';
 pg_free_result($result);
+pg_free_result($adopted_result);
 pg_close($conn);
 ?>
 
@@ -37,6 +45,79 @@ pg_close($conn);
     <title><?php echo htmlspecialchars($dog['name']); ?> - Dog Profile</title>
     <link rel="stylesheet" href="dog.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .adopt-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .adopt-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .adoption-details {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -56,12 +137,38 @@ pg_close($conn);
             <p><strong>Personality:</strong> <span id="dog-personality"><?php echo htmlspecialchars($dog['personality']); ?></span></p>
             <p><strong>Health:</strong> <span id="dog-health">Good</span></p>
             <p><strong>Size:</strong> <span id="dog-size"><?php echo htmlspecialchars($dog['size']); ?></span></p>
+            
+            <!-- Add Adopt Now button -->
+            <button id="adopt-button" class="adopt-button" <?php echo $is_adopted ? 'disabled' : ''; ?>>
+                <?php echo $is_adopted ? 'Already Adopted' : 'Adopt Now'; ?>
+            </button>
         </div>
         <div class="back-button">
             <a href="/UEB24_Gr36/adopt/dogs/dogs.php">← Back to Dog List</a>
         </div>
     </div>
+    
+    <!-- Adoption Modal -->
+    <div id="adoptionModal" class="modal">
+        <div class="modal-content">
+            <h2>Congratulations! You're about to become a pet owner!</h2>
+            <div id="adoptionDetails" class="adoption-details" style="display: none;">
+                <h3>Adoption Details</h3>
+                <p><strong>Pet ID:</strong> <span id="adoptedPetId"></span></p>
+                <p><strong>Pet Name:</strong> <span id="adoptedPetName"></span></p>
+                <p><strong>Your Name:</strong> <span id="adopterName"></span></p>
+                <p><strong>Your ID:</strong> <span id="adopterId"></span></p>
+            </div>
+            <p>Are you sure you want to adopt <?php echo htmlspecialchars($dog['name']); ?>?</p>
+            <div class="modal-buttons">
+                <button id="confirmAdopt" class="modal-button confirm-button">Accept Adoption</button>
+                <button id="cancelAdopt" class="modal-button cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
     <div id="addedToast" class="toast">✔️ Added to Wishlist!</div>
+    <div id="adoptedToast" class="toast">✔️ Adoption Successful!</div>
 
     <script>
         $(document).ready(function() {
@@ -86,6 +193,66 @@ pg_close($conn);
                 }, 'json').fail(function() {
                     alert('Gabim gjatë komunikimit me serverin!');
                 });
+            });
+            
+            // Adoption functionality
+            $('#adopt-button').on('click', function() {
+                $('#adoptionModal').show();
+            });
+            
+            $('#cancelAdopt').on('click', function() {
+                $('#adoptionModal').hide();
+            });
+            
+            $('#confirmAdopt').on('click', function() {
+                // Get user data from session (you'll need to adjust this based on your auth system)
+                let userId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
+                let userName = "<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>";
+                let petId = <?php echo $dog['id']; ?>;
+                let petName = "<?php echo htmlspecialchars($dog['name']); ?>";
+                
+                if (!userId) {
+                    alert('Please log in to adopt a pet');
+                    $('#adoptionModal').hide();
+                    return;
+                }
+                
+                // Show adoption details
+                $('#adoptedPetId').text(petId);
+                $('#adoptedPetName').text(petName);
+                $('#adopterName').text(userName);
+                $('#adopterId').text(userId);
+                $('#adoptionDetails').show();
+                
+                // Send adoption request to server
+                $.post('/UEB24_Gr36/adopt/dogs/perpunoj_adoption.php', {
+                    pet_id: petId,
+                    user_id: userId,
+                    action: 'adopt'
+                }, function(response) {
+                    if (response.success) {
+                        // Show success message
+                        let toast = $('#adoptedToast');
+                        toast.addClass('show');
+                        setTimeout(() => {
+                            toast.removeClass('show');
+                            $('#adoptionModal').hide();
+                            // Disable adopt button and update text
+                            $('#adopt-button').text('Already Adopted').prop('disabled', true);
+                        }, 2000);
+                    } else {
+                        alert('Adoption failed: ' + response.message);
+                    }
+                }, 'json').fail(function() {
+                    alert('Gabim gjatë komunikimit me serverin!');
+                });
+            });
+            
+            // Close modal when clicking outside
+            $(window).on('click', function(event) {
+                if ($(event.target).is('#adoptionModal')) {
+                    $('#adoptionModal').hide();
+                }
             });
         });
     </script>
