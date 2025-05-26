@@ -5,11 +5,12 @@ body {
   box-sizing: border-box;
   background-color: #f5f5f5; 
   color: #333;
+  line-height: 1.6;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  grid-template-columns: 1fr 1fr;
   gap: 30px; 
   max-width: 1200px;
   align-items: center;
@@ -18,9 +19,19 @@ body {
   padding-top: 70px;
 }
 
+.container-alt {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .content {
   text-align: left;
   padding: 0 20px;
+  grid-column: 1;
 }
 
 .content h1 {
@@ -41,10 +52,10 @@ body {
 
 .images {
   display: flex;
-  justify-content: center;
+  justify-content:flex-end;
   align-items: flex-start;
   gap: 20px;
-  position: relative;
+  grid-column: 2;
 }
 
 .images img:first-child {
@@ -108,22 +119,6 @@ body {
   object-fit: cover;
 }
 
-.foster-button {
-  background-color: #ff7f3f;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.foster-button:hover {
-  background-color: #e06d35;
-}
 .actions1 {
   text-align: center;
   margin-top: 20px;
@@ -197,19 +192,50 @@ body {
   background-color: #236e69;
 }
 
+#startFosterApplication {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #2a838c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#startFosterApplication:hover {
+  background-color: #236e69;
+}
+
 .modal-content hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 20px 0;
 }
+
 .error-messages {
   color: red;
   margin-bottom: 10px;
 }
+
 .error-messages ul {
   padding-left: 20px;
 }
 
+.custom-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.custom-list li {
+  background: url('https://via.placeholder.com/15/2ecc71/2ecc71?text=+') no-repeat left 5px;
+  padding-left: 20px;
+  margin: 10px 0;
+}
 
 .social-buttons button {
   background-color: #f5f5f5;
@@ -240,6 +266,7 @@ body {
 .close:hover {
   color: #ff7f3f;
 }
+
 .modal-image {
   width: 100%;
   border-radius: 10px;
@@ -261,36 +288,61 @@ body {
 }
 
 .modal-content input,
-.modal-content textarea {
+.modal-content textarea,
+.modal-content select,
+.modal-content input[type="datetime-local"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px 15px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 16px;
   box-sizing: border-box;
   background-color: #f9f9f9;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  line-height: normal;
+  min-height: 48px;
 }
 
 .modal-content input:focus,
-.modal-content textarea:focus {
+.modal-content textarea:focus,
+.modal-content select:focus,
+.modal-content input[type="datetime-local"]:focus {
   border-color: #2a838c;
   background-color: #fff;
   outline: none;
+  box-shadow: 0 0 8px rgba(42, 131, 140, 0.3);
+}
+
+.modal-content select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+#preferredPetType {
+  height: 48px;
+  line-height: 1;
 }
 
 .modal-content textarea {
   resize: vertical;
 }
 
-.submit-btn {
+.modal-content button[type="submit"] {
   background-color: #ff7f3f;
   color: white;
   border: none;
   padding: 12px 25px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
@@ -299,12 +351,21 @@ body {
   margin-top: 20px;
 }
 
-.submit-btn:hover {
+.modal-content button[type="submit"]:hover {
   background-color: #e06d35;
 }
 
-.submit-btn:active {
+.modal-content button[type="submit"]:active {
   transform: scale(0.98);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group small {
+  color: #666;
+  font-size: 0.8rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -328,7 +389,9 @@ body {
   }
 
   .modal-content input,
-  .modal-content textarea {
+  .modal-content textarea,
+  .modal-content select,
+  .modal-content input[type="datetime-local"] {
     font-size: 0.9rem;
   }
 }
@@ -362,13 +425,6 @@ body {
 
 .testimonial-image img:hover {
   transform: scale(1.1);
-}
-
-.testimonial-text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  text-align: left;
 }
 
 .testimonial-text {
@@ -415,6 +471,12 @@ body {
   border-radius: 12px;
 }
 
+.pet-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
 .faq-container {
   max-width: 900px;
   margin: 0 auto;
@@ -428,6 +490,8 @@ h2 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+  border-bottom: 2px solid #2ecc71;
+  padding-bottom: 10px;
 }
 
 table {
@@ -528,4 +592,11 @@ details summary {
 .overlay2 .donation-grid button:hover {
   background-color: #e56e00;
   transform: scale(1.1);
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  margin-top: 20px;
 }

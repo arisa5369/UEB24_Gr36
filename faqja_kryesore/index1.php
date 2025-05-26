@@ -41,7 +41,7 @@ $dataAktuale = date("d/m/Y");
   <?php
   define("ORGANIZATION_NAME", "Petfinder");
 
-  $hour = date("H"); // Ora në format 24h (0-23)
+  $hour = date("H"); 
   $greeting = "";
 
   switch (true) {

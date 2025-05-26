@@ -1,0 +1,7 @@
+2025-05-24 13:50:22 - [Gabim i Panjohur] Constant FILTER_SANITIZE_STRING is deprecated në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 47
+2025-05-24 13:50:22 - [Gabim i Panjohur] Constant FILTER_SANITIZE_STRING is deprecated në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 48
+2025-05-24 13:50:22 - [Gabim i Panjohur] Constant FILTER_SANITIZE_STRING is deprecated në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 49
+2025-05-24 14:05:47 - [Gabim i Përdoruesit] Përjashtim i kapur: Dështoi dërgimi i emailit: SMTP Error: Could not authenticate. në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 138
+2025-05-24 14:10:50 - [Gabim i Përdoruesit] Përjashtim i kapur: Dështoi dërgimi i emailit: SMTP Error: Could not authenticate. në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 138
+2025-05-24 14:12:37 - [Gabim i Përdoruesit] Përjashtim i kapur: Dështoi dërgimi i emailit: SMTP Error: Could not authenticate. në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 140
+2025-05-24 14:40:49 - [Paralajmërim] Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\UEB24_Gr36\foster\phpmailer\SMTP.php:314) në skedarin C:\xampp\htdocs\UEB24_Gr36\foster\foster.php, linja 139
