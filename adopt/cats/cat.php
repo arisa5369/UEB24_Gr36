@@ -12,7 +12,7 @@ if (empty($cat_name)) {
     die("Invalid cat name");
 }
 
-$query = "SELECT p.id, p.name, p.image, p.age, p.gender, p.color, p.personality, c.breed, c.size
+$query = "SELECT p.id, p.name, p.image, p.age, p.gender, p.color, p.personality, c.breed
           FROM pets p
           JOIN cats c ON p.id = c.pet_id
           WHERE p.name = $1 AND p.type = 'Cat'";

@@ -3,10 +3,8 @@ session_start();
 require_once 'config.php';
 include '../databaza/db_connect.php';
 
-// Set default for shfaq_imazh cookie
 setcookie('shfaq_imazh', 'false', time() + (30 * 24 * 3600), '/');
 
-// Custom error handler
 function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext) {
     $errorTypes = [
         E_ERROR => "Gabim Fatal",
@@ -34,18 +32,15 @@ function customErrorHandler($errno, $errstring, $errfile, $errline, $errcontext)
 }
 set_error_handler("customErrorHandler");
 
-// Initialize session variables
 $_SESSION['shikime_profile'] = ($_SESSION['shikime_profile'] ?? 0);
 $_SESSION['vizita_faqe'] = ($_SESSION['vizita_faqe'] ?? 0) + 1;
 
-// Load wishlist from cookie if it exists, otherwise initialize as empty array
 if (isset($_COOKIE['wishlist']) && !empty($_COOKIE['wishlist'])) {
     $_SESSION['wishlist'] = json_decode($_COOKIE['wishlist'], true) ?? [];
 } else {
     $_SESSION['wishlist'] = [];
 }
 
-// Function to modify wishlist and save to cookie
 function modifikoWishlist($kafsha, $veprimi, $emri) {
     try {
         $logFile = fopen(LOG_DIR . 'user_actions.log', 'a');
@@ -56,14 +51,14 @@ function modifikoWishlist($kafsha, $veprimi, $emri) {
         if ($veprimi == 'shto' && !in_array($kafsha, $_SESSION['wishlist'])) {
             $_SESSION['wishlist'][] = $kafsha;
             fwrite($logFile, date('Y-m-d H:i:s') . " - Përdoruesi Anonim shtoi $kafsha në wishlist\n");
-            // Save updated wishlist to cookie
+
             setcookie('wishlist', json_encode($_SESSION['wishlist']), time() + 2592000, '/');
             fclose($logFile);
             return ["success" => true, "message" => "Shtove $kafsha në wishlist!"];
         } elseif ($veprimi == 'fshi' && in_array($kafsha, $_SESSION['wishlist'])) {
             $_SESSION['wishlist'] = array_values(array_diff($_SESSION['wishlist'], [$kafsha]));
             fwrite($logFile, date('Y-m-d H:i:s') . " - Përdoruesi Anonim fshiu $kafsha nga wishlist\n");
-            // Save updated wishlist to cookie
+  
             setcookie('wishlist', json_encode($_SESSION['wishlist']), time() + 2592000, '/');
             fclose($logFile);
             return ["success" => true, "message" => "Fshive $kafsha nga wishlist!"];
@@ -75,9 +70,7 @@ function modifikoWishlist($kafsha, $veprimi, $emri) {
     }
 }
 
-// Handle form submissions
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Save preferences to cookies
     if (isset($_POST['lloji_kafshes'])) {
         setcookie('lloji_kafshes', $_POST['lloji_kafshes'], time() + 2592000, '/');
         $cookies_array['lloji_kafshes'] = $_POST['lloji_kafshes'];
@@ -103,7 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         setcookie('tema', $_POST['tema'], time() + 2592000, '/');
         $cookies_array['tema'] = $_POST['tema'];
     }
-    // Handle clearing preferences
     if (isset($_POST['fshi_cookies']) && $_POST['fshi_cookies'] == '1') {
         setcookie('lloji_kafshes', '', time() - 3600, '/');
         setcookie('mosha_kafshes', '', time() - 3600, '/');
@@ -126,7 +118,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Initialize cookies_array
 $cookies_array = [
     'lloji_kafshes' => $_COOKIE['lloji_kafshes'] ?? '',
     'mosha_kafshes' => $_COOKIE['mosha_kafshes'] ?? '',
@@ -137,7 +128,6 @@ $cookies_array = [
     'shfaq_imazh' => $_COOKIE['shfaq_imazh'] ?? 'false'
 ];
 
-// Set default image based on pet type
 $imazh_kryesor = match ($cookies_array['lloji_kafshes']) {
     'Dog' => '/images/dog1.avif',
     'Cat' => '/images/cat1.jpg',
@@ -146,11 +136,9 @@ $imazh_kryesor = match ($cookies_array['lloji_kafshes']) {
     default => '/images/dog1.avif'
 };
 
-// Assistant message
 $mesazh_asistent = "Ti preferon {$cookies_array['lloji_kafshes']} të {$cookies_array['mosha_kafshes']}. ";
 $mesazh_asistent .= "Ke shikuar {$_SESSION['shikime_profile']} profile dhe ke vizituar faqen {$_SESSION['vizita_faqe']} herë!";
 
-// Greeting based on time
 $ora = date("H");
 $greeting = ($ora >= 5 && $ora < 12) ? "Good Morning – Welcome to Pet Adoption" :
             (($ora >= 12 && $ora < 18) ? "Good Afternoon – Welcome to Pet Adoption" :

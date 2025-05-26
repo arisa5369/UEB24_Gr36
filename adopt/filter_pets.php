@@ -14,14 +14,12 @@ $filters = [
     'personality' => $_POST['personality'] ?? $_COOKIE['personality'] ?? ''
 ];
 
-// Fallback image path for missing images
 $fallback_image = '/UEB24_Gr36/adopt/images/default_pet.jpg';
 
-// Funksion për të llogaritur rezultatin e përputhjes
 function calculateScore($pet, $filters) {
     $score = 0;
     if (!empty($filters['lloji_kafshes']) && $pet['type'] == $filters['lloji_kafshes']) {
-        $score += 2; // Pesha më e lartë për llojin
+        $score += 2;
     }
     if (!empty($filters['mosha_kafshes'])) {
         if ($filters['mosha_kafshes'] == 'I ri' && $pet['age'] >= 0 && $pet['age'] <= 2) {
@@ -44,14 +42,12 @@ function calculateScore($pet, $filters) {
     return $score;
 }
 
-// Funksion për të marrë URL-në e imazhit
 function getPetImage($image) {
     global $fallback_image;
     $base_path = '/UEB24_Gr36/adopt/';
     if (!empty($image) && file_exists($_SERVER['DOCUMENT_ROOT'] . $image)) {
         return $image;
     } elseif (!empty($image)) {
-        // Kontrollo nëse imazhi ekziston nën /images/
         $image_path = $base_path . 'images/' . basename($image);
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path)) {
             return $image_path;
@@ -60,7 +56,6 @@ function getPetImage($image) {
     return $fallback_image;
 }
 
-// Kërko për përputhje të sakta
 $query = "SELECT p.id, p.type, p.name, p.age, p.gender, p.color, p.personality, p.image,
                  d.breed AS dog_breed, c.breed AS cat_breed, c.litter_trained, c.health AS cat_health,
                  r.breed AS rabbit_breed, r.house_trained AS rabbit_house_trained, r.health AS rabbit_health,
@@ -119,7 +114,6 @@ while ($row = pg_fetch_assoc($result)) {
     }
 }
 
-// Nëse nuk ka përputhje të sakta, relakso filtrat
 if (empty($pets)) {
     $query = "SELECT p.id, p.type, p.name, p.age, p.gender, p.color, p.personality, p.image,
                      d.breed AS dog_breed, c.breed AS cat_breed, c.litter_trained, c.health AS cat_health,
@@ -158,7 +152,6 @@ if (empty($pets)) {
     }
 }
 
-// Rendit kafshët sipas rezultatit dhe limito në max 3 sugjerime
 usort($pets, function($a, $b) {
     return $b['score'] <=> $a['score'];
 });
@@ -169,11 +162,10 @@ $wishlist = $_SESSION['wishlist'] ?? [];
 $max_score = 5;
 
 if (!empty($pets)) {
-    // Gjenero HTML për të gjitha kafshët e filtruara si një listë e vetme
     foreach ($pets as $pet) {
         $is_favorite = in_array($pet['name'], $wishlist) ? 'favorite' : '';
         $filtered_pets_html .= "<div class='pet-card'>";
-        $filtered_pets_html .= "<img src='".htmlspecialchars($pet['image'])."' alt='".htmlspecialchars($pet['name'])."' class='pet-image' data-link='/UEB24_Gr36/adopt/".strtolower($pet['type'])."s/".strtolower($pet['type']).".html?name=".urlencode($pet['name'])."'>";
+        $filtered_pets_html .= "<img src='".htmlspecialchars($pet['image'])."' alt='".htmlspecialchars($pet['name'])."' class='pet-image' data-link='/UEB24_Gr36/adopt/".strtolower($pet['type'])."s/".strtolower($pet['type']).".php?name=".urlencode($pet['name'])."'>";
         $filtered_pets_html .= "<p>".htmlspecialchars($pet['name'])." (".htmlspecialchars($pet['type']).")</p>";
         $filtered_pets_html .= "<p>Përputhje: ".round(($pet['score'] / $max_score) * 100)."%</p>";
         if (!$exact_matches) 
