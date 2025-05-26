@@ -25,7 +25,6 @@ if (!$result || pg_num_rows($result) == 0) {
 
 $dog = pg_fetch_assoc($result);
 
-// Check if the dog is already adopted
 $adopted_query = "SELECT 1 FROM adopted_pets WHERE pet_id = $1";
 $adopted_result = pg_prepare($conn, "adopted_query", $adopted_query);
 $adopted_result = pg_execute($conn, "adopted_query", [$dog['id']]);
@@ -46,7 +45,7 @@ pg_close($conn);
     <link rel="stylesheet" href="dog.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
-        /* Modal styles */
+    
         .modal {
             display: none;
             position: fixed;
@@ -137,8 +136,7 @@ pg_close($conn);
             <p><strong>Personality:</strong> <span id="dog-personality"><?php echo htmlspecialchars($dog['personality']); ?></span></p>
             <p><strong>Health:</strong> <span id="dog-health">Good</span></p>
           
-            
-            <!-- Add Adopt Now button -->
+     
             <button id="adopt-button" class="adopt-button" <?php echo $is_adopted ? 'disabled' : ''; ?>>
                 <?php echo $is_adopted ? 'Already Adopted' : 'Adopt Now'; ?>
             </button>
@@ -147,8 +145,7 @@ pg_close($conn);
             <a href="/UEB24_Gr36/adopt/dogs/dogs.php">← Back to Dog List</a>
         </div>
     </div>
-    
-    <!-- Adoption Modal -->
+  
     <div id="adoptionModal" class="modal">
         <div class="modal-content">
             <h2>Congratulations! You're about to become a pet owner!</h2>
@@ -195,7 +192,7 @@ pg_close($conn);
                 });
             });
             
-            // Adoption functionality
+         
             $('#adopt-button').on('click', function() {
                 $('#adoptionModal').show();
             });
@@ -205,7 +202,7 @@ pg_close($conn);
             });
             
             $('#confirmAdopt').on('click', function() {
-                // Get user data from session (you'll need to adjust this based on your auth system)
+               
                 let userId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
                 let userName = "<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>";
                 let petId = <?php echo $dog['id']; ?>;
@@ -217,27 +214,23 @@ pg_close($conn);
                     return;
                 }
                 
-                // Show adoption details
                 $('#adoptedPetId').text(petId);
                 $('#adoptedPetName').text(petName);
                 $('#adopterName').text(userName);
                 $('#adopterId').text(userId);
                 $('#adoptionDetails').show();
-                
-                // Send adoption request to server
+        
                 $.post('/UEB24_Gr36/adopt/perpunoj_adoption.php', {
                     pet_id: petId,
                     user_id: userId,
                     action: 'adopt'
                 }, function(response) {
                     if (response.success) {
-                        // Show success message
                         let toast = $('#adoptedToast');
                         toast.addClass('show');
                         setTimeout(() => {
                             toast.removeClass('show');
                             $('#adoptionModal').hide();
-                            // Disable adopt button and update text
                             $('#adopt-button').text('Already Adopted').prop('disabled', true);
                         }, 2000);
                     } else {
@@ -248,7 +241,6 @@ pg_close($conn);
                 });
             });
             
-            // Close modal when clicking outside
             $(window).on('click', function(event) {
                 if ($(event.target).is('#adoptionModal')) {
                     $('#adoptionModal').hide();

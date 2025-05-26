@@ -3,17 +3,15 @@ session_start();
 require_once 'config.php';
 include '../databaza/db_connect.php';
 
-// Fallback image path for missing images
 $fallback_image = '/UEB24_Gr36/adopt/images/default_pet.jpg';
 
-// Funksion për të marrë URL-në e imazhit
 function getPetImage($image) {
     global $fallback_image;
     $base_path = '/UEB24_Gr36/adopt/';
     if (!empty($image) && file_exists($_SERVER['DOCUMENT_ROOT'] . $image)) {
         return $image;
     } elseif (!empty($image)) {
-        // Kontrollo nëse imazhi ekziston nën /images/
+      
         $image_path = $base_path . 'images/' . basename($image);
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path)) {
             return $image_path;
@@ -65,7 +63,7 @@ if (isset($_POST['kafsha']) && isset($_POST['veprimi'])) {
             $isFavorite = in_array($row['name'], $_SESSION['wishlist']) ? 'favorite' : '';
             $image = getPetImage($row['image']);
             echo "<div class='pet-card'>";
-            echo "<img src='".htmlspecialchars($image)."' alt='".htmlspecialchars($row['name'])."' class='pet-image' data-link='/UEB24_Gr36/adopt/".strtolower($row['type'])."s/".strtolower($row['type']).".html?name=".urlencode($row['name'])."'>";
+            echo "<img src='".htmlspecialchars($image)."' alt='".htmlspecialchars($row['name'])."' class='pet-image' data-link='/UEB24_Gr36/adopt/".strtolower($row['type'])."s/".strtolower($row['type']).".php?name=".urlencode($row['name'])."'>";
             echo "<p>".htmlspecialchars($row['name'])."</p>";
             echo "<button class='heart-button $isFavorite' data-pet='".htmlspecialchars($row['name'])."' title='Fshi nga Wishlist'>";
             echo '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';

@@ -28,7 +28,6 @@ if ($pet_id <= 0 || $user_id <= 0 || $action !== 'adopt') {
     exit;
 }
 
-// First check if the pet is already adopted
 $check_query = "SELECT 1 FROM adopted_pets WHERE pet_id = $1";
 $check_result = pg_prepare($conn, "check_query", $check_query);
 if (!$check_result) {
@@ -49,11 +48,9 @@ if (pg_num_rows($check_result) > 0) {
     exit;
 }
 
-// Begin transaction
 pg_query($conn, "BEGIN");
 
 try {
-    // 1. Create adopted_pets table if it doesn't exist
     $create_table = "CREATE TABLE IF NOT EXISTS adopted_pets (
         id SERIAL PRIMARY KEY,
         pet_id INT NOT NULL UNIQUE,
@@ -62,12 +59,17 @@ try {
         FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )";
+<<<<<<< HEAD
     $create_result = pg_query($conn, $create_table);
     if (!$create_result) {
         throw new Exception("Failed to create adopted_pets table: " . pg_last_error($conn));
     }
     
     // 2. Insert into adopted_pets table
+=======
+    pg_query($conn, $create_table);
+
+>>>>>>> 82a80d680e98d6f8dfcc0a7438d61496fd1be887
     $insert_query = "INSERT INTO adopted_pets (pet_id, user_id) VALUES ($1, $2)";
     $insert_result = pg_prepare($conn, "insert_query", $insert_query);
     if (!$insert_result) {
@@ -77,14 +79,14 @@ try {
     if (!$insert_result) {
         throw new Exception("Failed to record adoption: " . pg_last_error($conn));
     }
-    
-    // 3. Remove from wishlist if present
+
     $delete_wishlist = "DELETE FROM wishlist WHERE pet_id = $1 AND user_id = $2";
     $delete_result = pg_prepare($conn, "delete_wishlist", $delete_wishlist);
     if (!$delete_result) {
         throw new Exception("Failed to prepare wishlist delete query: " . pg_last_error($conn));
     }
     $delete_result = pg_execute($conn, "delete_wishlist", [$pet_id, $user_id]);
+<<<<<<< HEAD
     if (!$delete_result) {
         throw new Exception("Failed to delete from wishlist: " . pg_last_error($conn));
     }
@@ -105,12 +107,14 @@ try {
     }
     
     // Commit transaction
+=======
+
+>>>>>>> 82a80d680e98d6f8dfcc0a7438d61496fd1be887
     pg_query($conn, "COMMIT");
     
     ob_end_clean();
     echo json_encode(['success' => true, 'message' => 'Adoption successful']);
 } catch (Exception $e) {
-    // Rollback on error
     pg_query($conn, "ROLLBACK");
     $pg_error = pg_last_error($conn);
     error_log("Adoption error: " . $e->getMessage() . " | PG Error: " . $pg_error);
