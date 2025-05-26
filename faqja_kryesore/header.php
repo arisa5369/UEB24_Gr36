@@ -393,10 +393,7 @@
                     <input type="password" id="confirmPassword" name="confirmPassword" required
                            oninput="checkPasswordMatch()">
 
-                    <div style="display: flex; align-items: center; margin-top: 10px;">
-                        <input type="checkbox" id="showPassword" style="margin-right: 5px;">
-                        <label for="showPassword" style="margin: 0;">Show password</label>
-                    </div>
+                    
 
                     <button type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none; cursor: pointer;">Sign Up</button>
                 </form>
@@ -421,7 +418,7 @@
                    title="Password must be at least 6 characters long and contain only letters and numbers.">
 
             <button type="submit">Log In</button>
-            <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+            
         </form>
     </div>
 </div>
