@@ -393,12 +393,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section class="call-to-action">
         <div class="overlay2">
-            <h1>Other Ways to Get Involved with Petfinder</h1>
-            <div class="donation-grid">
-                <button>Volunteer</button>
-                <button>Donate</button>
-                <button>Adopt</button>
-            </div>
+            <h1>Every temporary home is a step toward a forever one.</h1>
+
         </div>
         <div id="footer"></div>
         <script src="/UEB24_Gr36/adopt/footer.js"></script>

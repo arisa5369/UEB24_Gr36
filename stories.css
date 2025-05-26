@@ -1,0 +1,116 @@
+body {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+.fancy-title {
+    font-family: 'Georgia', serif;
+    font-size: 2em;
+    color: #ffffff; 
+    text-align: center;
+    margin: 50px 0;
+    padding: 10px;
+    background: linear-gradient(90deg, #ff9900, #ff84006d);
+   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    margin: 50px auto;
+    width: 80%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.container img {
+    width: 15%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: all ease-in-out 0.5s;
+}
+
+.container img:hover {
+    width: 25%;
+    z-index: 2;
+}
+
+.testimonial-section {
+    margin-top: 50px;
+    background-color: #f9f9f9; 
+    padding: 50px 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    max-width: 900px;
+    margin: 30px auto; 
+}
+
+.testimonial-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px; 
+}
+
+.testimonial-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 50%;
+    border: 5px solid #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease; 
+}
+
+.testimonial-image img:hover {
+    transform: scale(1.1); 
+}
+
+.testimonial-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left; 
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    font-style: italic; 
+}
+
+.testimonial-author {
+    font-size: 1rem;
+    font-weight: bold; 
+    color: #555;
+}
+.back-button {
+    display: inline-block;
+    font-size: 16px; 
+    color: #01050a; 
+    text-decoration: none;
+    background-color: transparent; 
+    border: 2px solid #000000; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+    margin: 20px auto;
+    text-align: center; 
+    display: block; 
+    width: fit-content; 
+}
+
+.back-button:hover {
+    background-color: #ffb300; 
+    color: #000000; 
+}
