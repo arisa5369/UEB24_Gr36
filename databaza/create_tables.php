@@ -71,7 +71,15 @@ $sqlStatements = [
         donation_type VARCHAR(100) NOT NULL,
         amount NUMERIC(10, 2) NOT NULL,
         donation_date DATE NOT NULL
-    );"
+    );",
+    "CREATE TABLE IF NOT EXISTS wishlist (
+    user_id INT NOT NULL,
+    pet_id INT NOT NULL,
+    added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, pet_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
+);"
 ];
 
 // Execute each SQL statement and handle errors

@@ -41,6 +41,7 @@ body {
 .content {
     padding: 30px;
     text-align: center;
+    position: relative;
 }
 
 .content img {
@@ -92,4 +93,59 @@ body {
     background: #ffa500;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.heart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.heart-button svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #ff6600;
+    stroke-width: 2;
+    display: block;
+    visibility: visible;
+}
+
+.heart-button.favorite svg {
+    fill: #ff6600;
+    stroke: none;
+}
+
+.heart-button:hover svg {
+    stroke: #ff6600;
+    transform: scale(1.2);
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 120px;
+    background-color: rgb(255, 157, 0);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: visibility 0s, opacity 0.4s linear;
+    opacity: 0;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
 }
