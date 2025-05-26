@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         setcookie('personality', '', time() - 3600, '/');
         setcookie('tema', 'light', time() + 2592000, '/');
         setcookie('shfaq_imazh', 'false', time() + 2592000, '/');
-        setcookie('wishlist', '', time() - 3600, '/');
+        setcookie('wishlist', '', time()  + 2592000, '/');
         $_SESSION['wishlist'] = [];
         $cookies_array = [
             'lloji_kafshes' => '',

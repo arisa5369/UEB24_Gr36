@@ -298,7 +298,7 @@ include 'C:\XAMPP\htdocs\UEB24_Gr36\faqja_kryesore\header.php';
     </section>
 
     <section class="filtered-pets">
-        <h2>Kafshët që Përputhen</h2>
+       <h2 style="text-align: center;">Kafshët që Përputhen</h2>
         <div id="best-match" style="display: none;">
             <h3>Preferenca më e Mirë</h3>
             <div class="pet-card best-match-card"></div>
