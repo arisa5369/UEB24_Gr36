@@ -9,7 +9,7 @@ $conn_string = "host=$host port=$port dbname=$dbname user=$user password=$passwo
 $conn = pg_connect($conn_string);
 
 if (!$conn) {
-    die("Lidhja dështoi: " . pg_last_error());
+   error_log("pg_connect failed: " . pg_last_error());
 }
 
 ?>

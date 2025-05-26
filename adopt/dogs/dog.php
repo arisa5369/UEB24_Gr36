@@ -175,7 +175,7 @@ pg_close($conn);
             $('.heart-button').on('click', function() {
                 let button = $(this);
                 let dogName = button.data('dog');
-                $.post('/UEB24_Gr36/adopt/dog/perpunoj_wishlist_dogs.php', {
+                $.post('/UEB24_Gr36/adopt/dogs/perpunoj_wishlist_dogs.php', {
                     kafsha: dogName,
                     veprimi: button.hasClass('favorite') ? 'fshi' : 'shto'
                 }, function(response) {
